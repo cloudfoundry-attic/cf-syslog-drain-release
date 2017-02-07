@@ -1,0 +1,22 @@
+---
+name: fake_cups_provider
+templates:
+  ctl.erb: bin/ctl
+  cups_ca.crt.erb: certs/cups_ca.crt
+  server.crt.erb: certs/server.crt
+  server.key.erb: certs/server.key
+  fake_cups_provider.sh.erb: bin/fake_cups_provider.sh
+  response_body.json.erb: bin/response_body.json
+
+packages: []
+
+properties:
+  fake_cups_provider.port:
+    description: "The port for the fake CUPS provider"
+    default: 4433
+  fake_cups_provider.tls.ca:
+    description: "The CA for fake CUPS provider"
+  fake_cups_provider.tls.cert:
+    description: "The cert for the fake CUPS provider"
+  fake_cups_provider.tls.key:
+    description: "The key for the fake CUPS provider"

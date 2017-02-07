@@ -22,6 +22,28 @@ instance_groups:
   jobs:
   - name: scheduler
     release: scalablesyslog
+  - name: fake_cups_provider
+    release: scalablesyslog
+    properties:
+      fake_cups_provider:
+        tls:
+          ca: "((fake_cups_provider_tls.ca))"
+          cert: "((fake_cups_provider_tls.certificate))"
+          key: "((fake_cups_provider_tls.private_key))"
+
+variables:
+- name: common_ca
+  type: certificate
+  options:
+    common_name: CA
+- name: fake_cups_provider_tls
+  type: certificate
+  options:
+    ca: common_ca
+    common_name: localhost
+    ext_key_usage:
+    - client_auth
+    - server_auth
 
 update:
   canaries: 10

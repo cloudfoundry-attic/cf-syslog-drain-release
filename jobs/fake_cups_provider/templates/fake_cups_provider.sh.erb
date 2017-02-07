@@ -1,0 +1,14 @@
+#!/bin/bash
+
+JOB_DIR=/var/vcap/jobs/fake_cups_provider
+CERTS_DIR=$JOB_DIR/certs
+BIN_DIR=$JOB_DIR/bin
+
+while true
+do
+    cat $BIN_DIR/response_body.json | openssl s_server \
+    -CAfile $CERTS_DIR/cups_ca.crt \
+    -cert   $CERTS_DIR/server.crt \
+    -key    $CERTS_DIR/server.key \
+    -accept <%= p("fake_cups_provider.port") %>
+done
