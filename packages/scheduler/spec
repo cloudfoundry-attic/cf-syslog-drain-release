@@ -4,4 +4,6 @@ name: scheduler
 dependencies:
   - golang1.7
 
-files: []
+files:
+- github.com/cloudfoundry-incubator/scalable-syslog/scheduler/*.go # gosub
+- github.com/cloudfoundry-incubator/scalable-syslog/scheduler/app/*.go # gosub

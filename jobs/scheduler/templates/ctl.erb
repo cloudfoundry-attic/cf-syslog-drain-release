@@ -19,7 +19,8 @@ ulimit -n 8192
 
 echo $$ > $PIDFILE
 exec chpst -u vcap:vcap ./scheduler \
-  --configPath ${CONFIG_FILE}  \
+  --health=<%= p("scalablesyslog.scheduler.health") %> \
+  --pprof=<%= p("scalablesyslog.scheduler.pprof") %> \
   &>> ${LOG_DIR}/scheduler.log
 
 ;;

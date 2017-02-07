@@ -6,4 +6,10 @@ templates:
 packages:
   - scheduler
 
-properties: {}
+properties:
+  scalablesyslog.scheduler.health:
+    description: "The hostport for the scheduler"
+    default: ":8080"
+  scalablesyslog.scheduler.pprof:
+    description: "The hostport for pprof on the scheduler"
+    default: "localhost:6060"
