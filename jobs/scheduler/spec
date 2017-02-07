@@ -6,4 +6,4 @@ templates:
 packages:
   - scheduler
 
-properties: []
+properties: {}
