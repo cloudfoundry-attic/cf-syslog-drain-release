@@ -1,0 +1,7 @@
+---
+name: scheduler
+
+dependencies:
+  - golang1.7
+
+files: []

@@ -1,0 +1,9 @@
+---
+name: scheduler
+templates:
+  ctl.erb: bin/ctl
+
+packages:
+  - scheduler
+
+properties: []
