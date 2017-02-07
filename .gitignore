@@ -1,0 +1,40 @@
+
+# golang
+pkg/
+/bin/
+*.prof
+*.mprof
+*.coverprofile
+*.test
+
+# macOS
+.DS_Store
+
+# jetbrains
+.idea
+
+# bosh
+.blobs
+blobs
+.dev_builds
+dev_releases
+config/dev.yml
+config/private.yml
+releases/*.tgz
+releases/**/*.tgz
+
+# cleaner deps
+/src/github.com/client9/misspell
+/src/github.com/mdempsky/
+/src/golang.org/x/text/
+/src/golang.org/x/tools/
+
+# cert script output
+loggregator-certs
+
+# misc
+out/
+release/
+*/bin
+*.iml
+*.pem
