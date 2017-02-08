@@ -1,0 +1,15 @@
+---
+name: adapter
+templates:
+  ctl.erb: bin/ctl
+
+packages:
+  - adapter
+
+properties:
+  scalablesyslog.adapter.health:
+    description: "The hostport for the adapter"
+    default: ":8080"
+  scalablesyslog.adapter.pprof:
+    description: "The hostport for pprof on the adapter"
+    default: "localhost:6060"

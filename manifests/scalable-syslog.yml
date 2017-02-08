@@ -31,6 +31,19 @@ instance_groups:
           cert: "((fake_cups_provider_tls.certificate))"
           key: "((fake_cups_provider_tls.private_key))"
 
+- name: adapter
+  azs:
+  - z1
+  instances: 1
+  persistent_disk_type: default
+  vm_type: default
+  stemcell: default
+  networks:
+  - name: default
+  jobs:
+  - name: adapter
+    release: scalablesyslog
+
 variables:
 - name: common_ca
   type: certificate

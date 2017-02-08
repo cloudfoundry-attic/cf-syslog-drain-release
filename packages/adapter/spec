@@ -1,0 +1,9 @@
+---
+name: adapter
+
+dependencies:
+  - golang1.7
+
+files:
+- github.com/cloudfoundry-incubator/scalable-syslog/adapter/*.go # gosub
+- github.com/cloudfoundry-incubator/scalable-syslog/adapter/app/*.go # gosub
