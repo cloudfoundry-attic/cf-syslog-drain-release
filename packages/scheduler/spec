@@ -5,5 +5,9 @@ dependencies:
   - golang1.7
 
 files:
+- github.com/cloudfoundry-incubator/scalable-syslog/api/*.go # gosub
 - github.com/cloudfoundry-incubator/scalable-syslog/scheduler/*.go # gosub
 - github.com/cloudfoundry-incubator/scalable-syslog/scheduler/app/*.go # gosub
+- github.com/cloudfoundry-incubator/scalable-syslog/scheduler/internal/cupsprovider/*.go # gosub
+- github.com/cloudfoundry-incubator/scalable-syslog/scheduler/internal/drainstore/*.go # gosub
+- github.com/cloudfoundry-incubator/scalable-syslog/scheduler/internal/handlers/*.go # gosub

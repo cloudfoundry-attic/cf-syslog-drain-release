@@ -2,6 +2,9 @@
 name: scheduler
 templates:
   ctl.erb: bin/ctl
+  cups_ca.crt.erb: certs/cups_ca.crt
+  cups_client.crt.erb: certs/cups_client.crt
+  cups_client.key.erb: certs/cups_client.key
 
 packages:
   - scheduler
@@ -13,3 +16,16 @@ properties:
   scalablesyslog.scheduler.pprof:
     description: "The hostport for pprof on the scheduler"
     default: "localhost:6060"
+  scalablesyslog.scheduler.tls.cups.ca:
+    description: "The CA for CUPS provider"
+  scalablesyslog.scheduler.tls.cups.cert:
+    description: "The cert for the CUPS provider"
+  scalablesyslog.scheduler.tls.cups.key:
+    description: "The key for the CUPS provider"
+  scalablesyslog.scheduler.tls.cups.cn:
+    description: "The common name for the CUPS provider"
+  scalablesyslog.scheduler.tls.cups.skip_cert_verify:
+    description: "Allows insecure SSL connections to the CUPS provider"
+    default: false
+  scalablesyslog.scheduler.cups.url:
+    description: "The URL of the CUPS provider"
