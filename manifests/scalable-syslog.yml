@@ -8,8 +8,83 @@ stemcells:
 releases:
 - name: scalablesyslog
   version: latest
+- name: consul
+  version: latest
 
 instance_groups:
+- name: consul
+  azs:
+  - z1
+  instances: 1
+  persistent_disk_type: default
+  vm_type: default
+  stemcell: default
+  networks:
+  - name: default
+    static_ips: [10.244.10.2]
+  jobs:
+  - name: consul_agent
+    release: consul
+    properties:
+      consul:
+        agent:
+          mode: server
+          domain: cf.internal
+          servers: &consul_servers
+            lan: [10.244.10.2]
+        require_ssl: true
+        encrypt_keys:
+        - "((consul_encrypt_key))"
+        agent_cert: "((consul_agent.certificate))"
+        agent_key: "((consul_agent.private_key))"
+        ca_cert: "((consul_server.ca))"
+        server_cert: "((consul_server.certificate))"
+        server_key: "((consul_server.private_key))"
+  update:
+    serial: true
+    max_in_flight: 1
+
+- name: fake_cups_provider
+  azs:
+  - z1
+  instances: 1
+  persistent_disk_type: default
+  vm_type: default
+  stemcell: default
+  networks:
+  - name: default
+  jobs:
+  - name: fake_cups_provider
+    release: scalablesyslog
+    properties:
+      fake_cups_provider:
+        tls:
+          ca: "((fake_cups_provider_tls.ca))"
+          cert: "((fake_cups_provider_tls.certificate))"
+          key: "((fake_cups_provider_tls.private_key))"
+  - name: consul_agent
+    release: consul
+    properties:
+      consul:
+        agent:
+          mode: client
+          domain: cf.internal
+          servers: *consul_servers
+          services:
+            cups:
+              check:
+                name: dns_health_check
+                script: /var/vcap/jobs/fake_cups_provider/bin/dns_health_check
+
+        require_ssl: true
+        encrypt_keys:
+        - "((consul_encrypt_key))"
+        agent_cert: "((consul_agent.certificate))"
+        agent_key: "((consul_agent.private_key))"
+        ca_cert: "((consul_agent.ca))"
+        server_cert: "((consul_server.certificate))"
+        server_key: "((consul_server.private_key))"
+
 - name: scheduler
   azs:
   - z1
@@ -22,14 +97,33 @@ instance_groups:
   jobs:
   - name: scheduler
     release: scalablesyslog
-  - name: fake_cups_provider
-    release: scalablesyslog
     properties:
-      fake_cups_provider:
-        tls:
-          ca: "((fake_cups_provider_tls.ca))"
-          cert: "((fake_cups_provider_tls.certificate))"
-          key: "((fake_cups_provider_tls.private_key))"
+      scalablesyslog:
+        scheduler:
+          cups:
+            url: "https://cups.service.cf.internal:4433"
+          tls:
+            cups:
+              ca: "((scheduler_cups_tls.ca))"
+              cert: "((scheduler_cups_tls.certificate))"
+              key: "((scheduler_cups_tls.private_key))"
+              cn: "cups.service.cf.internal"
+  - name: consul_agent
+    release: consul
+    properties:
+      consul:
+        agent:
+          mode: client
+          domain: cf.internal
+          servers: *consul_servers
+        require_ssl: true
+        encrypt_keys:
+        - "((consul_encrypt_key))"
+        agent_cert: "((consul_agent.certificate))"
+        agent_key: "((consul_agent.private_key))"
+        ca_cert: "((consul_agent.ca))"
+        server_cert: "((consul_server.certificate))"
+        server_key: "((consul_server.private_key))"
 
 - name: adapter
   azs:
@@ -53,7 +147,38 @@ variables:
   type: certificate
   options:
     ca: common_ca
-    common_name: localhost
+    common_name: cups.service.cf.internal
+    ext_key_usage:
+    - client_auth
+    - server_auth
+- name: scheduler_cups_tls
+  type: certificate
+  options:
+    ca: common_ca
+    common_name: cups.service.cf.internal
+    ext_key_usage:
+    - client_auth
+    - server_auth
+
+- name: consul_encrypt_key
+  type: password
+- name: consul_agent_ca
+  type: certificate
+  options:
+    common_name: consulCA
+- name: consul_agent
+  type: certificate
+  options:
+    ca: consul_agent_ca
+    common_name: consul_agent
+    ext_key_usage:
+    - client_auth
+    - server_auth
+- name: consul_server
+  type: certificate
+  options:
+    ca: consul_agent_ca
+    common_name: server.dc1.cf.internal
     ext_key_usage:
     - client_auth
     - server_auth

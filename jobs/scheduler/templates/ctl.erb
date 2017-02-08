@@ -4,6 +4,7 @@ RUN_DIR=/var/vcap/sys/run/scheduler
 LOG_DIR=/var/vcap/sys/log/scheduler
 PIDFILE=${RUN_DIR}/scheduler.pid
 JOB_DIR=/var/vcap/jobs/scheduler
+CERT_DIR=$JOB_DIR/certs
 
 PACKAGE_DIR=/var/vcap/packages/scheduler
 
@@ -21,6 +22,12 @@ echo $$ > $PIDFILE
 exec chpst -u vcap:vcap ./scheduler \
   --health=<%= p("scalablesyslog.scheduler.health") %> \
   --pprof=<%= p("scalablesyslog.scheduler.pprof") %> \
+  --cups-url=<%= p("scalablesyslog.scheduler.cups.url") %> \
+  --cups-ca=$CERT_DIR/cups_ca.crt \
+  --cups-cert=$CERT_DIR/cups_client.crt \
+  --cups-key=$CERT_DIR/cups_client.key \
+  --cups-cn=<%= p("scalablesyslog.scheduler.tls.cups.cn") %> \
+  --cups-skip-cert-verify=<%= p("scalablesyslog.scheduler.tls.cups.skip_cert_verify") %> \
   &>> ${LOG_DIR}/scheduler.log
 
 ;;
