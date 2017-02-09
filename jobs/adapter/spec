@@ -2,6 +2,9 @@
 name: adapter
 templates:
   ctl.erb: bin/ctl
+  ca.crt.erb: certs/ca.crt
+  adapter.crt.erb: certs/adapter.crt
+  adapter.key.erb: certs/adapter.key
 
 packages:
   - adapter
@@ -13,3 +16,12 @@ properties:
   scalablesyslog.adapter.pprof:
     description: "The hostport for pprof on the adapter"
     default: "localhost:6060"
+
+  scalablesyslog.adapter.tls.ca:
+    description: "The TLS CA for the scalable syslog adapter server"
+  scalablesyslog.adapter.tls.cert:
+    description: "The TLS cert for the scalable syslog adapter server"
+  scalablesyslog.adapter.tls.key:
+    description: "The TLS private key for the scalable syslog adapter server"
+  scalablesyslog.adapter.tls.cn:
+    description: "The common name for the TLS certificate"
