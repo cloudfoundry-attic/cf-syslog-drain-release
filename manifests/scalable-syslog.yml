@@ -178,7 +178,7 @@ variables:
     common_name: adapter
     ext_key_usage:
     - server_auth
-
+    - client_auth
 - name: consul_encrypt_key
   type: password
 - name: consul_agent_ca

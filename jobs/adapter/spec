@@ -16,6 +16,9 @@ properties:
   scalablesyslog.adapter.pprof:
     description: "The hostport for pprof on the adapter"
     default: "localhost:6060"
+  scalablesyslog.adapter.adapter:
+    description: "The hostport for pprof on the adapter"
+    default: ":4443"
 
   scalablesyslog.adapter.tls.ca:
     description: "The TLS CA for the scalable syslog adapter server"

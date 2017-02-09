@@ -22,9 +22,11 @@ echo $$ > $PIDFILE
 exec chpst -u vcap:vcap ./adapter \
   --health=<%= p("scalablesyslog.adapter.health") %> \
   --pprof=<%= p("scalablesyslog.adapter.pprof") %> \
-  --ca=$CERTS_DIR/ca.crt \
-  --cert=$CERTS_DIR/adapter.crt \
-  --key=$CERTS_DIR/adapter.key \
+  --adapter=<%= p("scalablesyslog.adapter.adapter") %> \
+  --ca=$CERT_DIR/ca.crt \
+  --cert=$CERT_DIR/adapter.crt \
+  --key=$CERT_DIR/adapter.key \
+  --cn=<%= p("scalablesyslog.adapter.tls.cn") %> \
   &>> ${LOG_DIR}/adapter.log
 
 ;;
