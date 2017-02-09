@@ -21,7 +21,7 @@ instance_groups:
   stemcell: default
   networks:
   - name: default
-    static_ips: [10.244.10.2]
+    static_ips: [10.244.0.34]
   jobs:
   - name: consul_agent
     release: consul
@@ -31,7 +31,7 @@ instance_groups:
           mode: server
           domain: cf.internal
           servers: &consul_servers
-            lan: [10.244.10.2]
+            lan: [10.244.0.34]
         require_ssl: true
         encrypt_keys:
         - "((consul_encrypt_key))"
@@ -137,9 +137,21 @@ instance_groups:
   jobs:
   - name: adapter
     release: scalablesyslog
+    properties:
+      scalablesyslog:
+        adapter:
+          tls:
+            ca: "((adapter_tls.ca))"
+            cert: "((adapter_tls.certificate))"
+            key: "((adapter_tls.private_key))"
+            cn: adapter
 
 variables:
 - name: common_ca
+  type: certificate
+  options:
+    common_name: CA
+- name: scalable_syslog_ca
   type: certificate
   options:
     common_name: CA
@@ -158,6 +170,13 @@ variables:
     common_name: cups.service.cf.internal
     ext_key_usage:
     - client_auth
+    - server_auth
+- name: adapter_tls
+  type: certificate
+  options:
+    ca: scalable_syslog_ca
+    common_name: adapter
+    ext_key_usage:
     - server_auth
 
 - name: consul_encrypt_key
