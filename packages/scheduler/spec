@@ -11,3 +11,4 @@ files:
 - github.com/cloudfoundry-incubator/scalable-syslog/scheduler/internal/cups/*.go # gosub
 - github.com/cloudfoundry-incubator/scalable-syslog/scheduler/internal/drainstore/*.go # gosub
 - github.com/cloudfoundry-incubator/scalable-syslog/scheduler/internal/handlers/*.go # gosub
+- github.com/cloudfoundry-incubator/scalable-syslog/scheduler/internal/orchestrator/*.go # gosub
