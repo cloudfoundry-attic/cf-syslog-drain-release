@@ -20,8 +20,8 @@ ulimit -n 8192
 
 echo $$ > $PIDFILE
 exec chpst -u vcap:vcap ./scheduler \
-  --health=<%= p("scalablesyslog.scheduler.health") %> \
-  --pprof=<%= p("scalablesyslog.scheduler.pprof") %> \
+  --health=":<%= p('scalablesyslog.scheduler.health') %>" \
+  --pprof="localhost:<%= p('scalablesyslog.scheduler.pprof') %>" \
   --cups-url=<%= p("scalablesyslog.scheduler.cups.url") %> \
   --cups-ca=$CERT_DIR/cups_ca.crt \
   --cups-cert=$CERT_DIR/cups_client.crt \

@@ -11,11 +11,11 @@ packages:
 
 properties:
   scalablesyslog.scheduler.health:
-    description: "The hostport for the scheduler"
-    default: ":8080"
+    description: "The port for the scheduler health endpoint"
+    default: 8080
   scalablesyslog.scheduler.pprof:
-    description: "The hostport for pprof on the scheduler"
-    default: "localhost:6060"
+    description: "The port for pprof on the scheduler"
+    default: 6060
   scalablesyslog.scheduler.tls.cups.ca:
     description: "The CA for CUPS provider"
   scalablesyslog.scheduler.tls.cups.cert:
