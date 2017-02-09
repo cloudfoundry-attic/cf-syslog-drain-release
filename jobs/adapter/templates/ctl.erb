@@ -20,13 +20,13 @@ ulimit -n 8192
 
 echo $$ > $PIDFILE
 exec chpst -u vcap:vcap ./adapter \
-  --health=<%= p("scalablesyslog.adapter.health") %> \
-  --pprof=<%= p("scalablesyslog.adapter.pprof") %> \
-  --adapter=<%= p("scalablesyslog.adapter.adapter") %> \
+  --health=":<%= p('scalablesyslog.adapter.health') %>" \
+  --pprof="localhost:<%= p('scalablesyslog.adapter.pprof') %>" \
+  --addr=":<%= p('scalablesyslog.adapter.port') %>" \
   --ca=$CERT_DIR/ca.crt \
   --cert=$CERT_DIR/adapter.crt \
   --key=$CERT_DIR/adapter.key \
-  --cn=<%= p("scalablesyslog.adapter.tls.cn") %> \
+  --cn=<%= p('scalablesyslog.adapter.tls.cn') %> \
   &>> ${LOG_DIR}/adapter.log
 
 ;;

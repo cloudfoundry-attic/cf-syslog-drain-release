@@ -11,14 +11,14 @@ packages:
 
 properties:
   scalablesyslog.adapter.health:
-    description: "The hostport for the adapter"
-    default: ":8080"
+    description: "The port for the health endpoint"
+    default: "8080"
   scalablesyslog.adapter.pprof:
-    description: "The hostport for pprof on the adapter"
-    default: "localhost:6060"
-  scalablesyslog.adapter.adapter:
-    description: "The hostport for pprof on the adapter"
-    default: ":4443"
+    description: "The port for pprof on the adapter"
+    default: "6060"
+  scalablesyslog.adapter.port:
+    description: "The port for the adapter"
+    default: "4443"
 
   scalablesyslog.adapter.tls.ca:
     description: "The TLS CA for the scalable syslog adapter server"
