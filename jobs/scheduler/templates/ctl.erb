@@ -28,6 +28,8 @@ exec chpst -u vcap:vcap ./scheduler \
   --cups-key=$CERT_DIR/cups_client.key \
   --cups-cn=<%= p("scalablesyslog.scheduler.tls.cups.cn") %> \
   --cups-skip-cert-verify=<%= p("scalablesyslog.scheduler.tls.cups.skip_cert_verify") %> \
+  --adapter-ips=<%= link("adapter_addrs").instances.map(&:address).join(",") %> \
+  --adapter-port=<%= link("adapter_addrs").p('scalablesyslog.adapter.port') %> \
   &>> ${LOG_DIR}/scheduler.log
 
 ;;

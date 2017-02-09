@@ -9,6 +9,12 @@ templates:
 packages:
   - adapter
 
+provides:
+- name: adapter_addrs
+  type: addr
+  properties:
+  - scalablesyslog.adapter.port
+
 properties:
   scalablesyslog.adapter.health:
     description: "The port for the health endpoint"

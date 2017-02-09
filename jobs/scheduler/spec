@@ -9,6 +9,10 @@ templates:
 packages:
   - scheduler
 
+consumes:
+- name: adapter_addrs
+  type: addr
+
 properties:
   scalablesyslog.scheduler.health:
     description: "The port for the scheduler health endpoint"
