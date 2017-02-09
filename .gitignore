@@ -38,3 +38,5 @@ release/
 */bin
 *.iml
 *.pem
+src/github.com/vito/gosub
+src/github.com/codegangsta/cli
