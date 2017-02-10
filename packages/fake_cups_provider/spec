@@ -1,0 +1,5 @@
+---
+name: fake_cups_provider
+
+files:
+- github.com/cloudfoundry-incubator/scalable-syslog/tools/fake_cups_provider/*

@@ -1,0 +1,3 @@
+set -e
+
+cp -a github.com/cloudfoundry-incubator/scalable-syslog/tools/fake_cups_provider/*  ${BOSH_INSTALL_TARGET}/

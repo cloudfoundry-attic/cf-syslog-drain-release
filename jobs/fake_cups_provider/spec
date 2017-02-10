@@ -5,11 +5,11 @@ templates:
   cups_ca.crt.erb: certs/cups_ca.crt
   server.crt.erb: certs/server.crt
   server.key.erb: certs/server.key
-  fake_cups_provider.sh.erb: bin/fake_cups_provider.sh
   response_body.json.erb: bin/response_body.json
   dns_health_check.erb: bin/dns_health_check
 
-packages: []
+packages:
+- fake_cups_provider
 
 properties:
   fake_cups_provider.port:
