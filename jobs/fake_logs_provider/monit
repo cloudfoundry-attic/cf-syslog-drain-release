@@ -1,0 +1,5 @@
+check process fake_logs_provider
+  with pidfile /var/vcap/sys/run/fake_logs_provider/fake_logs_provider.pid
+  start program "/var/vcap/jobs/fake_logs_provider/bin/ctl start"
+  stop program "/var/vcap/jobs/fake_logs_provider/bin/ctl stop" with timeout 60 seconds
+  group vcap

@@ -1,0 +1,35 @@
+#!/bin/bash
+
+RUN_DIR=/var/vcap/sys/run/fake_logs_provider
+LOG_DIR=/var/vcap/sys/log/fake_logs_provider
+PIDFILE=${RUN_DIR}/fake_logs_provider.pid
+JOB_DIR=/var/vcap/jobs/fake_logs_provider
+PACKAGE_DIR=/var/vcap/packages/fake_logs_provider
+
+case $1 in
+
+start)
+mkdir -p $RUN_DIR $LOG_DIR
+chown -R vcap:vcap $RUN_DIR $LOG_DIR
+
+ulimit -n 8192
+
+echo $$ > $PIDFILE
+exec chpst -u vcap:vcap $PACKAGE_DIR/fake_logs_provider \
+    --addr=":<%= p('fake_logs_provider.port') %>" \
+  &>> ${LOG_DIR}/fake_logs_provider.log
+
+;;
+
+stop)
+
+kill `cat $PIDFILE`
+
+rm -f $PIDFILE
+
+;;
+
+*)
+echo "Usage: ctl {start|stop}" ;;
+
+esac

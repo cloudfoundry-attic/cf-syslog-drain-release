@@ -85,6 +85,41 @@ instance_groups:
         server_cert: "((consul_server.certificate))"
         server_key: "((consul_server.private_key))"
 
+- name: fake_logs_provider
+  azs:
+  - z1
+  instances: 1
+  persistent_disk_type: default
+  vm_type: default
+  stemcell: default
+  networks:
+  - name: default
+  jobs:
+  - name: fake_logs_provider
+    release: scalablesyslog
+  - name: consul_agent
+    release: consul
+    properties:
+      consul:
+        agent:
+          mode: client
+          domain: cf.internal
+          servers: *consul_servers
+          services:
+            logs:
+              check:
+                name: dns_health_check
+                script: /var/vcap/jobs/fake_logs_provider/bin/dns_health_check
+
+        require_ssl: true
+        encrypt_keys:
+        - "((consul_encrypt_key))"
+        agent_cert: "((consul_agent.certificate))"
+        agent_key: "((consul_agent.private_key))"
+        ca_cert: "((consul_agent.ca))"
+        server_cert: "((consul_server.certificate))"
+        server_key: "((consul_server.private_key))"
+
 - name: scheduler
   azs:
   - z1
