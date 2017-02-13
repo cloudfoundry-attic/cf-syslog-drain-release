@@ -120,6 +120,27 @@ instance_groups:
         server_cert: "((consul_server.certificate))"
         server_key: "((consul_server.private_key))"
 
+- name: adapter
+  azs:
+  - z1
+  instances: 3
+  persistent_disk_type: default
+  vm_type: default
+  stemcell: default
+  networks:
+  - name: default
+  jobs:
+  - name: adapter
+    release: scalablesyslog
+    properties:
+      scalablesyslog:
+        adapter:
+          tls:
+            ca: "((adapter_tls.ca))"
+            cert: "((adapter_tls.certificate))"
+            key: "((adapter_tls.private_key))"
+            cn: adapter
+
 - name: scheduler
   azs:
   - z1
@@ -138,6 +159,11 @@ instance_groups:
           cups:
             url: "https://cups.service.cf.internal:4433"
           tls:
+            client:
+              ca: "((scheduler_client_tls.ca))"
+              cert: "((scheduler_client_tls.certificate))"
+              key: "((scheduler_client_tls.private_key))"
+              adapter_cn: "adapter"
             cups:
               ca: "((scheduler_cups_tls.ca))"
               cert: "((scheduler_cups_tls.certificate))"
@@ -159,27 +185,6 @@ instance_groups:
         ca_cert: "((consul_agent.ca))"
         server_cert: "((consul_server.certificate))"
         server_key: "((consul_server.private_key))"
-
-- name: adapter
-  azs:
-  - z1
-  instances: 1
-  persistent_disk_type: default
-  vm_type: default
-  stemcell: default
-  networks:
-  - name: default
-  jobs:
-  - name: adapter
-    release: scalablesyslog
-    properties:
-      scalablesyslog:
-        adapter:
-          tls:
-            ca: "((adapter_tls.ca))"
-            cert: "((adapter_tls.certificate))"
-            key: "((adapter_tls.private_key))"
-            cn: adapter
 
 variables:
 - name: common_ca
@@ -213,6 +218,13 @@ variables:
     common_name: adapter
     ext_key_usage:
     - server_auth
+    - client_auth
+- name: scheduler_client_tls
+  type: certificate
+  options:
+    ca: scalable_syslog_ca
+    common_name: scheduler
+    ext_key_usage:
     - client_auth
 - name: consul_encrypt_key
   type: password

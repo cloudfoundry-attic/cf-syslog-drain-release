@@ -5,6 +5,9 @@ templates:
   cups_ca.crt.erb: certs/cups_ca.crt
   cups_client.crt.erb: certs/cups_client.crt
   cups_client.key.erb: certs/cups_client.key
+  ca.crt.erb: certs/ca.crt
+  scheduler.crt.erb: certs/scheduler.crt
+  scheduler.key.erb: certs/scheduler.key
 
 packages:
   - scheduler
@@ -20,6 +23,16 @@ properties:
   scalablesyslog.scheduler.pprof:
     description: "The port for pprof on the scheduler"
     default: 6060
+
+  scalablesyslog.scheduler.tls.client.ca:
+    description: "The TLS CA for the scalable syslog"
+  scalablesyslog.scheduler.tls.client.cert:
+    description: "The TLS cert for the scalable syslog scheduler client"
+  scalablesyslog.scheduler.tls.client.key:
+    description: "The TLS private key for the scalable syslog scheduler client"
+  scalablesyslog.scheduler.tls.client.adapter_cn:
+    description: "The common name for the adapter"
+
   scalablesyslog.scheduler.tls.cups.ca:
     description: "The CA for CUPS provider"
   scalablesyslog.scheduler.tls.cups.cert:
@@ -28,6 +41,7 @@ properties:
     description: "The key for the CUPS provider"
   scalablesyslog.scheduler.tls.cups.cn:
     description: "The common name for the CUPS provider"
+
   scalablesyslog.scheduler.tls.cups.skip_cert_verify:
     description: "Allows insecure SSL connections to the CUPS provider"
     default: false

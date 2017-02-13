@@ -27,7 +27,7 @@ properties:
     default: 4443
 
   scalablesyslog.adapter.tls.ca:
-    description: "The TLS CA for the scalable syslog adapter server"
+    description: "The TLS CA for the scalable syslog"
   scalablesyslog.adapter.tls.cert:
     description: "The TLS cert for the scalable syslog adapter server"
   scalablesyslog.adapter.tls.key:
