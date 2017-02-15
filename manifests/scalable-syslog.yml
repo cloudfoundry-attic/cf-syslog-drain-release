@@ -140,6 +140,23 @@ instance_groups:
             cert: "((adapter_tls.certificate))"
             key: "((adapter_tls.private_key))"
             cn: adapter
+  - name: consul_agent
+    release: consul
+    properties:
+      consul:
+        agent:
+          mode: client
+          domain: cf.internal
+          servers: *consul_servers
+        require_ssl: true
+        encrypt_keys:
+        - "((consul_encrypt_key))"
+        agent_cert: "((consul_agent.certificate))"
+        agent_key: "((consul_agent.private_key))"
+        ca_cert: "((consul_agent.ca))"
+        server_cert: "((consul_server.certificate))"
+        server_key: "((consul_server.private_key))"
+
 
 - name: scheduler
   azs:
