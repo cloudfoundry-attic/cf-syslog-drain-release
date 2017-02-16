@@ -5,6 +5,7 @@ dependencies:
   - golang1.7
 
 files:
+- github.com/cloudfoundry-incubator/scalable-syslog/api/*.go # gosub
 - github.com/cloudfoundry-incubator/scalable-syslog/api/loggregator/v2/*.go # gosub
 - github.com/cloudfoundry-incubator/scalable-syslog/tools/fake_logs_provider/*.go # gosub
 - github.com/golang/protobuf/proto/*.go # gosub

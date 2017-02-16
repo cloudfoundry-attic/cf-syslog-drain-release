@@ -4,6 +4,9 @@ name: fake_logs_provider
 templates:
   ctl.erb: bin/ctl
   dns_health_check.erb: bin/dns_health_check
+  ca.crt.erb: certs/ca.crt
+  server.crt.erb: certs/server.crt
+  server.key.erb: certs/server.key
 
 packages:
 - fake_logs_provider
@@ -12,3 +15,12 @@ properties:
   fake_logs_provider.port:
     description: "The port for the fake logs provider"
     default: 8082
+
+  fake_logs_provider.tls.ca:
+    description: "The TLS CA for the fake logs provider"
+  fake_logs_provider.tls.cert:
+    description: "The TLS cert for the fake logs provider server"
+  fake_logs_provider.tls.key:
+    description: "The TLS private key for the fake logs provider server"
+  fake_logs_provider.tls.cn:
+    description: "The common name for the TLS certificate"

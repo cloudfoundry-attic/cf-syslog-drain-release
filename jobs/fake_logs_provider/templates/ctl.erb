@@ -17,6 +17,10 @@ ulimit -n 8192
 echo $$ > $PIDFILE
 exec chpst -u vcap:vcap $PACKAGE_DIR/fake_logs_provider \
     --addr=":<%= p('fake_logs_provider.port') %>" \
+    --ca=$JOB_DIR/certs/ca.crt \
+    --cert=$JOB_DIR/certs/server.crt \
+    --key=$JOB_DIR/certs/server.key \
+    --cn=<%= p('fake_logs_provider.tls.cn') %> \
   &>> ${LOG_DIR}/fake_logs_provider.log
 
 ;;

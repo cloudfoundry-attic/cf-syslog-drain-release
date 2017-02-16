@@ -25,12 +25,16 @@ instance_groups:
   jobs:
   - name: consul_agent
     release: consul
+    consumes:
+      consul: nil
+    provides:
+      consul: {as: consul_server}
     properties:
       consul:
         agent:
           mode: server
           domain: cf.internal
-          servers: &consul_servers
+          servers:
             lan: [10.244.0.34]
         require_ssl: true
         encrypt_keys:
@@ -64,26 +68,16 @@ instance_groups:
           key: "((fake_cups_provider_tls.private_key))"
   - name: consul_agent
     release: consul
+    consumes:
+      consul: {from: consul_server}
     properties:
       consul:
         agent:
-          mode: client
-          domain: cf.internal
-          servers: *consul_servers
           services:
             cups:
               check:
                 name: dns_health_check
                 script: /var/vcap/jobs/fake_cups_provider/bin/dns_health_check
-
-        require_ssl: true
-        encrypt_keys:
-        - "((consul_encrypt_key))"
-        agent_cert: "((consul_agent.certificate))"
-        agent_key: "((consul_agent.private_key))"
-        ca_cert: "((consul_agent.ca))"
-        server_cert: "((consul_server.certificate))"
-        server_key: "((consul_server.private_key))"
 
 - name: fake_logs_provider
   azs:
@@ -97,28 +91,25 @@ instance_groups:
   jobs:
   - name: fake_logs_provider
     release: scalablesyslog
+    properties:
+      fake_logs_provider:
+        tls:
+          ca: "((fake_logs_provider_tls.ca))"
+          cert: "((fake_logs_provider_tls.certificate))"
+          key: "((fake_logs_provider_tls.private_key))"
+          cn: "fake-logs-provider"
   - name: consul_agent
     release: consul
+    consumes:
+      consul: {from: consul_server}
     properties:
       consul:
         agent:
-          mode: client
-          domain: cf.internal
-          servers: *consul_servers
           services:
             logs:
               check:
                 name: dns_health_check
                 script: /var/vcap/jobs/fake_logs_provider/bin/dns_health_check
-
-        require_ssl: true
-        encrypt_keys:
-        - "((consul_encrypt_key))"
-        agent_cert: "((consul_agent.certificate))"
-        agent_key: "((consul_agent.private_key))"
-        ca_cert: "((consul_agent.ca))"
-        server_cert: "((consul_server.certificate))"
-        server_key: "((consul_server.private_key))"
 
 - name: adapter
   azs:
@@ -130,35 +121,28 @@ instance_groups:
   networks:
   - name: default
   jobs:
+  - name: consul_agent
+    release: consul
+    consumes:
+      consul: {from: consul_server}
   - name: adapter
     release: scalablesyslog
     properties:
       scalablesyslog:
         adapter:
           logs:
-            addr: "logs.service.cf.internal"
+            addr: "logs.service.cf.internal:8082"
           tls:
             ca: "((adapter_tls.ca))"
             cert: "((adapter_tls.certificate))"
             key: "((adapter_tls.private_key))"
             cn: adapter
-  - name: consul_agent
-    release: consul
-    properties:
-      consul:
-        agent:
-          mode: client
-          domain: cf.internal
-          servers: *consul_servers
-        require_ssl: true
-        encrypt_keys:
-        - "((consul_encrypt_key))"
-        agent_cert: "((consul_agent.certificate))"
-        agent_key: "((consul_agent.private_key))"
-        ca_cert: "((consul_agent.ca))"
-        server_cert: "((consul_server.certificate))"
-        server_key: "((consul_server.private_key))"
-
+        adapter_rlp:
+          tls:
+            ca: "((adapter_rlp_tls.ca))"
+            cert: "((adapter_rlp_tls.certificate))"
+            key: "((adapter_rlp_tls.private_key))"
+            cn: fake-logs-provider
 
 - name: scheduler
   azs:
@@ -190,20 +174,8 @@ instance_groups:
               cn: "cups.service.cf.internal"
   - name: consul_agent
     release: consul
-    properties:
-      consul:
-        agent:
-          mode: client
-          domain: cf.internal
-          servers: *consul_servers
-        require_ssl: true
-        encrypt_keys:
-        - "((consul_encrypt_key))"
-        agent_cert: "((consul_agent.certificate))"
-        agent_key: "((consul_agent.private_key))"
-        ca_cert: "((consul_agent.ca))"
-        server_cert: "((consul_server.certificate))"
-        server_key: "((consul_server.private_key))"
+    consumes:
+      consul: {from: consul_server}
 
 variables:
 - name: common_ca
@@ -219,6 +191,22 @@ variables:
   options:
     ca: common_ca
     common_name: cups.service.cf.internal
+    ext_key_usage:
+    - client_auth
+    - server_auth
+- name: fake_logs_provider_tls
+  type: certificate
+  options:
+    ca: common_ca
+    common_name: fake-logs-provider
+    ext_key_usage:
+    - client_auth
+    - server_auth
+- name: adapter_rlp_tls
+  type: certificate
+  options:
+    ca: common_ca
+    common_name: adapter-rlp
     ext_key_usage:
     - client_auth
     - server_auth
