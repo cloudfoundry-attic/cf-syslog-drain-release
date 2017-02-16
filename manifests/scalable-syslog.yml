@@ -135,6 +135,8 @@ instance_groups:
     properties:
       scalablesyslog:
         adapter:
+          logs:
+            addr: "logs.service.cf.internal"
           tls:
             ca: "((adapter_tls.ca))"
             cert: "((adapter_tls.certificate))"

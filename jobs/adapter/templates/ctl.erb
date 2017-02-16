@@ -23,6 +23,7 @@ exec chpst -u vcap:vcap ./adapter \
   --health=":<%= p('scalablesyslog.adapter.health') %>" \
   --pprof="localhost:<%= p('scalablesyslog.adapter.pprof') %>" \
   --addr=":<%= p('scalablesyslog.adapter.port') %>" \
+  --logs-addr="<%= p('scalablesyslog.adapter.logs.addr') %>" \
   --ca=$CERT_DIR/ca.crt \
   --cert=$CERT_DIR/adapter.crt \
   --key=$CERT_DIR/adapter.key \

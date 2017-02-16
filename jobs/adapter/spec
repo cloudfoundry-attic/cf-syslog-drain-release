@@ -34,3 +34,6 @@ properties:
     description: "The TLS private key for the scalable syslog adapter server"
   scalablesyslog.adapter.tls.cn:
     description: "The common name for the TLS certificate"
+
+  scalablesyslog.adapter.logs.addr:
+    description: "The address of the logs API"
