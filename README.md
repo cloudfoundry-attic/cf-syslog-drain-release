@@ -13,7 +13,7 @@ Example deploying to bosh-lite.
 ```bash
 bosh -e lite update-cloud-config $HOME/workspace/bosh-deployment/warden/cloud-config.yml
 cd $HOME/workspace/scalable-syslog-release
-bosh upload-release https://bosh.io/d/github.com/cloudfoundry-incubator/consul-release
+bosh -e lite upload-release https://bosh.io/d/github.com/cloudfoundry-incubator/consul-release
 bosh create-release && bosh -e lite upload-release --rebase
 bosh -e lite -d scalablesyslog deploy manifests/scalable-syslog.yml --vars-store=/tmp/bosh-lite-ss.yml
 ```
