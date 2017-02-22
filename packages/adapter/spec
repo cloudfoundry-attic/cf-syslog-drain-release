@@ -9,7 +9,7 @@ files:
 - github.com/cloudfoundry-incubator/scalable-syslog/adapter/app/*.go # gosub
 - github.com/cloudfoundry-incubator/scalable-syslog/adapter/internal/controller/*.go # gosub
 - github.com/cloudfoundry-incubator/scalable-syslog/adapter/internal/drainstore/*.go # gosub
-- github.com/cloudfoundry-incubator/scalable-syslog/adapter/internal/handlers/*.go # gosub
+- github.com/cloudfoundry-incubator/scalable-syslog/adapter/internal/health/*.go # gosub
 - github.com/cloudfoundry-incubator/scalable-syslog/adapter/internal/ingress/*.go # gosub
 - github.com/cloudfoundry-incubator/scalable-syslog/api/*.go # gosub
 - github.com/cloudfoundry-incubator/scalable-syslog/api/loggregator/v2/*.go # gosub
