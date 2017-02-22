@@ -181,17 +181,19 @@ variables:
 - name: common_ca
   type: certificate
   options:
+    is_ca: true
     common_name: CA
 - name: scalable_syslog_ca
   type: certificate
   options:
+    is_ca: true
     common_name: CA
 - name: fake_cups_provider_tls
   type: certificate
   options:
     ca: common_ca
     common_name: cups.service.cf.internal
-    ext_key_usage:
+    extended_key_usage:
     - client_auth
     - server_auth
 - name: fake_logs_provider_tls
@@ -199,7 +201,7 @@ variables:
   options:
     ca: common_ca
     common_name: fake-logs-provider
-    ext_key_usage:
+    extended_key_usage:
     - client_auth
     - server_auth
 - name: adapter_rlp_tls
@@ -207,7 +209,7 @@ variables:
   options:
     ca: common_ca
     common_name: adapter-rlp
-    ext_key_usage:
+    extended_key_usage:
     - client_auth
     - server_auth
 - name: scheduler_cups_tls
@@ -215,7 +217,7 @@ variables:
   options:
     ca: common_ca
     common_name: cups.service.cf.internal
-    ext_key_usage:
+    extended_key_usage:
     - client_auth
     - server_auth
 - name: adapter_tls
@@ -223,7 +225,7 @@ variables:
   options:
     ca: scalable_syslog_ca
     common_name: adapter
-    ext_key_usage:
+    extended_key_usage:
     - server_auth
     - client_auth
 - name: scheduler_client_tls
@@ -231,20 +233,21 @@ variables:
   options:
     ca: scalable_syslog_ca
     common_name: scheduler
-    ext_key_usage:
+    extended_key_usage:
     - client_auth
 - name: consul_encrypt_key
   type: password
 - name: consul_agent_ca
   type: certificate
   options:
+    is_ca: true
     common_name: consulCA
 - name: consul_agent
   type: certificate
   options:
     ca: consul_agent_ca
     common_name: consul_agent
-    ext_key_usage:
+    extended_key_usage:
     - client_auth
     - server_auth
 - name: consul_server
@@ -252,7 +255,7 @@ variables:
   options:
     ca: consul_agent_ca
     common_name: server.dc1.cf.internal
-    ext_key_usage:
+    extended_key_usage:
     - client_auth
     - server_auth
 
