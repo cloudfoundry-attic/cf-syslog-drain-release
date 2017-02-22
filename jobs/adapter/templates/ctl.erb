@@ -18,12 +18,18 @@ cd $PACKAGE_DIR
 
 ulimit -n 8192
 
+<%
+  instance = link("reverse_log_proxy").instances.first
+  port = link("reverse_log_proxy").p("reverse_log_proxy.egress.port")
+  logs_api_addr = "#{instance.address}:#{port}"
+%>
+
 echo $$ > $PIDFILE
 exec chpst -u vcap:vcap ./adapter \
   --health=":<%= p('scalablesyslog.adapter.health') %>" \
   --pprof="localhost:<%= p('scalablesyslog.adapter.pprof') %>" \
   --addr=":<%= p('scalablesyslog.adapter.port') %>" \
-  --logs-api-addr="<%= p('scalablesyslog.adapter.logs.addr') %>" \
+  --logs-api-addr="<%= logs_api_addr %>" \
   --ca=$CERT_DIR/ca.crt \
   --cert=$CERT_DIR/adapter.crt \
   --key=$CERT_DIR/adapter.key \

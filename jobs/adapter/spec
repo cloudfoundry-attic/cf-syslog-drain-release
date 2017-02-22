@@ -18,6 +18,10 @@ provides:
   properties:
   - scalablesyslog.adapter.port
 
+consumes:
+- name: reverse_log_proxy
+  type: reverse_log_proxy
+
 properties:
   scalablesyslog.adapter.health:
     description: "The port for the health endpoint"
@@ -46,6 +50,3 @@ properties:
     description: "The TLS private key for the scalable syslog adapter_rlp client"
   scalablesyslog.adapter_rlp.tls.cn:
     description: "The common name for the TLS certificate"
-
-  scalablesyslog.adapter.logs.addr:
-    description: "The address of the logs API"

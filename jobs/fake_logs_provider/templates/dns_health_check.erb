@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Use fake logs provider port
-nc -z 127.0.0.1 <%= p("fake_logs_provider.port") %>
+nc -z 127.0.0.1 <%= p("reverse_log_proxy.egress.port") %>
 
 # http://www.consul.io/docs/agent/checks.html
 if [ $? -ne 0 ]; then

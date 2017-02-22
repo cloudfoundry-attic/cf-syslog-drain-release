@@ -97,7 +97,7 @@ instance_groups:
           ca: "((fake_logs_provider_tls.ca))"
           cert: "((fake_logs_provider_tls.certificate))"
           key: "((fake_logs_provider_tls.private_key))"
-          cn: "fake-logs-provider"
+          cn: "reverselogproxy"
   - name: consul_agent
     release: consul
     consumes:
@@ -127,11 +127,12 @@ instance_groups:
       consul: {from: consul_server}
   - name: adapter
     release: scalablesyslog
+    # NOTE: This is used when testing against loggregator
+    # consumes:
+    #   reverse_log_proxy: { from: reverse_log_proxy, deployment: loggregator }
     properties:
       scalablesyslog:
         adapter:
-          logs:
-            addr: "logs.service.cf.internal:8082"
           tls:
             ca: "((adapter_tls.ca))"
             cert: "((adapter_tls.certificate))"
@@ -142,7 +143,7 @@ instance_groups:
             ca: "((adapter_rlp_tls.ca))"
             cert: "((adapter_rlp_tls.certificate))"
             key: "((adapter_rlp_tls.private_key))"
-            cn: fake-logs-provider
+            cn: reverselogproxy
 
 - name: scheduler
   azs:
@@ -200,7 +201,7 @@ variables:
   type: certificate
   options:
     ca: common_ca
-    common_name: fake-logs-provider
+    common_name: reverselogproxy
     extended_key_usage:
     - client_auth
     - server_auth
