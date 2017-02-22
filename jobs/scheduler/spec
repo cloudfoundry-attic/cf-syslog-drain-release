@@ -22,7 +22,7 @@ properties:
     default: 8080
   scalablesyslog.scheduler.pprof:
     description: "The port for pprof on the scheduler"
-    default: 6060
+    default: 0
 
   scalablesyslog.scheduler.tls.client.ca:
     description: "The TLS CA for the scalable syslog"

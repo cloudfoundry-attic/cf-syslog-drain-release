@@ -24,7 +24,7 @@ properties:
     default: 8080
   scalablesyslog.adapter.pprof:
     description: "The port for pprof on the adapter"
-    default: 6060
+    default: 0
   scalablesyslog.adapter.port:
     description: "The port for the adapter"
     default: 4443
