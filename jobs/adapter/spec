@@ -18,10 +18,6 @@ provides:
   properties:
   - scalablesyslog.adapter.port
 
-consumes:
-- name: reverse_log_proxy
-  type: reverse_log_proxy
-
 properties:
   scalablesyslog.adapter.health:
     description: "The port for the health endpoint"
@@ -32,6 +28,8 @@ properties:
   scalablesyslog.adapter.port:
     description: "The port for the adapter"
     default: 4443
+  scalablesyslog.adapter.logs.addr:
+    description: "The address of the logs API"
 
   scalablesyslog.adapter.tls.ca:
     description: "The TLS CA for the scalable syslog"
