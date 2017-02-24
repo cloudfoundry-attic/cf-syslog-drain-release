@@ -4,7 +4,7 @@
     name: fake_logs_provider
     azs:
     - z1
-    instances: 10
+    instances: 1
     persistent_disk_type: default
     vm_type: default
     stemcell: default
