@@ -32,6 +32,8 @@ exec chpst -u vcap:vcap ./adapter \
   --rlp-cert=$CERT_DIR/adapter_rlp.crt \
   --rlp-key=$CERT_DIR/adapter_rlp.key \
   --rlp-cn=<%= p('scalablesyslog.adapter_rlp.tls.cn') %> \
+  --syslog-dial-timeout=<%= p('scalablesyslog.adapter.syslog_dial_timeout') %> \
+  --syslog-io-timeout=<%= p('scalablesyslog.adapter.syslog_io_timeout') %> \
   &>> ${LOG_DIR}/adapter.log
 
 ;;

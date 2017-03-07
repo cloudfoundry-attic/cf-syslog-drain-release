@@ -30,6 +30,14 @@ properties:
     default: 4443
   scalablesyslog.adapter.logs.addr:
     description: "The address of the logs API"
+  scalablesyslog.adapter.syslog_dial_timeout:
+    description: "The timeout duration for dialing to syslog drains"
+    default: 1s
+    examples: ["1s", "3s", "1m"]
+  scalablesyslog.adapter.syslog_io_timeout:
+    description: "The timeout duration for writing to syslog drains"
+    default: 1m
+    examples: ["1s", "3s", "1m"]
 
   scalablesyslog.adapter.tls.ca:
     description: "The TLS CA for the scalable syslog"
