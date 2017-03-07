@@ -2,9 +2,9 @@
 name: scheduler
 templates:
   ctl.erb: bin/ctl
-  cups_ca.crt.erb: certs/cups_ca.crt
-  cups_client.crt.erb: certs/cups_client.crt
-  cups_client.key.erb: certs/cups_client.key
+  api_ca.crt.erb: certs/api_ca.crt
+  api_client.crt.erb: certs/api_client.crt
+  api_client.key.erb: certs/api_client.key
   ca.crt.erb: certs/ca.crt
   scheduler.crt.erb: certs/scheduler.crt
   scheduler.key.erb: certs/scheduler.key
@@ -33,17 +33,17 @@ properties:
   scalablesyslog.scheduler.tls.client.adapter_cn:
     description: "The common name for the adapter"
 
-  scalablesyslog.scheduler.tls.cups.ca:
-    description: "The CA for CUPS provider"
-  scalablesyslog.scheduler.tls.cups.cert:
-    description: "The cert for the CUPS provider"
-  scalablesyslog.scheduler.tls.cups.key:
-    description: "The key for the CUPS provider"
-  scalablesyslog.scheduler.tls.cups.cn:
-    description: "The common name for the CUPS provider"
+  scalablesyslog.scheduler.tls.api.ca:
+    description: "The CA for syslog drain bindings provider"
+  scalablesyslog.scheduler.tls.api.cert:
+    description: "The cert for the syslog drain bindings provider"
+  scalablesyslog.scheduler.tls.api.key:
+    description: "The key for the syslog drain bindings provider"
+  scalablesyslog.scheduler.tls.api.cn:
+    description: "The common name for the syslog drain bindings provider"
 
-  scalablesyslog.scheduler.tls.cups.skip_cert_verify:
-    description: "Allows insecure SSL connections to the CUPS provider"
+  scalablesyslog.scheduler.tls.api.skip_cert_verify:
+    description: "Allows insecure SSL connections to the syslog drain bindings provider"
     default: false
-  scalablesyslog.scheduler.cups.url:
-    description: "The URL of the CUPS provider"
+  scalablesyslog.scheduler.api.url:
+    description: "The URL of the syslog drain bindings provider"

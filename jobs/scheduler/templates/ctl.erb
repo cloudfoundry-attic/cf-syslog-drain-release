@@ -26,12 +26,12 @@ exec chpst -u vcap:vcap ./scheduler \
   --cert=$CERT_DIR/scheduler.crt \
   --key=$CERT_DIR/scheduler.key \
   --adapter-cn=<%= p("scalablesyslog.scheduler.tls.client.adapter_cn") %> \
-  --cups-url=<%= p("scalablesyslog.scheduler.cups.url") %> \
-  --cups-ca=$CERT_DIR/cups_ca.crt \
-  --cups-cert=$CERT_DIR/cups_client.crt \
-  --cups-key=$CERT_DIR/cups_client.key \
-  --cups-cn=<%= p("scalablesyslog.scheduler.tls.cups.cn") %> \
-  --cups-skip-cert-verify=<%= p("scalablesyslog.scheduler.tls.cups.skip_cert_verify") %> \
+  --api-url=<%= p("scalablesyslog.scheduler.api.url") %> \
+  --api-ca=$CERT_DIR/api_ca.crt \
+  --api-cert=$CERT_DIR/api_client.crt \
+  --api-key=$CERT_DIR/api_client.key \
+  --api-cn=<%= p("scalablesyslog.scheduler.tls.api.cn") %> \
+  --api-skip-cert-verify=<%= p("scalablesyslog.scheduler.tls.api.skip_cert_verify") %> \
   --adapter-ips=<%= link("adapter_addrs").instances.map(&:address).join(",") %> \
   --adapter-port=<%= link("adapter_addrs").p('scalablesyslog.adapter.port') %> \
   &>> ${LOG_DIR}/scheduler.log

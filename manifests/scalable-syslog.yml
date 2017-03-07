@@ -135,7 +135,7 @@ instance_groups:
     properties:
       scalablesyslog:
         scheduler:
-          cups:
+          api:
             url: "https://cups.service.cf.internal:4433"
           tls:
             client:
@@ -143,10 +143,10 @@ instance_groups:
               cert: "((scheduler_client_tls.certificate))"
               key: "((scheduler_client_tls.private_key))"
               adapter_cn: "adapter"
-            cups:
-              ca: "((scheduler_cups_tls.ca))"
-              cert: "((scheduler_cups_tls.certificate))"
-              key: "((scheduler_cups_tls.private_key))"
+            api:
+              ca: "((scheduler_api_tls.ca))"
+              cert: "((scheduler_api_tls.certificate))"
+              key: "((scheduler_api_tls.private_key))"
               cn: "cups.service.cf.internal"
   - name: consul_agent
     release: consul
@@ -180,7 +180,7 @@ variables:
     extended_key_usage:
     - client_auth
     - server_auth
-- name: scheduler_cups_tls
+- name: scheduler_api_tls
   type: certificate
   options:
     ca: common_ca
