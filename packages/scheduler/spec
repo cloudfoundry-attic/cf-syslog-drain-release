@@ -9,6 +9,7 @@ files:
 - github.com/cloudfoundry-incubator/scalable-syslog/api/v1/*.go # gosub
 - github.com/cloudfoundry-incubator/scalable-syslog/scheduler/*.go # gosub
 - github.com/cloudfoundry-incubator/scalable-syslog/scheduler/app/*.go # gosub
+- github.com/cloudfoundry-incubator/scalable-syslog/scheduler/internal/config/*.go # gosub
 - github.com/cloudfoundry-incubator/scalable-syslog/scheduler/internal/egress/*.go # gosub
 - github.com/cloudfoundry-incubator/scalable-syslog/scheduler/internal/health/*.go # gosub
 - github.com/cloudfoundry-incubator/scalable-syslog/scheduler/internal/ingress/*.go # gosub
