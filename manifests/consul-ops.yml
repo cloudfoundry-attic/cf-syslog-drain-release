@@ -1,0 +1,9 @@
+- type: replace
+  path: /instance_groups/name=consul/networks/name=private/static_ips
+  value: &consul_ips
+  - "10.0.31.190"
+
+- type: replace
+  path: /instance_groups/name=consul/jobs/name=consul_agent/properties/consul/agent/servers/lan
+  value: *consul_ips
+
