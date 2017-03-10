@@ -34,6 +34,7 @@ exec chpst -u vcap:vcap ./adapter \
   --rlp-cn=<%= p('scalablesyslog.adapter_rlp.tls.cn') %> \
   --syslog-dial-timeout=<%= p('scalablesyslog.adapter.syslog_dial_timeout') %> \
   --syslog-io-timeout=<%= p('scalablesyslog.adapter.syslog_io_timeout') %> \
+  --syslog-skip-cert-verify=<%= p('scalablesyslog.adapter.syslog_skip_cert_verify') %> \
   &>> ${LOG_DIR}/adapter.log
 
 ;;

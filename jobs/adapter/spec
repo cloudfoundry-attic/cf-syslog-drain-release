@@ -38,6 +38,9 @@ properties:
     description: "The timeout duration for writing to syslog drains"
     default: 1m
     examples: ["1s", "3s", "1m"]
+  scalablesyslog.adapter.syslog_skip_cert_verify:
+    description: "This disables SSL verification when connecting to a HTTPS drain"
+    default: true
 
   scalablesyslog.adapter.tls.ca:
     description: "The TLS CA for the scalable syslog"
