@@ -32,6 +32,39 @@
                 check:
                   name: dns_health_check
                   script: /var/vcap/jobs/fake_logs_provider/bin/dns_health_check
+- type: replace
+  path: /instance_groups/name=fake_cups_provider
+  value:
+    name: fake_cups_provider
+    azs:
+    - z1
+    instances: 1
+    persistent_disk_type: default
+    vm_type: default
+    stemcell: default
+    networks:
+    - name: default
+    jobs:
+    - name: fake_cups_provider
+      release: scalablesyslog
+      properties:
+        fake_cups_provider:
+          tls:
+            ca: "((fake_cups_provider_tls.ca))"
+            cert: "((fake_cups_provider_tls.certificate))"
+            key: "((fake_cups_provider_tls.private_key))"
+    - name: consul_agent
+      release: consul
+      consumes:
+        consul: {from: consul_server}
+      properties:
+        consul:
+          agent:
+            services:
+              cups:
+                check:
+                  name: dns_health_check
+                  script: /var/vcap/jobs/fake_cups_provider/bin/dns_health_check
 
 - type: replace
   path: /variables/-
@@ -46,6 +79,23 @@
       - server_auth
 
 - type: replace
+  path: /variables/-
+  value:
+    name: fake_cups_provider_tls
+    type: certificate
+    options:
+      ca: common_ca
+      common_name: cups.service.cf.internal
+      extended_key_usage:
+      - client_auth
+      - server_auth
+
+- type: replace
   path: /instance_groups/name=adapter/jobs/name=adapter/properties/scalablesyslog/adapter/logs?
   value:
     addr: logs.service.cf.internal:8082
+
+- type: replace
+  path: /instance_groups/name=scheduler/jobs/name=scheduler/properties/scalablesyslog/scheduler/api?
+  value:
+    url: "https://cups.service.cf.internal:4433"

@@ -51,33 +51,12 @@ instance_groups:
 - name: fake_cups_provider
   azs:
   - z1
-  instances: 1
+  instances: 0
   persistent_disk_type: default
   vm_type: default
   stemcell: default
   networks:
   - name: default
-  jobs:
-  - name: fake_cups_provider
-    release: scalablesyslog
-    properties:
-      fake_cups_provider:
-        tls:
-          ca: "((fake_cups_provider_tls.ca))"
-          cert: "((fake_cups_provider_tls.certificate))"
-          key: "((fake_cups_provider_tls.private_key))"
-  - name: consul_agent
-    release: consul
-    consumes:
-      consul: {from: consul_server}
-    properties:
-      consul:
-        agent:
-          services:
-            cups:
-              check:
-                name: dns_health_check
-                script: /var/vcap/jobs/fake_cups_provider/bin/dns_health_check
 
 - name: fake_logs_provider
   azs:
@@ -135,8 +114,6 @@ instance_groups:
     properties:
       scalablesyslog:
         scheduler:
-          api:
-            url: "https://cups.service.cf.internal:4433"
           tls:
             client:
               ca: "((scheduler_client_tls.ca))"
@@ -164,14 +141,6 @@ variables:
   options:
     is_ca: true
     common_name: CA
-- name: fake_cups_provider_tls
-  type: certificate
-  options:
-    ca: common_ca
-    common_name: cups.service.cf.internal
-    extended_key_usage:
-    - client_auth
-    - server_auth
 - name: adapter_rlp_tls
   type: certificate
   options:
