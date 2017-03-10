@@ -18,6 +18,13 @@ cd $PACKAGE_DIR
 
 ulimit -n 8192
 
+<%
+  blacklisted_ranges = p("scalablesyslog.scheduler.blacklisted_syslog_ranges")
+  blacklisted_ips = blacklisted_ranges.map do |range|
+    "#{range['start']}-#{range['end']}"
+  end.join(",")
+%>
+
 echo $$ > $PIDFILE
 exec chpst -u vcap:vcap ./scheduler \
   --health=":<%= p('scalablesyslog.scheduler.health') %>" \
@@ -34,6 +41,7 @@ exec chpst -u vcap:vcap ./scheduler \
   --api-skip-cert-verify=<%= p("scalablesyslog.scheduler.tls.api.skip_cert_verify") %> \
   --adapter-ips=<%= link("adapter_addrs").instances.map(&:address).join(",") %> \
   --adapter-port=<%= link("adapter_addrs").p('scalablesyslog.adapter.port') %> \
+  --blacklist-ranges=<%= blacklisted_ips %> \
   &>> ${LOG_DIR}/scheduler.log
 
 ;;

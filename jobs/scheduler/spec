@@ -47,3 +47,8 @@ properties:
     default: false
   scalablesyslog.scheduler.api.url:
     description: "The URL of the syslog drain bindings provider"
+
+  scalablesyslog.scheduler.blacklisted_syslog_ranges:
+    description: "A list of IP range addresses to blacklist the binding syslog drains to"
+    default: []
+    example: [{start: 10.10.10.1, end: 10.10.10.10}]
