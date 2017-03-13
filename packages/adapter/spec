@@ -7,8 +7,7 @@ dependencies:
 files:
 - github.com/cloudfoundry-incubator/scalable-syslog/adapter/*.go # gosub
 - github.com/cloudfoundry-incubator/scalable-syslog/adapter/app/*.go # gosub
-- github.com/cloudfoundry-incubator/scalable-syslog/adapter/internal/bindingmanager/*.go # gosub
-- github.com/cloudfoundry-incubator/scalable-syslog/adapter/internal/controller/*.go # gosub
+- github.com/cloudfoundry-incubator/scalable-syslog/adapter/internal/binding/*.go # gosub
 - github.com/cloudfoundry-incubator/scalable-syslog/adapter/internal/egress/*.go # gosub
 - github.com/cloudfoundry-incubator/scalable-syslog/adapter/internal/egress/retrystrategy/*.go # gosub
 - github.com/cloudfoundry-incubator/scalable-syslog/adapter/internal/health/*.go # gosub
