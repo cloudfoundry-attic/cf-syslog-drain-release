@@ -11,6 +11,10 @@ templates:
 packages:
 - fake_cups_provider
 
+consumes:
+- name: fake_consumer_addrs
+  type: consumer_addr
+
 properties:
   fake_cups_provider.port:
     description: "The port for the fake CUPS provider"

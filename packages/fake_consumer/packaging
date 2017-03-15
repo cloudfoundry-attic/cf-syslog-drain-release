@@ -1,0 +1,11 @@
+set -e -x
+
+export GOROOT=$(readlink -nf /var/vcap/packages/golang1.7)
+export PATH=$GOROOT/bin:$PATH
+export GOPATH=$PWD
+
+ln -s $GOPATH $GOPATH/src
+
+go install github.com/cloudfoundry-incubator/scalable-syslog/tools/fake_consumer
+cp -a $GOPATH/bin/fake_consumer ${BOSH_INSTALL_TARGET}/fake_consumer
+

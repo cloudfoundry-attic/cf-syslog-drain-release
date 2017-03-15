@@ -1,4 +1,20 @@
 - type: replace
+  path: /instance_groups/name=fake_consumer
+  value:
+    name: fake_consumer
+    azs:
+    - z1
+    instances: 1
+    persistent_disk_type: default
+    vm_type: default
+    stemcell: default
+    networks:
+    - name: default
+    jobs:
+    - name: fake_consumer
+      release: scalablesyslog
+
+- type: replace
   path: /instance_groups/name=fake_logs_provider
   value:
     name: fake_logs_provider
@@ -32,6 +48,7 @@
                 check:
                   name: dns_health_check
                   script: /var/vcap/jobs/fake_logs_provider/bin/dns_health_check
+
 - type: replace
   path: /instance_groups/name=fake_cups_provider
   value:

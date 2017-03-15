@@ -1,0 +1,5 @@
+check process fake_consumer
+  with pidfile /var/vcap/sys/run/fake_consumer/fake_consumer.pid
+  start program "/var/vcap/jobs/fake_consumer/bin/ctl start"
+  stop program "/var/vcap/jobs/fake_consumer/bin/ctl stop" with timeout 60 seconds
+  group vcap

@@ -1,0 +1,8 @@
+---
+name: fake_consumer
+
+dependencies:
+  - golang1.7
+
+files:
+- github.com/cloudfoundry-incubator/scalable-syslog/tools/fake_consumer/*

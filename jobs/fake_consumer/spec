@@ -1,0 +1,20 @@
+---
+name: fake_consumer
+
+templates:
+  ctl.erb: bin/ctl
+
+packages:
+- fake_consumer
+
+provides:
+- name: fake_consumer_addr
+  type: consumer_addr
+
+properties:
+  fake_consumer.addr:
+    description: "The host port of the process"
+    default: "0.0.0.0:8080"
+  fake_consumer.delay:
+    description: "Delay between reads"
+    default: "1ns"

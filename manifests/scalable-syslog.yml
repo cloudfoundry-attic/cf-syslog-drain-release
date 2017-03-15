@@ -45,6 +45,16 @@ instance_groups:
     serial: true
     max_in_flight: 1
 
+- name: fake_consumer
+  azs:
+  - z1
+  instances: 0
+  persistent_disk_type: default
+  vm_type: default
+  stemcell: default
+  networks:
+  - name: default
+
 - name: fake_cups_provider
   azs:
   - z1
