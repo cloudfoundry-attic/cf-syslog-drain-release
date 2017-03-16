@@ -1,5 +1,5 @@
 - type: replace
-  path: /instance_groups/name=fake_consumer?
+  path: /instance_groups/name=fake_consumer
   value:
     name: fake_consumer
     azs:
