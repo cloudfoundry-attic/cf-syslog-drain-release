@@ -32,7 +32,7 @@ properties:
     description: "The address of the logs API"
   scalablesyslog.adapter.syslog_dial_timeout:
     description: "The timeout duration for dialing to syslog drains"
-    default: 1s
+    default: 5s
     examples: ["1s", "3s", "1m"]
   scalablesyslog.adapter.syslog_io_timeout:
     description: "The timeout duration for writing to syslog drains"
