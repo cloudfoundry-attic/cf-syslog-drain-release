@@ -9,11 +9,11 @@ files:
 - github.com/cloudfoundry-incubator/scalable-syslog/adapter/app/*.go # gosub
 - github.com/cloudfoundry-incubator/scalable-syslog/adapter/internal/binding/*.go # gosub
 - github.com/cloudfoundry-incubator/scalable-syslog/adapter/internal/egress/*.go # gosub
-- github.com/cloudfoundry-incubator/scalable-syslog/adapter/internal/health/*.go # gosub
 - github.com/cloudfoundry-incubator/scalable-syslog/adapter/internal/ingress/*.go # gosub
 - github.com/cloudfoundry-incubator/scalable-syslog/internal/api/*.go # gosub
 - github.com/cloudfoundry-incubator/scalable-syslog/internal/api/loggregator/v2/*.go # gosub
 - github.com/cloudfoundry-incubator/scalable-syslog/internal/api/v1/*.go # gosub
+- github.com/cloudfoundry-incubator/scalable-syslog/internal/health/*.go # gosub
 - github.com/crewjam/rfc5424/*.go # gosub
 - github.com/golang/protobuf/proto/*.go # gosub
 - golang.org/x/net/context/*.go # gosub
