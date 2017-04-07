@@ -41,12 +41,15 @@ properties:
     description: "The key for the syslog drain bindings provider"
   scalablesyslog.scheduler.tls.api.cn:
     description: "The common name for the syslog drain bindings provider"
-
   scalablesyslog.scheduler.tls.api.skip_cert_verify:
     description: "Allows insecure SSL connections to the syslog drain bindings provider"
     default: false
+
   scalablesyslog.scheduler.api.url:
     description: "The URL of the syslog drain bindings provider"
+  scalablesyslog.scheduler.api.polling_interval:
+    description: "The interval at which the scheduler will poll the API for bindings"
+    default: "15s"
 
   scalablesyslog.scheduler.blacklisted_syslog_ranges:
     description: "A list of IP range addresses to blacklist the binding syslog drains to"
