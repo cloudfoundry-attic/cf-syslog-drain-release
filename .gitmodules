@@ -25,3 +25,6 @@
 [submodule "src/github.com/crewjam/rfc5424"]
 	path = src/github.com/crewjam/rfc5424
 	url = https://github.com/crewjam/rfc5424
+[submodule "src/google.golang.org/genproto"]
+	path = src/google.golang.org/genproto
+	url = https://github.com/google/go-genproto
