@@ -26,7 +26,6 @@ releases/**/*.tgz
 # cleaner deps
 /src/github.com/client9/misspell
 /src/github.com/mdempsky/
-/src/golang.org/x/text/
 /src/golang.org/x/tools/
 
 # cert script output
