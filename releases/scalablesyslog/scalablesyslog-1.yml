@@ -1,0 +1,64 @@
+name: scalablesyslog
+version: "1"
+commit_hash: 7d34261
+uncommitted_changes: false
+jobs:
+- name: adapter
+  version: 5aec586600914e77d4299df8b617cdf6401801d4
+  fingerprint: 5aec586600914e77d4299df8b617cdf6401801d4
+  sha1: 12c67bd7e59115f941af4eacea56e087414a796c
+- name: fake_consumer
+  version: c98e490571d39740840c7ed12502879187f23564
+  fingerprint: c98e490571d39740840c7ed12502879187f23564
+  sha1: 362ab250ded033749973279f1bfee0603a28dbdf
+- name: fake_cups_provider
+  version: e2f003d421d6e94ca16d073717be110d51b69031
+  fingerprint: e2f003d421d6e94ca16d073717be110d51b69031
+  sha1: c538cdf2a6fc0cdfded2ca7dffabcb70c1dc7c05
+- name: fake_logs_provider
+  version: 5ff052cd40b2cb188bce8effe4385554d9aa027d
+  fingerprint: 5ff052cd40b2cb188bce8effe4385554d9aa027d
+  sha1: 7917454b1ca28f013add4b163dcf83c5e193235d
+- name: scheduler
+  version: 6768a5d32bc9ec2581c415b57310a4e919a45ae5
+  fingerprint: 6768a5d32bc9ec2581c415b57310a4e919a45ae5
+  sha1: 7035ca2d1af2c3f3c1ac690c49ca4f33974044bc
+packages:
+- name: adapter
+  version: 7f10703066a7118e9ef1d75d87874ae598ad878b
+  fingerprint: 7f10703066a7118e9ef1d75d87874ae598ad878b
+  sha1: 6216618501e85e8ea7aa9b6fec79dc1cabe623b1
+  dependencies:
+  - golang1.7
+- name: fake_consumer
+  version: c086cb7c1d1bc845767e333edef58c71cb2649e3
+  fingerprint: c086cb7c1d1bc845767e333edef58c71cb2649e3
+  sha1: c0bbccd7b50fbe66c7b8bfeae84620834b352fc5
+  dependencies:
+  - golang1.7
+- name: fake_cups_provider
+  version: 783de0d480890b9a4c701bbc44f953994e3c35a3
+  fingerprint: 783de0d480890b9a4c701bbc44f953994e3c35a3
+  sha1: 237c7873c2b4bda10b05a38aef1d41f56089717d
+  dependencies: []
+- name: fake_logs_provider
+  version: 12a36b303f71770dcb61ce060ffda141db9b4127
+  fingerprint: 12a36b303f71770dcb61ce060ffda141db9b4127
+  sha1: d1d7307f1ed4063423cdbda2b76cbcf7ce8fe0ec
+  dependencies:
+  - golang1.7
+- name: golang1.7
+  version: fb3379fa5b3afb2e6e515657a33f2145ba4bd076
+  fingerprint: fb3379fa5b3afb2e6e515657a33f2145ba4bd076
+  sha1: 3577b457e04ef6a1b7b97f4a41724f1f98666bb2
+  dependencies: []
+- name: scheduler
+  version: 70c89b0e9bf52516990d0f56c63760584c19d034
+  fingerprint: 70c89b0e9bf52516990d0f56c63760584c19d034
+  sha1: 429de6bf5a4ecfca902676e5eca13bd9a6fd6212
+  dependencies:
+  - golang1.7
+license:
+  version: 3f9cc1c6721fa4871c3414c52b7b6918682aa3e5
+  fingerprint: 3f9cc1c6721fa4871c3414c52b7b6918682aa3e5
+  sha1: 74a111ea7d31ba10136b1680a15c94e2f8e04bfc
