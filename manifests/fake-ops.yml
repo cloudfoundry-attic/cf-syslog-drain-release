@@ -102,7 +102,7 @@
     type: certificate
     options:
       ca: common_ca
-      common_name: cups.service.cf.internal
+      common_name: ss-scheduler-cc
       extended_key_usage:
       - client_auth
       - server_auth

@@ -41,3 +41,4 @@ src/github.com/vito/gosub
 src/github.com/codegangsta/cli
 src/github.com/square/certstrap
 src/github.com/jteeuwen/go-bindata
+/scalable-syslog-certs

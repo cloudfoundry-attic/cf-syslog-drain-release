@@ -98,7 +98,7 @@ instance_groups:
             ca: "((adapter_tls.ca))"
             cert: "((adapter_tls.certificate))"
             key: "((adapter_tls.private_key))"
-            cn: adapter
+            cn: ss-adapter
         adapter_rlp:
           tls:
             ca: "((adapter_rlp_tls.ca))"
@@ -126,12 +126,12 @@ instance_groups:
               ca: "((scheduler_client_tls.ca))"
               cert: "((scheduler_client_tls.certificate))"
               key: "((scheduler_client_tls.private_key))"
-              adapter_cn: "adapter"
+              adapter_cn: "ss-adapter"
             api:
               ca: "((scheduler_api_tls.ca))"
               cert: "((scheduler_api_tls.certificate))"
               key: "((scheduler_api_tls.private_key))"
-              cn: "cups.service.cf.internal"
+              cn: "ss-scheduler-cc"
   - name: consul_agent
     release: consul
     consumes:
@@ -152,7 +152,7 @@ variables:
   type: certificate
   options:
     ca: common_ca
-    common_name: adapter-rlp
+    common_name: ss-adapter-rlp
     extended_key_usage:
     - client_auth
     - server_auth
@@ -160,7 +160,7 @@ variables:
   type: certificate
   options:
     ca: common_ca
-    common_name: cups.service.cf.internal
+    common_name: ss-scheduler-cc
     extended_key_usage:
     - client_auth
     - server_auth
@@ -168,7 +168,7 @@ variables:
   type: certificate
   options:
     ca: scalable_syslog_ca
-    common_name: adapter
+    common_name: ss-adapter
     extended_key_usage:
     - server_auth
     - client_auth
@@ -176,7 +176,7 @@ variables:
   type: certificate
   options:
     ca: scalable_syslog_ca
-    common_name: scheduler
+    common_name: ss-scheduler
     extended_key_usage:
     - client_auth
 - name: consul_encrypt_key
