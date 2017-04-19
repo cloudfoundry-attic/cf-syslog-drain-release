@@ -17,6 +17,9 @@ consumes:
   type: addr
 
 properties:
+  scalablesyslog.scheduler.require_opt_in:
+    description: "Service drain URLs"
+    default: false
   scalablesyslog.scheduler.health:
     description: "The port for the scheduler health endpoint"
     default: 8080

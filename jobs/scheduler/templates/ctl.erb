@@ -27,6 +27,7 @@ ulimit -n 8192
 
 echo $$ > $PIDFILE
 exec chpst -u vcap:vcap ./scheduler \
+  --require-opt-in="<%= p('scalablesyslog.scheduler.require_opt_in') %>" \
   --health=":<%= p('scalablesyslog.scheduler.health') %>" \
   --pprof="localhost:<%= p('scalablesyslog.scheduler.pprof') %>" \
   --ca=$CERT_DIR/ca.crt \
