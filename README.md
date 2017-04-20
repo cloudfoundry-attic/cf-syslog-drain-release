@@ -26,6 +26,17 @@ bosh -e lite upload-release --rebase
 bosh -e lite -d scalablesyslog deploy manifests/scalable-syslog.yml -o manifests/fake-ops.yml --vars-store=/tmp/bosh-lite-ss.yml
 ```
 
+### Configuring Scalable Syslog Opt-in
+
+By default, scalable syslog services all syslog drain bindings. It is possible
+to configure scalable syslog as opt-in only. To do so, first deploy the system
+with the `scalablesyslog.scheduler.require_opt_in` property to `true` within
+the `scheduler` job.
+
+Users can then opt to use scalable syslog by appending a `drain-version=2.0`
+query parameter to their syslog drain URL when creating a user provided
+service. Scalable syslog will ignore bindings without the query parameter.
+
 ### Generating Certificates
 
 To deploy the scalable syslog,

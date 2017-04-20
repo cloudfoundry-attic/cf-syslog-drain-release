@@ -29,7 +29,7 @@ releases/**/*.tgz
 /src/golang.org/x/tools/
 
 # cert script output
-loggregator-certs
+/scalable-syslog-certs
 
 # misc
 out/
@@ -41,4 +41,8 @@ src/github.com/vito/gosub
 src/github.com/codegangsta/cli
 src/github.com/square/certstrap
 src/github.com/jteeuwen/go-bindata
-/scalable-syslog-certs
+src/github.com/fatih/
+src/github.com/josharian/
+src/github.com/jstemmer/
+src/github.com/klauspost/
+src/github.com/zmb3/

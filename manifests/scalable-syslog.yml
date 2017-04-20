@@ -121,6 +121,7 @@ instance_groups:
     properties:
       scalablesyslog:
         scheduler:
+          require_opt_in: true
           tls:
             client:
               ca: "((scheduler_client_tls.ca))"
