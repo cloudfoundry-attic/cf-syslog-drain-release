@@ -1,0 +1,34 @@
+- type: remove
+  path: /instance_groups/name=consul
+
+- type: replace
+  path: /instance_groups/name=adapter/jobs/name=consul_agent/consumes/consul
+  value:
+    deployment: cf
+    from: consul_server
+
+- type: replace
+  path: /instance_groups/name=scheduler/jobs/name=consul_agent/consumes/consul
+  value:
+    deployment: cf
+    from: consul_server
+
+- type: replace
+  path: /instance_groups/name=adapter/persistent_disk_type
+  value: 1GB
+
+- type: replace
+  path: /instance_groups/name=scheduler/persistent_disk_type
+  value: 1GB
+
+- type: replace
+  path: /instance_groups/name=adapter/jobs/name=adapter/properties?/scalablesyslog?/adapter?/logs?/addr?
+  value: reverse-log-proxy.service.cf.internal:8082
+
+- type: replace
+  path: /variables/name=adapter_rlp_tls/options/ca?
+  value: loggregator_ca
+
+- type: replace
+  path: /variables/name=scheduler_api_tls/options/ca?
+  value: service_cf_internal_ca
