@@ -35,6 +35,8 @@ exec chpst -u vcap:vcap ./adapter \
   --syslog-dial-timeout=<%= p('scalablesyslog.adapter.syslog_dial_timeout') %> \
   --syslog-io-timeout=<%= p('scalablesyslog.adapter.syslog_io_timeout') %> \
   --syslog-skip-cert-verify=<%= p('scalablesyslog.adapter.syslog_skip_cert_verify') %> \
+  --metric-ingress-addr=<%= p('scalablesyslog.metric_ingress_addr') %> \
+  --metric-ingress-cn=<%= p('scalablesyslog.metric_ingress_cn') %> \
   &>> ${LOG_DIR}/adapter.log
 
 ;;

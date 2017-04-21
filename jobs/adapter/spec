@@ -59,3 +59,10 @@ properties:
     description: "The TLS private key for the scalable syslog adapter_rlp client"
   scalablesyslog.adapter_rlp.tls.cn:
     description: "The common name for the TLS certificate"
+
+  scalablesyslog.metric_ingress_addr:
+    description: "The ingress address for the metrics API"
+    default: "localhost:3458"
+  scalablesyslog.metric_ingress_cn:
+    description: "The TLS common name for metrics ingress API"
+    default: "metron"

@@ -8,6 +8,8 @@ stemcells:
 releases:
 - name: scalablesyslog
   version: latest
+- name: loggregator
+  version: latest
 - name: consul
   version: latest
 
@@ -105,6 +107,22 @@ instance_groups:
             cert: "((adapter_rlp_tls.certificate))"
             key: "((adapter_rlp_tls.private_key))"
             cn: reverselogproxy
+  - name: metron_agent
+    release: loggregator
+    properties:
+      metron_agent:
+        deployment: "((system_domain))"
+        etcd:
+          client_cert: "((etcd_client.certificate))"
+          client_key: "((etcd_client.private_key))"
+      metron_endpoint:
+        shared_secret: "((dropsonde_shared_secret))"
+      loggregator:
+        tls:
+          ca_cert: "((loggregator_tls_metron.ca))"
+          metron:
+            cert: "((loggregator_tls_metron.certificate))"
+            key: "((loggregator_tls_metron.private_key))"
 
 - name: scheduler
   azs:
@@ -116,12 +134,18 @@ instance_groups:
   networks:
   - name: default
   jobs:
+  - name: consul_agent
+    release: consul
+    consumes:
+      consul: {from: consul_server}
   - name: scheduler
     release: scalablesyslog
     properties:
       scalablesyslog:
         scheduler:
           require_opt_in: true
+          api:
+            url: https://cloud-controller-ng.service.cf.internal:9023
           tls:
             client:
               ca: "((scheduler_client_tls.ca))"
@@ -132,11 +156,7 @@ instance_groups:
               ca: "((scheduler_api_tls.ca))"
               cert: "((scheduler_api_tls.certificate))"
               key: "((scheduler_api_tls.private_key))"
-              cn: "ss-scheduler-cc"
-  - name: consul_agent
-    release: consul
-    consumes:
-      consul: {from: consul_server}
+              cn: "cloud-controller-ng.service.cf.internal"
 
 variables:
 - name: common_ca
