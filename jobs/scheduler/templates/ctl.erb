@@ -41,7 +41,7 @@ exec chpst -u vcap:vcap ./scheduler \
   --api-cn=<%= p("scalablesyslog.scheduler.tls.api.cn") %> \
   --api-skip-cert-verify=<%= p("scalablesyslog.scheduler.tls.api.skip_cert_verify") %> \
   --api-polling-interval=<%= p("scalablesyslog.scheduler.api.polling_interval") %> \
-  --adapter-ips=<%= link("adapter_addrs").instances.map(&:address).join(",") %> \
+  --adapter-addrs=<%= link("adapter_addrs").instances.map(&:address).join(",") %> \
   --adapter-port=<%= link("adapter_addrs").p('scalablesyslog.adapter.port') %> \
   --blacklist-ranges=<%= blacklisted_ips %> \
   &>> ${LOG_DIR}/scheduler.log
