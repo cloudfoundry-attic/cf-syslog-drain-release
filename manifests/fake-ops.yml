@@ -89,7 +89,7 @@
     name: fake_logs_provider_tls
     type: certificate
     options:
-      ca: common_ca
+      ca: loggregator_ca
       common_name: reverselogproxy
       extended_key_usage:
       - client_auth
@@ -101,7 +101,7 @@
     name: fake_cups_provider_tls
     type: certificate
     options:
-      ca: common_ca
+      ca: loggregator_ca
       common_name: ss-scheduler-cc
       extended_key_usage:
       - client_auth
