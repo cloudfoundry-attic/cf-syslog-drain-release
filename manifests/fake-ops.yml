@@ -102,7 +102,7 @@
     type: certificate
     options:
       ca: loggregator_ca
-      common_name: ss-scheduler-cc
+      common_name: cloud-controller-ng.service.cf.internal
       extended_key_usage:
       - client_auth
       - server_auth
