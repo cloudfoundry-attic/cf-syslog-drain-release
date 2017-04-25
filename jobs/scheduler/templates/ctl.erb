@@ -44,6 +44,8 @@ exec chpst -u vcap:vcap ./scheduler \
   --adapter-addrs=<%= link("adapter_addrs").instances.map(&:address).join(",") %> \
   --adapter-port=<%= link("adapter_addrs").p('scalablesyslog.adapter.port') %> \
   --blacklist-ranges=<%= blacklisted_ips %> \
+  --metric-ingress-addr=<%= p("scalablesyslog.scheduler.metric.addr") %> \
+  --metric-ingress-cn=<%= p("scalablesyslog.scheduler.metric.cn") %> \
   &>> ${LOG_DIR}/scheduler.log
 
 ;;

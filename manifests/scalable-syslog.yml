@@ -47,36 +47,6 @@ instance_groups:
     serial: true
     max_in_flight: 1
 
-- name: fake_consumer
-  azs:
-  - z1
-  instances: 0
-  persistent_disk_type: default
-  vm_type: default
-  stemcell: default
-  networks:
-  - name: default
-
-- name: fake_cups_provider
-  azs:
-  - z1
-  instances: 0
-  persistent_disk_type: default
-  vm_type: default
-  stemcell: default
-  networks:
-  - name: default
-
-- name: fake_logs_provider
-  azs:
-  - z1
-  instances: 0
-  persistent_disk_type: default
-  vm_type: default
-  stemcell: default
-  networks:
-  - name: default
-
 - name: adapter
   azs:
   - z1
@@ -109,12 +79,9 @@ instance_groups:
             cn: reverselogproxy
   - name: metron_agent
     release: loggregator
-    properties:
+    properties: &metron_agent_properties
       metron_agent:
         deployment: "((system_domain))"
-        etcd:
-          client_cert: "((etcd_client.certificate))"
-          client_key: "((etcd_client.private_key))"
       metron_endpoint:
         shared_secret: "((dropsonde_shared_secret))"
       loggregator:
@@ -157,14 +124,12 @@ instance_groups:
               cert: "((scheduler_api_tls.certificate))"
               key: "((scheduler_api_tls.private_key))"
               cn: "cloud-controller-ng.service.cf.internal"
+  - name: metron_agent
+    release: loggregator
+    properties: *metron_agent_properties
 
 variables:
-- name: common_ca
-  type: certificate
-  options:
-    is_ca: true
-    common_name: CA
-- name: scalable_syslog_ca
+- name: loggregator_ca
   type: certificate
   options:
     is_ca: true
@@ -172,7 +137,7 @@ variables:
 - name: adapter_rlp_tls
   type: certificate
   options:
-    ca: common_ca
+    ca: loggregator_ca
     common_name: ss-adapter-rlp
     extended_key_usage:
     - client_auth
@@ -180,7 +145,7 @@ variables:
 - name: scheduler_api_tls
   type: certificate
   options:
-    ca: common_ca
+    ca: loggregator_ca
     common_name: ss-scheduler-cc
     extended_key_usage:
     - client_auth
@@ -188,7 +153,7 @@ variables:
 - name: adapter_tls
   type: certificate
   options:
-    ca: scalable_syslog_ca
+    ca: loggregator_ca
     common_name: ss-adapter
     extended_key_usage:
     - server_auth
@@ -196,10 +161,18 @@ variables:
 - name: scheduler_client_tls
   type: certificate
   options:
-    ca: scalable_syslog_ca
+    ca: loggregator_ca
     common_name: ss-scheduler
     extended_key_usage:
     - client_auth
+- name: loggregator_tls_metron
+  type: certificate
+  options:
+    ca: loggregator_ca
+    common_name: metron
+    extended_key_usage:
+    - client_auth
+    - server_auth
 - name: consul_encrypt_key
   type: password
 - name: consul_agent_ca

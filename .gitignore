@@ -28,6 +28,8 @@ releases/**/*.tgz
 /src/github.com/mdempsky/
 /src/golang.org/x/tools/
 
+deployment-vars.yml
+
 # cert script output
 /scalable-syslog-certs
 

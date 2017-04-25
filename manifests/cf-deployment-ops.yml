@@ -26,9 +26,5 @@
   value: reverse-log-proxy.service.cf.internal:8082
 
 - type: replace
-  path: /variables/name=adapter_rlp_tls/options/ca?
-  value: loggregator_ca
-
-- type: replace
   path: /variables/name=scheduler_api_tls/options/ca?
   value: service_cf_internal_ca
