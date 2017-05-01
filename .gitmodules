@@ -1,5 +1,5 @@
 [submodule "src/github.com/cloudfoundry-incubator/scalable-syslog"]
-	path = src/github.com/cloudfoundry-incubator/scalable-syslog
+	path = src/code.cloudfoundry.org/scalable-syslog
 	url = https://github.com/cloudfoundry-incubator/scalable-syslog
 [submodule "src/github.com/onsi/ginkgo"]
 	path = src/github.com/onsi/ginkgo

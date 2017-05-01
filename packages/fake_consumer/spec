@@ -5,4 +5,4 @@ dependencies:
   - golang1.7
 
 files:
-- github.com/cloudfoundry-incubator/scalable-syslog/tools/fake_consumer/*
+- code.cloudfoundry.org/scalable-syslog/tools/fake_consumer/*

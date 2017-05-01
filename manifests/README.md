@@ -3,4 +3,4 @@
 
 To deploy to bosh-lite see [these instructions][instructions].
 
-[instructions]: https://github.com/cloudfoundry-incubator/scalable-syslog-release#deploying-scalable-syslog-standalone
+[instructions]: https://code.cloudfoundry.org/scalable-syslog-release#deploying-scalable-syslog-standalone

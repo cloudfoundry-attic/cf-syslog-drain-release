@@ -6,6 +6,6 @@ export GOPATH=$PWD
 
 ln -s $GOPATH $GOPATH/src
 
-go install github.com/cloudfoundry-incubator/scalable-syslog/scheduler
+go install code.cloudfoundry.org/scalable-syslog/scheduler
 cp -a $GOPATH/bin/scheduler ${BOSH_INSTALL_TARGET}/scheduler
 

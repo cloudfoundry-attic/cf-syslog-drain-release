@@ -6,6 +6,6 @@ export GOPATH=$PWD
 
 ln -s $GOPATH $GOPATH/src
 
-go install github.com/cloudfoundry-incubator/scalable-syslog/adapter
+go install code.cloudfoundry.org/scalable-syslog/adapter
 cp -a $GOPATH/bin/adapter ${BOSH_INSTALL_TARGET}/adapter
 

@@ -6,6 +6,6 @@ export GOPATH=$PWD
 
 ln -s $GOPATH $GOPATH/src
 
-go install github.com/cloudfoundry-incubator/scalable-syslog/tools/fake_logs_provider
+go install code.cloudfoundry.org/scalable-syslog/tools/fake_logs_provider
 cp -a $GOPATH/bin/fake_logs_provider ${BOSH_INSTALL_TARGET}/fake_logs_provider
 

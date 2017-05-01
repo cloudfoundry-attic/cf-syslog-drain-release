@@ -29,8 +29,8 @@ function sync_package() {
   )
 }
 
-sync_package scheduler -app github.com/cloudfoundry-incubator/scalable-syslog/scheduler &
-sync_package adapter -app github.com/cloudfoundry-incubator/scalable-syslog/adapter &
-sync_package fake_logs_provider -app github.com/cloudfoundry-incubator/scalable-syslog/tools/fake_logs_provider &
+sync_package scheduler -app code.cloudfoundry.org/scalable-syslog/scheduler &
+sync_package adapter -app code.cloudfoundry.org/scalable-syslog/adapter &
+sync_package fake_logs_provider -app code.cloudfoundry.org/scalable-syslog/tools/fake_logs_provider &
 
 wait

@@ -60,7 +60,7 @@ run the following commands:
 ```
 
 [bosh]:                https://bosh.io
-[scalable-syslog]:     https://github.com/cloudfoundry-incubator/scalable-syslog
+[scalable-syslog]:     https://code.cloudfoundry.org/scalable-syslog
 [cf-deployment]:       https://github.com/cloudfoundry/cf-deployment
-[sample-manifest]:     https://github.com/cloudfoundry-incubator/scalable-syslog-release/blob/master/manifests/scalable-syslog.yml
+[sample-manifest]:     https://code.cloudfoundry.org/scalable-syslog-release/blob/master/manifests/scalable-syslog.yml
 [common-cloud-config]: https://github.com/cloudfoundry/bosh-deployment/blob/master/warden/cloud-config.yml

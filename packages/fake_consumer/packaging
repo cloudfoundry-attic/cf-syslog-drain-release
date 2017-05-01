@@ -6,6 +6,6 @@ export GOPATH=$PWD
 
 ln -s $GOPATH $GOPATH/src
 
-go install github.com/cloudfoundry-incubator/scalable-syslog/tools/fake_consumer
+go install code.cloudfoundry.org/scalable-syslog/tools/fake_consumer
 cp -a $GOPATH/bin/fake_consumer ${BOSH_INSTALL_TARGET}/fake_consumer
 
