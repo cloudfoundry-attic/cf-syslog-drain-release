@@ -8,14 +8,12 @@ files:
 - code.cloudfoundry.org/scalable-syslog/internal/api/*.go # gosub
 - code.cloudfoundry.org/scalable-syslog/internal/api/loggregator/v2/*.go # gosub
 - code.cloudfoundry.org/scalable-syslog/internal/api/v1/*.go # gosub
-- code.cloudfoundry.org/scalable-syslog/internal/diodes/*.go # gosub
 - code.cloudfoundry.org/scalable-syslog/internal/health/*.go # gosub
-- code.cloudfoundry.org/scalable-syslog/internal/metric/*.go # gosub
+- code.cloudfoundry.org/scalable-syslog/internal/metricemitter/*.go # gosub
 - code.cloudfoundry.org/scalable-syslog/scheduler/*.go # gosub
 - code.cloudfoundry.org/scalable-syslog/scheduler/app/*.go # gosub
 - code.cloudfoundry.org/scalable-syslog/scheduler/internal/egress/*.go # gosub
 - code.cloudfoundry.org/scalable-syslog/scheduler/internal/ingress/*.go # gosub
-- github.com/cloudfoundry/diodes/*.go # gosub
 - github.com/golang/protobuf/proto/*.go # gosub
 - github.com/golang/protobuf/ptypes/any/*.go # gosub
 - golang.org/x/net/context/*.go # gosub
