@@ -1,6 +1,47 @@
 # Scalable Syslog Release
 
-This is a [Bosh][bosh] release of [scalable syslog][scalable-syslog].
+Scalable syslogs is a [Bosh][bosh] release that works in conjunction with
+[Loggregator](https://github.com/cloudfoundry/loggregator) to bind applications to syslog readers. It can be independently 
+scalable to support large numbers of drains.
+
+The [Loggregator Design Notes](docs/loggregator-design.md) presents an
+overview of Loggregator components and architecture.
+### Configuring Scalable Syslog Components
+The scalable syslog release contains three components.
+
+#### Scalable Syslog Scheduler 
+This component handles communication with the Cloud Controller to receive new bindings
+it does not need to be scaled beyond a single instance.
+
+#### Reverse Log Proxy (RLP)
+This component scales in conjunction with your overall log volume. We recommend no less than 2 instances for High Availability and 1/2 your number of Traffic Controllers. 
+
+#### Syslog Adapter
+This component manages the connections to drains. They should be scaled with the number of drains. A general rule of thumb is to plan for no less than 2 instances and 1 additional instances for every 500 drain bindings or adapters are reporting dropped. 
+
+### Operator Metrics
+The following new metrics are being emitted.
+
+`loggregator.rlp.ingress` - ingress into reverse log proxy
+`loggregatopr.rlp.egress` - engress out of reverse log proxy
+`scalablesyslog.adapter.ingress` ingress into adapters (these are tagged by index)
+`scalablesyslog.adapter.ingress` engress out of adapters (these are tagged by index)
+`scalablesyslog.adapter.dropped` dropped messages on adapters (these are tagged by index)
+`scalablesyslog.scheduler.drains` total number of syslog drain bindings 
+
+
+### Other Configurations
+
+**Note: The default behavior for syslog-drain cert verification has changed with this release. It now will validate certificates by default, to override this setting you can set the property `scalablesyslog.adapter.syslog_skip_cert_verify`**
+
+By default, scalable syslog services all syslog drain bindings. It is possible
+to configure scalable syslog as opt-in only. To do so, first deploy the system
+with the `scalablesyslog.scheduler.require_opt_in` property to `true` within
+the `scheduler` job.
+
+Users can then opt to use scalable syslog by appending a `drain-version=2.0`
+query parameter to their syslog drain URL when creating a user provided
+service. Scalable syslog will ignore bindings without the query parameter.
 
 ### Deploying Scalable Syslog (standalone)
 
@@ -26,18 +67,11 @@ bosh -e lite upload-release --rebase
 bosh -e lite -d scalablesyslog deploy manifests/scalable-syslog.yml -o manifests/fake-ops.yml --vars-store=/tmp/bosh-lite-ss.yml
 ```
 
-### Configuring Scalable Syslog Opt-in
 
-By default, scalable syslog services all syslog drain bindings. It is possible
-to configure scalable syslog as opt-in only. To do so, first deploy the system
-with the `scalablesyslog.scheduler.require_opt_in` property to `true` within
-the `scheduler` job.
-
-Users can then opt to use scalable syslog by appending a `drain-version=2.0`
-query parameter to their syslog drain URL when creating a user provided
-service. Scalable syslog will ignore bindings without the query parameter.
 
 ### Generating Certificates
+
+
 
 To deploy the scalable syslog,
 you will need three sets of certificates for
