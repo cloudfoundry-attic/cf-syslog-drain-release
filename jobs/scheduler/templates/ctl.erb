@@ -46,6 +46,7 @@ exec chpst -u vcap:vcap ./scheduler \
   --blacklist-ranges=<%= blacklisted_ips %> \
   --metric-ingress-addr=<%= p("scalablesyslog.scheduler.metric.addr") %> \
   --metric-ingress-cn=<%= p("scalablesyslog.scheduler.metric.cn") %> \
+  --metric-emitter-interval="<%= p('metric_emitter.interval') %>" \
   &>> ${LOG_DIR}/scheduler.log
 
 ;;

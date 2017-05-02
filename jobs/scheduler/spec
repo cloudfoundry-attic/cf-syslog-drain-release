@@ -67,3 +67,7 @@ properties:
   scalablesyslog.scheduler.metric.cn:
     description: "The common name for the metric ingress service (i.e. metron agent)"
     default: "metron"
+
+  metric_emitter.interval:
+    description: "The interval that metrics are emitted to the metron."
+    default: "1m"
