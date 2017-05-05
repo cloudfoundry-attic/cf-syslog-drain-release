@@ -15,7 +15,7 @@ The scalable syslog release contains three components.
 #### Scheduler
 
 This component handles communication with the Cloud Controller to receive new
-bindings. It does not need to be scaled beyond a single instance.
+bindings. It should not be scaled beyond a single instance. 
 
 #### Reverse Log Proxy (RLP)
 
