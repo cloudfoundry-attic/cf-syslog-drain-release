@@ -11,7 +11,7 @@ releases:
 - name: loggregator
   version: latest
 - name: consul
-  version: latest
+  version: 164
 
 instance_groups:
 - name: consul
