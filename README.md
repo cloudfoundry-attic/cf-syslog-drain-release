@@ -1,4 +1,4 @@
-# Scalable Syslog Release
+# Scalable Syslog Release [![slack.cloudfoundry.org][slack-badge]][loggregator-slack]
 
 Scalable syslog is a [Bosh][bosh] release that works in conjunction with
 [Loggregator][loggregator] to bind applications to syslog readers. It can be
@@ -99,6 +99,8 @@ Assuming you have these two CAs, run the following commands:
 ./scripts/generate-certs bbs-ca.crt bbs-ca.key loggregator-ca.crt loggregator-ca.key
 ```
 
+[slack-badge]:              https://slack.cloudfoundry.org/badge.svg
+[loggregator-slack]:        https://cloudfoundry.slack.com/archives/loggregator
 [bosh]:                     https://bosh.io
 [loggregator]:              https://code.cloudfoundry.org/loggregator
 [loggregator-design-notes]: https://code.cloudfoundry.org/loggregator/tree/develop/docs/loggregator-design.md
