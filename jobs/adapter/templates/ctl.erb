@@ -11,6 +11,9 @@ PACKAGE_DIR=/var/vcap/packages/adapter
 case $1 in
 
 start)
+
+killall -9 adapter
+
 mkdir -p $RUN_DIR $LOG_DIR
 chown -R vcap:vcap $RUN_DIR $LOG_DIR
 
@@ -44,8 +47,7 @@ exec chpst -u vcap:vcap ./adapter \
 
 stop)
 
-kill `cat $PIDFILE`
-
+killall -9 adapter
 rm -f $PIDFILE
 
 ;;
