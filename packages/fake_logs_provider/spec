@@ -2,7 +2,7 @@
 name: fake_logs_provider
 
 dependencies:
-  - golang1.7
+  - golang1.8.3
 
 files:
 - code.cloudfoundry.org/scalable-syslog/internal/api/*.go # gosub
