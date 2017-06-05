@@ -10,6 +10,7 @@ files:
 - code.cloudfoundry.org/scalable-syslog/adapter/internal/binding/*.go # gosub
 - code.cloudfoundry.org/scalable-syslog/adapter/internal/egress/*.go # gosub
 - code.cloudfoundry.org/scalable-syslog/adapter/internal/ingress/*.go # gosub
+- code.cloudfoundry.org/scalable-syslog/adapter/internal/timeoutwaitgroup/*.go # gosub
 - code.cloudfoundry.org/scalable-syslog/internal/api/*.go # gosub
 - code.cloudfoundry.org/scalable-syslog/internal/api/loggregator/v2/*.go # gosub
 - code.cloudfoundry.org/scalable-syslog/internal/api/v1/*.go # gosub
