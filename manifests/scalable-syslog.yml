@@ -121,7 +121,7 @@ instance_groups:
     properties:
       scalablesyslog:
         scheduler:
-          require_opt_in: true
+          require_opt_in: false
           api:
             url: https://cloud-controller-ng.service.cf.internal:9023
           tls:
