@@ -1,6 +1,9 @@
 [submodule "src/code.cloudfoundry.org/scalable-syslog"]
 	path = src/code.cloudfoundry.org/scalable-syslog
 	url = https://github.com/cloudfoundry/scalable-syslog
+[submodule "src/code.cloudfoundry.org/go-loggregator"]
+	path = src/code.cloudfoundry.org/go-loggregator
+	url = https://github.com/cloudfoundry-incubator/go-loggregator
 [submodule "src/github.com/onsi/ginkgo"]
 	path = src/github.com/onsi/ginkgo
 	url = https://github.com/onsi/ginkgo
