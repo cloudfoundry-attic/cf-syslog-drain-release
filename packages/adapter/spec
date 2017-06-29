@@ -6,6 +6,7 @@ dependencies:
 
 files:
 - code.cloudfoundry.org/go-loggregator/*.go # gosub
+- code.cloudfoundry.org/go-loggregator/pulseemitter/*.go # gosub
 - code.cloudfoundry.org/go-loggregator/rpc/loggregator_v2/*.go # gosub
 - code.cloudfoundry.org/go-loggregator/vendor/google.golang.org/genproto/googleapis/rpc/status/*.go # gosub
 - code.cloudfoundry.org/go-loggregator/vendor/google.golang.org/grpc/*.go # gosub
@@ -32,7 +33,6 @@ files:
 - code.cloudfoundry.org/scalable-syslog/internal/api/v1/*.go # gosub
 - code.cloudfoundry.org/scalable-syslog/internal/diodes/*.go # gosub
 - code.cloudfoundry.org/scalable-syslog/internal/health/*.go # gosub
-- code.cloudfoundry.org/scalable-syslog/internal/metricemitter/*.go # gosub
 - github.com/cloudfoundry/diodes/*.go # gosub
 - github.com/crewjam/rfc5424/*.go # gosub
 - github.com/golang/protobuf/proto/*.go # gosub
