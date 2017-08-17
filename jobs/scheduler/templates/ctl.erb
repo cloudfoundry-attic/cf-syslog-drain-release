@@ -23,6 +23,15 @@ ulimit -n 8192
   blacklisted_ips = blacklisted_ranges.map do |range|
     "#{range['start']}-#{range['end']}"
   end.join(",")
+  adapter_addrs = []
+  adapter_port = 0
+  if_link("adapter_addrs") do |l|
+    adapter_addrs = l.instances.map(&:address).join(",")
+    adapter_port = l.p('scalablesyslog.adapter.port')
+  end.else do
+    adapter_addrs = p('scalablesyslog.adapter.addrs').join(",")
+    adapter_port = p('scalablesyslog.adapter.port')
+  end
 %>
 
 echo $$ > $PIDFILE
@@ -41,8 +50,8 @@ exec chpst -u vcap:vcap ./scheduler \
   --api-cn=<%= p("scalablesyslog.scheduler.tls.api.cn") %> \
   --api-skip-cert-verify=<%= p("scalablesyslog.scheduler.tls.api.skip_cert_verify") %> \
   --api-polling-interval=<%= p("scalablesyslog.scheduler.api.polling_interval") %> \
-  --adapter-addrs=<%= link("adapter_addrs").instances.map(&:address).join(",") %> \
-  --adapter-port=<%= link("adapter_addrs").p('scalablesyslog.adapter.port') %> \
+  --adapter-addrs=<%= adapter_addrs %> \
+  --adapter-port=<%= adapter_port %> \
   --blacklist-ranges=<%= blacklisted_ips %> \
   --metric-ingress-addr=<%= p("scalablesyslog.scheduler.metric.addr") %> \
   --metric-ingress-cn=<%= p("scalablesyslog.scheduler.metric.cn") %> \

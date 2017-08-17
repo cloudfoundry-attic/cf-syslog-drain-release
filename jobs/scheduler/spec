@@ -15,6 +15,7 @@ packages:
 consumes:
 - name: adapter_addrs
   type: addr
+  optional: true
 
 properties:
   scalablesyslog.scheduler.require_opt_in:
@@ -28,6 +29,15 @@ properties:
   scalablesyslog.scheduler.pprof:
     description: "The port for pprof on the scheduler"
     default: 0
+
+  scalablesyslog.adapter.addrs:
+    description: |
+      A collection of adapter addresses. This is used only if the
+      adapter_adders link is not provided.
+    default: []
+  scalablesyslog.adapter.port:
+    description: "The port used to communicate with the adapters via gRPC."
+    default: 4443
 
   scalablesyslog.scheduler.tls.client.ca:
     description: "The TLS CA for the scalable syslog"
