@@ -55,6 +55,7 @@ instance_groups:
 - name: adapter
   azs:
   - z1
+  - z2
   instances: 3
   persistent_disk_type: 1GB
   vm_type: default
