@@ -37,3 +37,6 @@
 [submodule "src/code.cloudfoundry.org/rfc5424"]
 	path = src/code.cloudfoundry.org/rfc5424
 	url = https://github.com/cloudfoundry-incubator/rfc5424
+[submodule "src/code.cloudfoundry.org/batching"]
+	path = src/code.cloudfoundry.org/batching
+	url = https://github.com/cloudfoundry/batching
