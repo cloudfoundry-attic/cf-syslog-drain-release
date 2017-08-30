@@ -1,6 +1,6 @@
-# Scalable Syslog Release [![slack.cloudfoundry.org][slack-badge]][loggregator-slack] [![CI Badge][ci-badge]][ci-pipeline]
+# CF Syslog Drain Release [![slack.cloudfoundry.org][slack-badge]][loggregator-slack] [![CI Badge][ci-badge]][ci-pipeline]
 
-Scalable syslog is a [Bosh][bosh] release that works in conjunction with
+CF syslog drain release is a [Bosh][bosh] release that works in conjunction with
 [Loggregator][loggregator] to bind applications to syslog readers. It can be
 independently scaled to support large numbers of [User Provided syslog
 drains][syslog-drain-docs].
@@ -15,7 +15,7 @@ The scalable syslog release contains three components.
 #### Scheduler
 
 This component handles communication with the Cloud Controller to receive new
-bindings. It should not be scaled beyond a single instance. 
+bindings. It should not be scaled beyond a single instance.
 
 #### Reverse Log Proxy (RLP)
 
@@ -60,7 +60,7 @@ To deploy scalable syslog with opt-in enabled:
    by appending a `drain-version=2.0` query parameter to their syslog drain
    URL. Scalable syslog will ignore bindings without the query parameter.
 
-### Deploying Scalable Syslog (standalone)
+### Deploying CF Syslog Drain Release (standalone)
 
 The release is built to be deployed independently. It can also be used as a
 composite release within [cf-deployment][cf-deployment]. The following steps
@@ -77,12 +77,12 @@ bosh -e lite update-cloud-config $HOME/workspace/bosh-deployment/warden/cloud-co
 cd $HOME/workspace/scalable-syslog-release
 bosh create-release --force
 bosh -e lite upload-release --rebase
-bosh -e lite -d scalablesyslog deploy manifests/scalable-syslog.yml -o manifests/fake-ops.yml --vars-store=/tmp/bosh-lite-ss.yml
+bosh -e lite -d cf-syslog-drain deploy manifests/cf-syslog-drain.yml -o manifests/fake-ops.yml --vars-store=/tmp/bosh-lite-ss.yml
 ```
 
 ### Generating Certificates
 
-To deploy the scalable syslog, you will need three sets of certificates for
+To deploy the cf syslog drain release, you will need three sets of certificates for
 the following connections:
 
 - The scheduler to Cloud Controller
@@ -106,7 +106,7 @@ Assuming you have these two CAs, run the following commands:
 [loggregator-design-notes]: https://code.cloudfoundry.org/loggregator/tree/develop/docs/loggregator-design.md
 [syslog-drain-docs]:        https://docs.cloudfoundry.org/devguide/services/log-management.html
 [cf-deployment]:            https://code.cloudfoundry.org/cf-deployment
-[sample-manifest]:          https://code.cloudfoundry.org/scalable-syslog-release/blob/master/manifests/scalable-syslog.yml
+[sample-manifest]:          https://code.cloudfoundry.org/cf-syslog-drain-release/blob/master/manifests/cf-syslog-drain.yml
 [common-cloud-config]:      https://code.cloudfoundry.org/bosh-deployment/blob/master/warden/cloud-config.yml
 [ci-badge]:                 https://loggregator.ci.cf-app.com/api/v1/pipelines/scalable-syslog/jobs/tests/badge
 [ci-pipeline]:              https://loggregator.ci.cf-app.com/teams/main/pipelines/scalable-syslog

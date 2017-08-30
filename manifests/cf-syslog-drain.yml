@@ -1,4 +1,4 @@
-name: scalablesyslog
+name: cf-syslog-drain
 
 stemcells:
 - alias: default
@@ -6,7 +6,7 @@ stemcells:
   version: latest
 
 releases:
-- name: scalablesyslog
+- name: cf-syslog-drain
   version: latest
 - name: loggregator
   version: latest
@@ -71,7 +71,7 @@ instance_groups:
       consul_server: {from: consul_server_link}
       consul_client: {from: consul_client_link}
   - name: adapter
-    release: scalablesyslog
+    release: cf-syslog-drain
     properties:
       scalablesyslog:
         adapter:
@@ -118,7 +118,7 @@ instance_groups:
       consul_server: {from: consul_server_link}
       consul_client: {from: consul_client_link}
   - name: scheduler
-    release: scalablesyslog
+    release: cf-syslog-drain
     properties:
       scalablesyslog:
         scheduler:

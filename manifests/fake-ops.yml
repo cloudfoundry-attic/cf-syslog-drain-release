@@ -12,7 +12,7 @@
     - name: default
     jobs:
     - name: fake_consumer
-      release: scalablesyslog
+      release: cf-syslog-drain
 
 - type: replace
   path: /instance_groups/name=fake_logs_provider?
@@ -28,7 +28,7 @@
     - name: default
     jobs:
     - name: fake_logs_provider
-      release: scalablesyslog
+      release: cf-syslog-drain
       properties:
         fake_logs_provider:
           tls:
@@ -66,7 +66,7 @@
     - name: default
     jobs:
     - name: fake_cups_provider
-      release: scalablesyslog
+      release: cf-syslog-drain
       properties:
         fake_cups_provider:
           tls:
