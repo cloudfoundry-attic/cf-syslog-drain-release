@@ -4,6 +4,6 @@ set -e -x
 
 bosh create-release --force --sha2
 bosh -e lite upload-release --rebase
-bosh -e lite deploy manifests/scalable-syslog.yml -n -d scalablesyslog \
+bosh -e lite deploy manifests/cf-syslog-drain.yml -n -d cf-syslog-drain \
     -o manifests/fake-ops.yml \
     --vars-store /tmp/vars.yml
