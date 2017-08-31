@@ -3,7 +3,7 @@
 
 First generate certs under:
 
-`~/workspace/scalable-syslog-release/scalable-syslog-certs`
+`~/workspace/cf-syslog-drain-release/scalable-syslog-certs`
 
 Run dummy metron:
 
@@ -12,9 +12,9 @@ cd ~/workspace/loggregator
 go install tools/dummymetron
 bin/dummymetron \
     -grpc-port 12348 \
-    -ca ~/workspace/scalable-syslog-release/scalable-syslog-certs/scalable-syslog-ca.crt \
-    -cert ~/workspace/scalable-syslog-release/scalable-syslog-certs/ss-adapter.crt \
-    -key ~/workspace/scalable-syslog-release/scalable-syslog-certs/ss-adapter.key
+    -ca ~/workspace/cf-syslog-drain-release/scalable-syslog-certs/scalable-syslog-ca.crt \
+    -cert ~/workspace/cf-syslog-drain-release/scalable-syslog-certs/ss-adapter.crt \
+    -key ~/workspace/cf-syslog-drain-release/scalable-syslog-certs/ss-adapter.key
 ```
 
 Run fake syslog consumer:
@@ -60,9 +60,9 @@ Run fake scheduler:
 go install code.cloudfoundry.org/scalable-syslog/tools/fake_scheduler
 bin/fake_scheduler \
     -addr :12347 \
-    -ca ~/workspace/scalable-syslog-release/scalable-syslog-certs/scalable-syslog-ca.crt \
-    -cert ~/workspace/scalable-syslog-release/scalable-syslog-certs/ss-scheduler.crt \
-    -key ~/workspace/scalable-syslog-release/scalable-syslog-certs/ss-scheduler.key \
+    -ca ~/workspace/cf-syslog-drain-release/scalable-syslog-certs/scalable-syslog-ca.crt \
+    -cert ~/workspace/cf-syslog-drain-release/scalable-syslog-certs/ss-scheduler.crt \
+    -key ~/workspace/cf-syslog-drain-release/scalable-syslog-certs/ss-scheduler.key \
     -cn ss-adapter \
     -lifetime 15s \
     -delay 10ms
