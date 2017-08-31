@@ -41,6 +41,7 @@ exec chpst -u vcap:vcap ./adapter \
   --metric-ingress-addr=<%= p('scalablesyslog.metric_ingress_addr') %> \
   --metric-ingress-cn=<%= p('scalablesyslog.metric_ingress_cn') %> \
   --metric-emitter-interval="<%= p('metric_emitter.interval') %>" \
+  --source-index="<%= spec.index.to_s %>" \
   &>> ${LOG_DIR}/adapter.log
 
 ;;
