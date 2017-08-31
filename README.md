@@ -74,7 +74,7 @@ To deploy to bosh-lite run the following commands:
 ```bash
 bosh -e lite upload-release https://bosh.io/d/github.com/cloudfoundry-incubator/consul-release
 bosh -e lite update-cloud-config $HOME/workspace/bosh-deployment/warden/cloud-config.yml
-cd $HOME/workspace/scalable-syslog-release
+cd $HOME/workspace/cf-syslog-drain-release
 bosh create-release --force
 bosh -e lite upload-release --rebase
 bosh -e lite -d cf-syslog-drain deploy manifests/cf-syslog-drain.yml -o manifests/fake-ops.yml --vars-store=/tmp/bosh-lite-ss.yml
