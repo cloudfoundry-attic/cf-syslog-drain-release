@@ -18,11 +18,6 @@ consumes:
   optional: true
 
 properties:
-  scalablesyslog.scheduler.require_opt_in:
-    description: |
-      For a drain to be consumed it is required to have the drain-version=2.0
-      as a query argument. When enabled, this setting only allows those drains.
-    default: false
   scalablesyslog.scheduler.health:
     description: "The port for the scheduler health endpoint"
     default: 8080
