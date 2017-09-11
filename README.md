@@ -8,9 +8,9 @@ drains][syslog-drain-docs].
 The [Loggregator Design Notes][loggregator-design-notes] present an overview
 of Loggregator components and architecture.
 
-### Configuring Scalable Syslog Components
+### Configuring CF Syslog Drain Components
 
-The scalable syslog release contains three components.
+The cf syslog drain release contains three components.
 
 #### Scheduler
 
@@ -37,10 +37,10 @@ The following new metrics are emitted:
 
 - `loggregator.rlp.ingress` - ingress into reverse log proxy
 - `loggregatopr.rlp.egress` - egress out of reverse log proxy
-- `scalablesyslog.adapter.ingress` - ingress into adapters (these are tagged by index and drain protocol)
-- `scalablesyslog.adapter.engress` - engress out of adapters (these are tagged by index and drain protocol)
-- `scalablesyslog.adapter.dropped` - dropped messages on adapters (these are tagged by index and drain protocol)
-- `scalablesyslog.scheduler.drains`- total number of syslog drain bindings
+- `cf-syslog-drain.adapter.ingress` - ingress into adapters (these are tagged by index and drain protocol)
+- `cf-syslog-drain.adapter.engress` - engress out of adapters (these are tagged by index and drain protocol)
+- `cf-syslog-drain.adapter.dropped` - dropped messages on adapters (these are tagged by index and drain protocol)
+- `cf-syslog-drain.scheduler.drains`- total number of syslog drain bindings
 
 ### Other Configurations
 
@@ -48,17 +48,6 @@ The following new metrics are emitted:
 with this release. It now will validate certificates by default. To override
 this setting you can set the property:
 `scalablesyslog.adapter.syslog_skip_cert_verify`.**
-
-By default, scalable syslog services all syslog drain bindings. It is possible
-to configure scalable syslog as opt-in only.
-
-To deploy scalable syslog with opt-in enabled:
-
-1. Deploy the system with the `scalablesyslog.scheduler.require_opt_in`
-   property set to `true` within the `scheduler` job.
-1. When creating a user provided service, users can opt to use scalable syslog
-   by appending a `drain-version=2.0` query parameter to their syslog drain
-   URL. Scalable syslog will ignore bindings without the query parameter.
 
 ### Deploying CF Syslog Drain Release (standalone)
 
