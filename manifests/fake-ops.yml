@@ -6,7 +6,7 @@
     - z1
     instances: 1
     persistent_disk_type: 1GB
-    vm_type: default
+    vm_type: minimal
     stemcell: default
     networks:
     - name: default
@@ -22,7 +22,7 @@
     - z1
     instances: 1
     persistent_disk_type: 1GB
-    vm_type: default
+    vm_type: minimal
     stemcell: default
     networks:
     - name: default
@@ -60,7 +60,7 @@
     - z1
     instances: 1
     persistent_disk_type: 1GB
-    vm_type: default
+    vm_type: minimal
     stemcell: default
     networks:
     - name: default
