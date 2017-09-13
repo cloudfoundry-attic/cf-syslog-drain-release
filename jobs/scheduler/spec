@@ -10,7 +10,7 @@ templates:
   scheduler.key.erb: certs/scheduler.key
 
 packages:
-  - scheduler
+- scheduler
 
 consumes:
 - name: adapter_addrs
@@ -19,10 +19,10 @@ consumes:
 
 properties:
   scalablesyslog.scheduler.health:
-    description: "The port for the scheduler health endpoint"
+    description: The port for the scheduler health endpoint.
     default: 8080
   scalablesyslog.scheduler.pprof:
-    description: "The port for pprof on the scheduler"
+    description: The port for pprof on the scheduler.
     default: 0
 
   scalablesyslog.adapter.addrs:
@@ -31,48 +31,90 @@ properties:
       adapter_adders link is not provided.
     default: []
   scalablesyslog.adapter.port:
-    description: "The port used to communicate with the adapters via gRPC."
+    description: The port used to communicate with the adapters via gRPC.
     default: 4443
 
   scalablesyslog.scheduler.tls.client.ca:
-    description: "The TLS CA for the scalable syslog"
+    description: |
+      When the scheduler communicates with the adapters it must validate the
+      adapters' certificates were signed by a trusted CA. This is the CA
+      trusted by the scheduler for that communication.
+      Note: This is also used when communicating with the metron agent when
+      sending metric data.
   scalablesyslog.scheduler.tls.client.cert:
-    description: "The TLS cert for the scalable syslog scheduler client"
+    description: |
+      This certificate is sent to the adapters when initiating a connection.
+      It must be signed by a CA that is trusted by the adapters.
+      Note: This is also used when communicating with the metron agent when
+      sending metric data.
   scalablesyslog.scheduler.tls.client.key:
-    description: "The TLS private key for the scalable syslog scheduler client"
+    description: |
+      This is the private key for the certificate sent to the adapters when
+      initiating a connection.
+      Note: This is also used when communicating with the metron agent when
+      sending metric data.
   scalablesyslog.scheduler.tls.client.adapter_cn:
-    description: "The common name for the adapter"
+    description: |
+      When the scheduler communicates with the adapters it must validate the
+      adapters' common name (CN) or subject alternative names (SANs) against
+      the hostname or IP address used to initiate the connection. Since we
+      use a custom CN for adapters this must be set to that value for
+      validation to be successful.
 
   scalablesyslog.scheduler.tls.api.ca:
-    description: "The CA for syslog drain bindings provider"
+    description: |
+      When the scheduler communicates with the Cloud Controller it must
+      validate the Cloud Controller's certificate was signed by a trusted CA.
+      This is the CA trusted by the scheduler for that communication.
   scalablesyslog.scheduler.tls.api.cert:
-    description: "The cert for the syslog drain bindings provider"
+    description: |
+      This certificate is sent to the Cloud Controller when initiating a
+      connection. It must be signed by a CA that is trusted by the Cloud
+      Controller.
   scalablesyslog.scheduler.tls.api.key:
-    description: "The key for the syslog drain bindings provider"
+    description: |
+      This is the private key for the certificate sent to the Cloud Controller
+      when initiating a connection.
   scalablesyslog.scheduler.tls.api.cn:
-    description: "The common name for the syslog drain bindings provider"
+    description: |
+      When the scheduler communicates with the Cloud Controller it must
+      validate the Cloud Controller's common name (CN) or subject alternative
+      names (SANs) against the hostname or IP address used to initiate the
+      connection. Most of the time this should be the hostname defined in
+      scalablesyslog.scheduler.api.url.
   scalablesyslog.scheduler.tls.api.skip_cert_verify:
-    description: "Allows insecure SSL connections to the syslog drain bindings provider"
+    description: Allows insecure TLS connections to the Cloud Controller.
     default: false
 
   scalablesyslog.scheduler.api.url:
-    description: "The URL of the syslog drain bindings provider"
+    description: |
+      The URL of the Cloud Controller, used for getting syslog drain bindings.
   scalablesyslog.scheduler.api.polling_interval:
-    description: "The interval at which the scheduler will poll the API for bindings"
-    default: "15s"
+    description: |
+      The interval at which the scheduler will poll the Cloud Controller for
+      bindings.
+    default: 15s
 
   scalablesyslog.scheduler.blacklisted_syslog_ranges:
-    description: "A list of IP range addresses to blacklist the binding syslog drains to"
+    description: |
+      A list of IP address ranges that are not allowed to be specified in
+      syslog drain binding URLs.
     default: []
     example: [{start: 10.10.10.1, end: 10.10.10.10}]
 
   scalablesyslog.scheduler.metric.addr:
-    description: "The address for the metric ingress service (i.e. metron agent)"
-    default: "localhost:3458"
+    description: |
+      The address used to send metric data to metron.
+    default: localhost:3458
   scalablesyslog.scheduler.metric.cn:
-    description: "The common name for the metric ingress service (i.e. metron agent)"
-    default: "metron"
+    description: |
+      When the scheduler communicates with metron it must validate metron's
+      common name (CN) or subject alternative names (SANs) against the
+      hostname or IP address used to initiate the connection. Since we use a
+      custom CN for metron this must be set to that value for validation to be
+      successful.
+    default: metron
 
   metric_emitter.interval:
-    description: "The interval that metrics are emitted to the metron."
-    default: "1m"
+    description: The interval that metrics are emitted to metron.
+    default: 1m
