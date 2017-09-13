@@ -38,12 +38,9 @@ else
     ln -s ${log_ca_key_path} ${depot_path}/
 fi
 
-# CA to distribute to scalable-syslog certs
-certstrap --depot-path "$depot_path" init --passphrase '' --common-name scalable-syslog-ca
-
 # Scheduler certificate (to communicate with adapter)
 certstrap --depot-path "$depot_path" request-cert --passphrase '' --common-name ss-scheduler
-certstrap --depot-path "$depot_path" sign ss-scheduler --CA scalable-syslog-ca
+certstrap --depot-path "$depot_path" sign ss-scheduler --CA "$log_ca_name"
 
 # Scheduler CAPI certificate (cert used to communicate with API to fetch
 # syslog drain bindings
@@ -52,7 +49,7 @@ certstrap --depot-path "$depot_path" sign ss-scheduler-cc --CA "$bbs_ca_name"
 
 # Adapter certificate (to communicate with scheduler)
 certstrap --depot-path "$depot_path" request-cert --passphrase '' --common-name ss-adapter
-certstrap --depot-path "$depot_path" sign ss-adapter --CA scalable-syslog-ca
+certstrap --depot-path "$depot_path" sign ss-adapter --CA "$log_ca_name"
 
 # Adapter RLP certificate (cert used to communicate with Reverse Logging Proxy)
 certstrap --depot-path "$depot_path" request-cert --passphrase '' --common-name ss-adapter-rlp
