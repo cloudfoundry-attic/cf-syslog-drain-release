@@ -31,7 +31,7 @@ releases/**/*.tgz
 deployment-vars.yml
 
 # cert script output
-/scalable-syslog-certs
+/certs
 
 # misc
 out/
