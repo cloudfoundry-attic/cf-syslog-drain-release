@@ -32,6 +32,11 @@ ulimit -n 8192
     adapter_addrs = p('scalablesyslog.adapter.addrs').join(",")
     adapter_port = p('scalablesyslog.adapter.port')
   end
+
+  api_addr = p("scalablesyslog.scheduler.api.url")
+  if p("scalablesyslog.scheduler.bosh_dns")
+    api_addr = "https://#{link("cloud_controller").address}:9023"
+  end
 %>
 
 echo $$ > $PIDFILE
@@ -42,7 +47,7 @@ exec chpst -u vcap:vcap ./scheduler \
   --cert=$CERT_DIR/scheduler.crt \
   --key=$CERT_DIR/scheduler.key \
   --adapter-cn=<%= p("scalablesyslog.scheduler.tls.client.adapter_cn") %> \
-  --api-url=<%= p("scalablesyslog.scheduler.api.url") %> \
+  --api-url=<%= api_addr %> \
   --api-ca=$CERT_DIR/api_ca.crt \
   --api-cert=$CERT_DIR/api_client.crt \
   --api-key=$CERT_DIR/api_client.key \

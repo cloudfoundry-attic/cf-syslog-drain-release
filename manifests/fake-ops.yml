@@ -122,4 +122,4 @@
 - type: replace
   path: /instance_groups/name=scheduler/jobs/name=scheduler/properties/scalablesyslog/scheduler/api?
   value:
-    url: "https://cups.service.cf.internal:4433"
+    url: "https://cups.service.cf.internal:9023"

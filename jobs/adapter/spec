@@ -13,6 +13,11 @@ templates:
 packages:
 - adapter
 
+consumes:
+- name: reverse_log_proxy
+  type: reverse_log_proxy
+  optional: true
+
 provides:
 - name: adapter_addrs
   type: addr
@@ -31,7 +36,12 @@ properties:
     description: The port for the adapter to listen on gRPC.
     default: 4443
   scalablesyslog.adapter.logs.addr:
-    description: The address of the Reverse Log Proxy (RLP).
+    description: |
+      The address of the Reverse Log Proxy (RLP) if Bosh DNS is not enabled.
+    default: "reverse-log-proxy.service.cf.internal:8082"
+  scalablesyslog.adapter.bosh_dns:
+    description: Enable Bosh DNS. Disabling this implies Consul DNS.
+    default: false
   scalablesyslog.adapter.syslog_dial_timeout:
     description: The timeout duration for dialing syslog drains.
     default: 5s

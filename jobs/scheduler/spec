@@ -16,6 +16,9 @@ consumes:
 - name: adapter_addrs
   type: addr
   optional: true
+- name: cloud_controller
+  type: cloud_controller
+  optional: true
 
 properties:
   scalablesyslog.scheduler.health:
@@ -86,9 +89,13 @@ properties:
     description: Allows insecure TLS connections to the Cloud Controller.
     default: false
 
+  scalablesyslog.scheduler.bosh_dns:
+    description: Enable Bosh DNS. Disabling this implies Consul DNS.
+    default: false
   scalablesyslog.scheduler.api.url:
     description: |
       The URL of the Cloud Controller, used for getting syslog drain bindings.
+    default: ""
   scalablesyslog.scheduler.api.polling_interval:
     description: |
       The interval at which the scheduler will poll the Cloud Controller for

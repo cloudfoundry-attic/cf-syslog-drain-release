@@ -21,12 +21,22 @@ cd $PACKAGE_DIR
 
 ulimit -n 8192
 
+<%
+
+  rlp_addr = p('scalablesyslog.adapter.logs.addr')
+  if p('scalablesyslog.adapter.bosh_dns')
+    l = link('reverse_log_proxy')
+    rlp_addr = "#{l.address}:#{l.p('reverse_log_proxy.egress.port')}"
+  end
+
+%>
+
 echo $$ > $PIDFILE
 exec chpst -u vcap:vcap ./adapter \
   --health=":<%= p('scalablesyslog.adapter.health') %>" \
   --pprof="localhost:<%= p('scalablesyslog.adapter.pprof') %>" \
   --addr=":<%= p('scalablesyslog.adapter.port') %>" \
-  --logs-api-addr="<%= p("scalablesyslog.adapter.logs.addr") %>" \
+  --logs-api-addr="<%= rlp_addr %>" \
   --ca=$CERT_DIR/ca.crt \
   --cert=$CERT_DIR/adapter.crt \
   --key=$CERT_DIR/adapter.key \

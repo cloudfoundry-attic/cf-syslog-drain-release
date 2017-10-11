@@ -15,10 +15,14 @@ consumes:
 - name: fake_consumer_addrs
   type: consumer_addr
 
+provides:
+- name: cloud_controller
+  type: cloud_controller
+
 properties:
   fake_cups_provider.port:
     description: "The port for the fake CUPS provider"
-    default: 4433
+    default: 9023
   fake_cups_provider.tls.ca:
     description: "The CA for fake CUPS provider"
   fake_cups_provider.tls.cert:
