@@ -50,7 +50,7 @@ properties:
     default: 1m
   scalablesyslog.adapter.syslog_skip_cert_verify:
     description: |
-      This disables TLS verification when connecting to a HTTPS drain.
+      This disables TLS verification when connecting to a HTTPS or a Syslog TLS drain.
     default: false
 
   scalablesyslog.adapter.tls.ca:
