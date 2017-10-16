@@ -2,7 +2,7 @@
 name: adapter
 
 dependencies:
-  - golang1.8.3
+  - golang1.9.1
 
 files:
 - code.cloudfoundry.org/go-loggregator/*.go # gosub
