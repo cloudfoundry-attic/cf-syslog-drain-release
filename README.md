@@ -16,13 +16,17 @@ Dopplers.
 ### Drain Types (Experimental)
 Syslog drains now support an experimental query parameter flag that can deliver
 container metrics in name value pairs using the syslog protocol. When confgiuring
-a drain you can now provide the following parametners.
+a drain you can now provide the following drain-type values as query parameters.
 
  * `drain-type=logs` - this is the default behavior and will deliver all application logs
  * `drain-type=metrics` - this will deliver only container metrics for an application every 15 seconds
  * `drain-type=all` - this will deliver both container metrics and logs for an application
  
-This sample [drain application](https://github.com/cloudfoundry-incubator/loggregator-tools#syslog-to-datadog) can be used to demo this functionality with datadog.    
+This sample [drain application](https://github.com/cloudfoundry-incubator/loggregator-tools#syslog-to-datadog) can be used to demo this functionality with datadog. When creating your drain use a command like:
+
+```
+cf cups metric-drain -l https://syslog-to-datadog.cf-app.com?drain-type=metrics
+```
 
 ### Configuring CF Syslog Drain Components
 
