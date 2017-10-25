@@ -8,6 +8,22 @@ drains][syslog-drain-docs].
 The [Loggregator Design Notes][loggregator-design-notes] present an overview
 of Loggregator components and architecture.
 
+## Supported Features and Release
+This release is tested to work with cf-deployment only and is currently included
+in cf-deployment by default. Syslog drains in cf-release are still handled by
+Dopplers.
+
+### Drain Types (Experimental)
+Syslog drains now support an experimental query parameter flag that can deliver
+container metrics in name value pairs using the syslog protocol. When confgiuring
+a drain you can now provide the following parametners.
+
+ * `drain-type=logs` - this is the default behavior and will deliver all application logs
+ * `drain-type=metrics` - this will deliver only container metrics for an application every 15 seconds
+ * `drain-type=all` - this will deliver both container metrics and logs for an application
+ 
+This sample [drain application](https://github.com/cloudfoundry-incubator/loggregator-tools#syslog-to-datadog) can be used to demo this functionality with datadog.    
+
 ### Configuring CF Syslog Drain Components
 
 The cf syslog drain release contains three components.
