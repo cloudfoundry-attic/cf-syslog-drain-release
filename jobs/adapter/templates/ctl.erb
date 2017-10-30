@@ -29,6 +29,11 @@ ulimit -n 8192
     rlp_addr = "#{l.address}:#{l.p('reverse_log_proxy.egress.port')}"
   end
 
+  rlp_addr_with_az = "#{spec.az}.#{rlp_addr}"
+  if p("scalablesyslog.adapter.bosh_dns")
+    router_addr_with_az = link("reverse_log_proxy").address(azs: [spec.az])
+  end
+
 %>
 
 echo $$ > $PIDFILE
@@ -37,6 +42,7 @@ exec chpst -u vcap:vcap ./adapter \
   --pprof="localhost:<%= p('scalablesyslog.adapter.pprof') %>" \
   --addr=":<%= p('scalablesyslog.adapter.port') %>" \
   --logs-api-addr="<%= rlp_addr %>" \
+  --logs-api-addr-with-az="<%= rlp_addr_with_az %>" \
   --ca=$CERT_DIR/ca.crt \
   --cert=$CERT_DIR/adapter.crt \
   --key=$CERT_DIR/adapter.key \
