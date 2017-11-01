@@ -37,3 +37,6 @@
 [submodule "src/code.cloudfoundry.org/go-diodes"]
 	path = src/code.cloudfoundry.org/go-diodes
 	url = https://github.com/cloudfoundry/go-diodes
+[submodule "src/code.cloudfoundry.org/go-envstruct"]
+	path = src/code.cloudfoundry.org/go-envstruct
+	url = https://github.com/cloudfoundry/go-envstruct

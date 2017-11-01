@@ -1,0 +1,40 @@
+<%
+  blacklisted_ranges = p("scalablesyslog.scheduler.blacklisted_syslog_ranges")
+  blacklisted_ips = blacklisted_ranges.map do |range|
+    "#{range['start']}-#{range['end']}"
+  end.join(",")
+  adapter_addrs = []
+  adapter_port = 0
+  if_link("adapter_addrs") do |l|
+    adapter_addrs = l.instances.map(&:address).join(",")
+    adapter_port = l.p('scalablesyslog.adapter.port')
+  end.else do
+    adapter_addrs = p('scalablesyslog.adapter.addrs').join(",")
+    adapter_port = p('scalablesyslog.adapter.port')
+  end
+
+  api_addr = p("scalablesyslog.scheduler.api.url")
+  if p("scalablesyslog.scheduler.bosh_dns")
+    api_addr = "https://#{link("cloud_controller").address}:9023"
+  end
+%>
+
+export HEALTH_HOSTPORT=":<%= p('scalablesyslog.scheduler.health') %>"
+export PPROF_HOSTPORT="localhost:<%= p('scalablesyslog.scheduler.pprof') %>"
+export API_URL="<%= api_addr %>"
+export API_CA_FILE_PATH="/var/vcap/jobs/scheduler/certs/api_ca.crt"
+export API_CERT_FILE_PATH="/var/vcap/jobs/scheduler/certs/api_client.crt"
+export API_KEY_FILE_PATH="/var/vcap/jobs/scheduler/certs/api_client.key"
+export API_COMMON_NAME="<%= p("scalablesyslog.scheduler.tls.api.cn") %>"
+export API_SKIP_CERT_VERIFY="<%= p("scalablesyslog.scheduler.tls.api.skip_cert_verify") %>"
+export API_POLLING_INTERVAL="<%= p("scalablesyslog.scheduler.api.polling_interval") %>"
+export CA_FILE_PATH="/var/vcap/jobs/scheduler/certs/ca.crt"
+export CERT_FILE_PATH="/var/vcap/jobs/scheduler/certs/scheduler.crt"
+export KEY_FILE_PATH="/var/vcap/jobs/scheduler/certs/scheduler.key"
+export ADAPTER_COMMON_NAME="<%= p("scalablesyslog.scheduler.tls.client.adapter_cn") %>"
+export ADAPTER_PORT="<%= adapter_port %>"
+export ADAPTER_ADDRS="<%= adapter_addrs %>"
+export BLACKLIST="<%= blacklisted_ips %>"
+export METRIC_INGRESS_ADDR="<%= p("scalablesyslog.scheduler.metric.addr") %>"
+export METRIC_INGRESS_CN="<%= p("scalablesyslog.scheduler.metric.cn") %>"
+export METRIC_EMITTER_INTERVAL="<%= p('metric_emitter.interval') %>"
