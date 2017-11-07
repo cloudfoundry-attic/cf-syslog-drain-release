@@ -48,6 +48,7 @@ exec chpst -u vcap:vcap ./adapter \
   --syslog-dial-timeout=<%= p('scalablesyslog.adapter.syslog_dial_timeout') %> \
   --syslog-io-timeout=<%= p('scalablesyslog.adapter.syslog_io_timeout') %> \
   --syslog-skip-cert-verify=<%= p('scalablesyslog.adapter.syslog_skip_cert_verify') %> \
+  --metrics-to-syslog-enabled=<%= p('scalablesyslog.adapter.metrics_to_syslog_enabled') %> \
   --metric-ingress-addr=<%= p('scalablesyslog.metric_ingress_addr') %> \
   --metric-ingress-cn=<%= p('scalablesyslog.metric_ingress_cn') %> \
   --metric-emitter-interval="<%= p('metric_emitter.interval') %>" \
