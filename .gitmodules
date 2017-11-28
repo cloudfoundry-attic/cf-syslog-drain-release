@@ -40,3 +40,6 @@
 [submodule "src/code.cloudfoundry.org/go-envstruct"]
 	path = src/code.cloudfoundry.org/go-envstruct
 	url = https://github.com/cloudfoundry/go-envstruct
+[submodule "src/code.cloudfoundry.org/go-orchestrator"]
+	path = src/code.cloudfoundry.org/go-orchestrator
+	url = https://github.com/cloudfoundry-incubator/go-orchestrator

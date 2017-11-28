@@ -9,6 +9,7 @@ files:
 - code.cloudfoundry.org/go-loggregator/*.go # gosub
 - code.cloudfoundry.org/go-loggregator/pulseemitter/*.go # gosub
 - code.cloudfoundry.org/go-loggregator/rpc/loggregator_v2/*.go # gosub
+- code.cloudfoundry.org/go-orchestrator/*.go # gosub
 - code.cloudfoundry.org/scalable-syslog/internal/api/*.go # gosub
 - code.cloudfoundry.org/scalable-syslog/internal/api/v1/*.go # gosub
 - code.cloudfoundry.org/scalable-syslog/internal/health/*.go # gosub
