@@ -27,6 +27,12 @@ This sample [drain application](https://github.com/cloudfoundry-incubator/loggre
 ```
 cf cups metric-drain -l https://syslog-to-datadog.cf-app.com?drain-type=metrics
 ```
+### Log Ordering
+Ensuring log ordering in drains can be an important consideration for both operators 
+and developers. Diego uses a nanosecond based timestamp that can be ingested properly 
+by both [ELK](https://www.elastic.co/guide/en/elasticsearch/reference/5.0/date.html) and [Splunk](https://answers.splunk.com/answers/1946/time-format-and-subseconds.html) with the instructions linked. 
+
+Additionally a workaround exists specifically for [Java stack traces](https://github.com/cloudfoundry/loggregator-release/blob/develop/docs/java-multi-line-work-around.md) and ElK. 
 
 ### Configuring CF Syslog Drain Components
 
