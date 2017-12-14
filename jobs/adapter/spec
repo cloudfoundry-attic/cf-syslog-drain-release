@@ -43,6 +43,11 @@ properties:
   scalablesyslog.adapter.bosh_dns:
     description: Enable Bosh DNS. Disabling this implies Consul DNS.
     default: false
+  scalablesyslog.adapter.keepalive:
+    description: |
+      The duration for sending keepalive packets for TCP and TLS syslog
+      drains. Setting this to zero disables keepalives.
+    default: 2m
   scalablesyslog.adapter.syslog_dial_timeout:
     description: The timeout duration for dialing syslog drains.
     default: 5s
