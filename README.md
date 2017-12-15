@@ -62,7 +62,7 @@ adapters are reporting dropped.
 The following new metrics are emitted:
 
 - `loggregator.rlp.ingress` - ingress into reverse log proxy
-- `loggregatopr.rlp.egress` - egress out of reverse log proxy
+- `loggregator.rlp.egress` - egress out of reverse log proxy
 - `cf-syslog-drain.adapter.ingress` - ingress into adapters (these are tagged by index and drain protocol)
 - `cf-syslog-drain.adapter.engress` - engress out of adapters (these are tagged by index and drain protocol)
 - `cf-syslog-drain.adapter.dropped` - dropped messages on adapters (these are tagged by index and drain protocol)
