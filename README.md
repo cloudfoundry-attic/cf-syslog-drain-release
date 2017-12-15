@@ -15,7 +15,7 @@ Dopplers.
 
 ### Drain Types (Experimental)
 Syslog drains now support an experimental query parameter flag that can deliver
-container metrics in name value pairs using the syslog protocol. When confgiuring
+container metrics in name value pairs using the syslog protocol. When configuring
 a drain you can now provide the following drain-type values as query parameters.
 
  * `drain-type=logs` - this is the default behavior and will deliver all application logs
