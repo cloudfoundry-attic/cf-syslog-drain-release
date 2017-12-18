@@ -14,19 +14,18 @@ in cf-deployment by default. Syslog drains in cf-release are still handled by
 Dopplers.
 
 ### Drain Types (Experimental)
-Syslog drains now support an experimental query parameter flag that can deliver
-container metrics in name value pairs using the syslog protocol. When configuring
-a drain you can now provide the following drain-type values as query parameters.
+Syslog drains now support an experimental feature that you can opt into by dowloading
+the [cf-drain-cli plugin](https://github.com/cloudfoundry-incubator/cf-drain-cli). This
+plugin allows you to specify the following "drain types".
 
- * `drain-type=logs` - this is the default behavior and will deliver all application logs
- * `drain-type=metrics` - this will deliver any metric for an application every 15 seconds
- * `drain-type=all` - this will deliver both metrics and logs for an application
+ * `logs` - this is the default behavior and will deliver all application logs
+ * `metrics` - this will deliver any metric for an application every 15 seconds
+ * `all` - this will deliver both metrics and logs for an application
 
-This sample [drain application](https://github.com/cloudfoundry-incubator/loggregator-tools#syslog-to-datadog) can be used to demo this functionality with datadog. When creating your drain use a command like:
+This sample [drain application](https://github.com/cloudfoundry-incubator/loggregator-tools#syslog-to-datadog) can be used to demo this functionality with datadog. 
 
-```
-cf cups metric-drain -l https://syslog-to-datadog.cf-app.com?drain-type=metrics
-```
+
+
 ### Log Ordering
 Ensuring log ordering in drains can be an important consideration for both operators 
 and developers. Diego uses a nanosecond based timestamp that can be ingested properly 
