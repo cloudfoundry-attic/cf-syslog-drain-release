@@ -47,7 +47,7 @@ properties:
     description: |
       The duration for sending keepalive packets for TCP and TLS syslog
       drains. Setting this to zero disables keepalives.
-    default: 2m
+    default: 30s
   scalablesyslog.adapter.syslog_dial_timeout:
     description: The timeout duration for dialing syslog drains.
     default: 5s
