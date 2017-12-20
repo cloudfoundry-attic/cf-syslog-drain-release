@@ -102,6 +102,11 @@ properties:
       The interval at which the scheduler will poll the Cloud Controller for
       bindings.
     default: 15s
+  scalablesyslog.scheduler.api.batch_size:
+    description: |
+      The batch size the scheduler will request the Cloud Controller for
+      bindings.
+    default: 1000
 
   scalablesyslog.scheduler.blacklisted_syslog_ranges:
     description: |
