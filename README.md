@@ -23,7 +23,7 @@ plugin allows you to specify the following "drain types".
  * `all` - this will deliver both metrics and logs for an application
 
 This sample [drain application](https://github.com/cloudfoundry-incubator/loggregator-tools#syslog-to-datadog) can be used to demo this functionality with datadog. **Note** This requires setting the property
-(`scalablesyslog.adapter.metrics_to_syslog_enabled`)[https://github.com/cloudfoundry/cf-syslog-drain-release/blob/develop/jobs/adapter/spec#L61] to true. 
+[`scalablesyslog.adapter.metrics_to_syslog_enabled`](https://github.com/cloudfoundry/cf-syslog-drain-release/blob/develop/jobs/adapter/spec#L61) to true. 
 
 
 
