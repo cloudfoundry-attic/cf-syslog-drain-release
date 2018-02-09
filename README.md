@@ -15,8 +15,8 @@ Dopplers.
 
 ### Drain Types (Experimental)
 Syslog drains now support an experimental feature that you can opt into by dowloading
-the [cf-drain-cli plugin](https://github.com/cloudfoundry-incubator/cf-drain-cli). This
-plugin allows you to specify the following "drain types".
+the [cf-drain-cli plugin](https://github.com/cloudfoundry-incubator/cf-drain-cli). and 
+setting a feature flag. This plugin allows you to specify the following "drain types".
 
  * `logs` - this is the default behavior and will deliver all application logs
  * `metrics` - this will deliver any metric for an application every 15 seconds
