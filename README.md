@@ -43,7 +43,8 @@ The cf syslog drain release contains three components.
 #### Scheduler
 
 This component handles communication with the Cloud Controller to receive new
-bindings. It should not be scaled beyond a single instance.
+bindings. It uses a deterministick algorithm to schedule drains and should be
+scaled to a single instance per zone. 
 
 #### Reverse Log Proxy (RLP)
 
