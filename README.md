@@ -14,7 +14,7 @@ in cf-deployment by default. Syslog drains in cf-release are still handled by
 Dopplers.
 
 ### Drain Types (Experimental)
-Syslog drains now support an experimental feature that you can opt into by dowloading
+Syslog drains now support an experimental feature that you can opt into by downloading
 the [cf-drain-cli plugin](https://github.com/cloudfoundry-incubator/cf-drain-cli). and 
 setting a feature flag. This plugin allows you to specify the following "drain types".
 
@@ -22,7 +22,7 @@ setting a feature flag. This plugin allows you to specify the following "drain t
  * `metrics` - this will deliver any metric for an application every 15 seconds
  * `all` - this will deliver both metrics and logs for an application
 
-This sample [drain application](https://github.com/cloudfoundry-incubator/loggregator-tools#syslog-to-datadog) can be used to demo this functionality with datadog. **Note** This requires setting the property
+This sample [drain application](https://github.com/cloudfoundry-incubator/loggregator-tools#syslog-to-datadog) can be used to demo this functionality with Datadog. **Note** This requires setting the property
 [`scalablesyslog.adapter.metrics_to_syslog_enabled`](https://github.com/cloudfoundry/cf-syslog-drain-release/blob/develop/jobs/adapter/spec#L61) to **true**. 
 
 
@@ -43,7 +43,7 @@ The cf syslog drain release contains three components.
 #### Scheduler
 
 This component handles communication with the Cloud Controller to receive new
-bindings. It uses a deterministick algorithm to schedule drains and should be
+bindings. It uses a deterministic algorithm to schedule drains and should be
 scaled to a single instance per zone. 
 
 #### Reverse Log Proxy (RLP)
