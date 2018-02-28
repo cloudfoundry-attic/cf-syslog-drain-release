@@ -80,8 +80,7 @@ properties:
       they initiate a connection.
   scalablesyslog.adapter.tls.cn:
     description: |
-      This value is deprecated and not needed any longer.
-    default: ""
+      The common name for the adapters TLS certificate.
 
   scalablesyslog.adapter_rlp.tls.ca:
     description: |
