@@ -64,6 +64,10 @@ properties:
       metrics into a syslog drain. Note, this feature requires Loggregator
       v101 or higher.
     default: true
+  scalablesyslog.adapter.max_bindings:
+    description: |
+        The maximum number of bindings that can be serviced by an adapter.
+    default: 500
 
   scalablesyslog.adapter.tls.ca:
     description: |
