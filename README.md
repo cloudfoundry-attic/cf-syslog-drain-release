@@ -57,8 +57,8 @@ release][loggregator].
 
 This component manages the connections to external log storage systems and enforces
 a hard limit of 500 streams. Since each syslog-drain creates 2 streams to provide
-a highly available stream distribution we recomend the folowing metric and 
-formula to determine number of aapters and allow for headroom for new bindings. 
+a highly available stream distribution we recommend the following metric and 
+formula to determine number of adapters and allow for headroom for new bindings. 
 
 ```
 Num of Adapters = (cf-syslog-drain.scheduler.drains / 250) + 2
