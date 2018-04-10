@@ -127,4 +127,4 @@ Assuming you have these two CAs, run the following commands:
 [sample-manifest]:          https://code.cloudfoundry.org/cf-syslog-drain-release/blob/master/manifests/cf-syslog-drain.yml
 [common-cloud-config]:      https://code.cloudfoundry.org/bosh-deployment/blob/master/warden/cloud-config.yml
 [ci-badge]:                 https://loggregator.ci.cf-app.com/api/v1/teams/main/pipelines/products/jobs/cf-syslog-drain-tests/badge
-[ci-pipeline]:              https://loggregator.ci.cf-app.com/teams/main/pipelines/loggregator?groups=cf-syslog-drain
+[ci-pipeline]:              https://loggregator.ci.cf-app.com/teams/main/pipelines/products?groups=cf-syslog-drain
