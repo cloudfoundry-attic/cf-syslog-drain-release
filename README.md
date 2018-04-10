@@ -55,10 +55,15 @@ release][loggregator].
 
 #### Syslog Adapter
 
-This component manages the connections to drains. It should be scaled with the
-number of drains. A general rule of thumb is to plan for no less than 2
-instances and 1 additional instance for every 500 drain bindings. Otherwise,
-adapters are reporting dropped.
+This component manages the connections to external log storage systems and enforces
+a hard limit of 500 streams. Since each syslog-drain creates 2 streams to provide
+a highly available stream distribution. Therefore we recomend the folowing metric and 
+formula to determine number of aapters and allow for headroom for new bindings. 
+
+```
+Num of Adapters = (cf-syslog-drain.scheduler.drains / 250) + 2
+```
+
 
 ### Operator Metrics
 
