@@ -25,8 +25,6 @@ setting a feature flag. This plugin allows you to specify the following "drain t
 This sample [drain application](https://github.com/cloudfoundry-incubator/loggregator-tools#syslog-to-datadog) can be used to demo this functionality with Datadog. **Note** This requires setting the property
 [`scalablesyslog.adapter.metrics_to_syslog_enabled`](https://github.com/cloudfoundry/cf-syslog-drain-release/blob/develop/jobs/adapter/spec#L61) to **true**. 
 
-
-
 ### Log Ordering
 Ensuring log ordering in drains can be an important consideration for both operators 
 and developers. Diego uses a nanosecond based timestamp that can be ingested properly 
@@ -63,7 +61,6 @@ formula to determine number of adapters and allow for headroom for new bindings.
 ```
 Num of Adapters = (cf-syslog-drain.scheduler.drains / 250) + 2
 ```
-
 
 ### Operator Metrics
 
