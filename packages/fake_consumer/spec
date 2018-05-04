@@ -2,7 +2,7 @@
 name: fake_consumer
 
 dependencies:
-  - golang1.9.4
+  - golang1.10.2
 
 files:
 - code.cloudfoundry.org/scalable-syslog/tools/fake_consumer/*
