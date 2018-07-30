@@ -19,6 +19,7 @@ files:
 - code.cloudfoundry.org/scalable-syslog/scheduler/app/*.go # gosub
 - code.cloudfoundry.org/scalable-syslog/scheduler/internal/egress/*.go # gosub
 - code.cloudfoundry.org/scalable-syslog/scheduler/internal/ingress/*.go # gosub
+- github.com/golang/protobuf/jsonpb/*.go # gosub
 - github.com/golang/protobuf/proto/*.go # gosub
 - github.com/golang/protobuf/ptypes/*.go # gosub
 - github.com/golang/protobuf/ptypes/any/*.go # gosub
