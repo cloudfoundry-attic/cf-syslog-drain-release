@@ -1,7 +1,7 @@
 ---
 name: fake_cups_provider
 templates:
-  ctl.erb: bin/ctl
+  bpm.yml.erb: config/bpm.yml
   cups_ca.crt.erb: certs/cups_ca.crt
   server.crt.erb: certs/server.crt
   server.key.erb: certs/server.key

@@ -1,8 +1,7 @@
 ---
 name: adapter
 templates:
-  ctl.erb: bin/ctl
-  environment.sh.erb: bin/environment.sh
+  bpm.yml.erb: config/bpm.yml
   drain.erb: bin/drain
   ca.crt.erb: certs/ca.crt
   adapter.crt.erb: certs/adapter.crt

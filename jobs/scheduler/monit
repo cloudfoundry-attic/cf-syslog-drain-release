@@ -1,5 +1,5 @@
 check process scheduler
-  with pidfile /var/vcap/sys/run/scheduler/scheduler.pid
-  start program "/var/vcap/jobs/scheduler/bin/ctl start"
-  stop program "/var/vcap/jobs/scheduler/bin/ctl stop" with timeout 60 seconds
+  with pidfile /var/vcap/sys/run/bpm/scheduler/scheduler.pid
+  start program "/var/vcap/jobs/bpm/bin/bpm start scheduler"
+  stop program "/var/vcap/jobs/bpm/bin/bpm stop scheduler" with timeout 60 seconds
   group vcap

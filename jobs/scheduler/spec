@@ -1,8 +1,7 @@
 ---
 name: scheduler
 templates:
-  ctl.erb: bin/ctl
-  environment.sh.erb: bin/environment.sh
+  bpm.yml.erb: config/bpm.yml
   api_ca.crt.erb: certs/api_ca.crt
   api_client.crt.erb: certs/api_client.crt
   api_client.key.erb: certs/api_client.key

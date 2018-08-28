@@ -1,0 +1,44 @@
+<%
+
+  rlp_addr = p('scalablesyslog.adapter.logs.addr')
+  if p('scalablesyslog.adapter.bosh_dns')
+    l = link('reverse_log_proxy')
+    rlp_addr = "#{l.address}:#{l.p('reverse_log_proxy.egress.port')}"
+  end
+
+  rlp_addr_with_az = "#{spec.az}.#{rlp_addr}"
+  if p("scalablesyslog.adapter.bosh_dns")
+    router_addr_with_az = link("reverse_log_proxy").address(azs: [spec.az])
+  end
+
+%>
+
+processes:
+  - name: adapter
+    executable: /var/vcap/packages/adapter/adapter
+    env:
+      ADAPTER_INSTANCE_INDEX: "<%= spec.index.to_s %>"
+      HEALTH_HOSTPORT: ":<%= p('scalablesyslog.adapter.health') %>"
+      HOSTPORT: ":<%= p('scalablesyslog.adapter.port') %>"
+      PPROF_HOSTPORT: "localhost:<%= p('scalablesyslog.adapter.pprof') %>"
+      CA_FILE_PATH: "/var/vcap/jobs/adapter/certs/ca.crt"
+      CERT_FILE_PATH: "/var/vcap/jobs/adapter/certs/adapter.crt"
+      KEY_FILE_PATH: "/var/vcap/jobs/adapter/certs/adapter.key"
+      TLS_COMMON_NAME: "<%= p('scalablesyslog.adapter.tls.cn') %>"
+      LOGS_API_CA_FILE: "/var/vcap/jobs/adapter/certs/rlp_ca.crt"
+      LOGS_API_CERT_FILE_PATH: "/var/vcap/jobs/adapter/certs/adapter_rlp.crt"
+      LOGS_API_KEY_FILE_PATH: "/var/vcap/jobs/adapter/certs/adapter_rlp.key"
+      LOGS_API_COMMON_NAME: "<%= p('scalablesyslog.adapter_rlp.tls.cn') %>"
+      LOGS_API_ADDR: "<%= rlp_addr %>"
+      LOGS_API_ADDR_WITH_AZ: "<%= rlp_addr_with_az %>"
+      SYSLOG_KEEPALIVE: "<%= p('scalablesyslog.adapter.keepalive') %>"
+      SYSLOG_DIAL_TIMEOUT: "<%= p('scalablesyslog.adapter.syslog_dial_timeout') %>"
+      SYSLOG_IO_TIMEOUT: "<%= p('scalablesyslog.adapter.syslog_io_timeout') %>"
+      SYSLOG_SKIP_CERT_VERIFY: "<%= p('scalablesyslog.adapter.syslog_skip_cert_verify') %>"
+      MAX_BINDINGS: "<%= p('scalablesyslog.adapter.max_bindings') %>"
+      METRICS_TO_SYSLOG_ENABLED: "<%= p('scalablesyslog.adapter.metrics_to_syslog_enabled') %>"
+      METRIC_INGRESS_ADDR: "<%= p('scalablesyslog.metric_ingress_addr') %>"
+      METRIC_INGRESS_CN: "<%= p('scalablesyslog.metric_ingress_cn') %>"
+      METRIC_EMITTER_INTERVAL: "<%= p('metric_emitter.interval') %>"
+    limits:
+      open_files: 8192

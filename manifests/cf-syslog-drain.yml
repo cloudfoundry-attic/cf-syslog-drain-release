@@ -1,5 +1,11 @@
 name: cf-syslog-drain
 
+addons:
+- name: bpm
+  jobs:
+  - name: bpm
+    release: bpm
+
 stemcells:
 - alias: default
   os: ubuntu-trusty
@@ -11,6 +17,8 @@ releases:
 - name: loggregator
   version: latest
 - name: consul
+  version: latest
+- name: bpm
   version: latest
 
 instance_groups:

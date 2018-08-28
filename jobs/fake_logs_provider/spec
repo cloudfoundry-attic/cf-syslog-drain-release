@@ -2,7 +2,7 @@
 name: fake_logs_provider
 
 templates:
-  ctl.erb: bin/ctl
+  bpm.yml.erb: config/bpm.yml
   dns_health_check.erb: bin/dns_health_check
   ca.crt.erb: certs/ca.crt
   server.crt.erb: certs/server.crt

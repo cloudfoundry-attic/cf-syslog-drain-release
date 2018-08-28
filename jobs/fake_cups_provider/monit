@@ -1,5 +1,5 @@
 check process fake_cups_provider
-  with pidfile /var/vcap/sys/run/fake_cups_provider/fake_cups_provider.pid
-  start program "/var/vcap/jobs/fake_cups_provider/bin/ctl start"
-  stop program "/var/vcap/jobs/fake_cups_provider/bin/ctl stop" with timeout 60 seconds
+  with pidfile /var/vcap/sys/run/bpm/fake_cups_provider/fake_cups_provider.pid
+  start program "/var/vcap/jobs/bpm/bin/bpm start fake_cups_provider"
+  stop program "/var/vcap/jobs/bpm/bin/bpm stop fake_cups_provider" with timeout 60 seconds
   group vcap

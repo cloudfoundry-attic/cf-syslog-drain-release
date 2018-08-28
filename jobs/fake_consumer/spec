@@ -2,7 +2,7 @@
 name: fake_consumer
 
 templates:
-  ctl.erb: bin/ctl
+  bpm.yml.erb: config/bpm.yml
 
 packages:
 - fake_consumer

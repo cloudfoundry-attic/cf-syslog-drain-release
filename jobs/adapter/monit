@@ -1,5 +1,5 @@
 check process adapter
-  with pidfile /var/vcap/sys/run/adapter/adapter.pid
-  start program "/var/vcap/jobs/adapter/bin/ctl start"
-  stop program "/var/vcap/jobs/adapter/bin/ctl stop" with timeout 60 seconds
+  with pidfile /var/vcap/sys/run/bpm/adapter/adapter.pid
+  start program "/var/vcap/jobs/bpm/bin/bpm start adapter"
+  stop program "/var/vcap/jobs/bpm/bin/bpm stop adapter" with timeout 60 seconds
   group vcap

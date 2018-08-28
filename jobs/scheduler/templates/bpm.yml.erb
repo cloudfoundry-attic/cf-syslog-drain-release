@@ -1,0 +1,47 @@
+<%
+  blacklisted_ranges = p("scalablesyslog.scheduler.blacklisted_syslog_ranges")
+  blacklisted_ips = blacklisted_ranges.map do |range|
+    "#{range['start']}-#{range['end']}"
+  end.join(",")
+  adapter_addrs = []
+  adapter_port = 0
+  if_link("adapter_addrs") do |l|
+    adapter_addrs = l.instances.map(&:address).join(",")
+    adapter_port = l.p('scalablesyslog.adapter.port')
+  end.else do
+    adapter_addrs = p('scalablesyslog.adapter.addrs').join(",")
+    adapter_port = p('scalablesyslog.adapter.port')
+  end
+
+  api_addr = p("scalablesyslog.scheduler.api.url")
+  if p("scalablesyslog.scheduler.bosh_dns")
+    api_addr = "https://#{link("cloud_controller").address}:9023"
+  end
+%>
+
+processes:
+  - name: scheduler
+    executable: /var/vcap/packages/scheduler/scheduler
+    env:
+      HEALTH_HOSTPORT: ":<%= p('scalablesyslog.scheduler.health') %>"
+      PPROF_HOSTPORT: "localhost:<%= p('scalablesyslog.scheduler.pprof') %>"
+      API_URL: "<%= api_addr %>"
+      API_CA_FILE_PATH: "/var/vcap/jobs/scheduler/certs/api_ca.crt"
+      API_CERT_FILE_PATH: "/var/vcap/jobs/scheduler/certs/api_client.crt"
+      API_KEY_FILE_PATH: "/var/vcap/jobs/scheduler/certs/api_client.key"
+      API_COMMON_NAME: "<%= p("scalablesyslog.scheduler.tls.api.cn") %>"
+      API_SKIP_CERT_VERIFY: "<%= p("scalablesyslog.scheduler.tls.api.skip_cert_verify") %>"
+      API_POLLING_INTERVAL: "<%= p("scalablesyslog.scheduler.api.polling_interval") %>"
+      API_BATCH_SIZE: "<%= p('scalablesyslog.scheduler.api.batch_size') %>"
+      CA_FILE_PATH: "/var/vcap/jobs/scheduler/certs/ca.crt"
+      CERT_FILE_PATH: "/var/vcap/jobs/scheduler/certs/scheduler.crt"
+      KEY_FILE_PATH: "/var/vcap/jobs/scheduler/certs/scheduler.key"
+      ADAPTER_COMMON_NAME: "<%= p("scalablesyslog.scheduler.tls.client.adapter_cn") %>"
+      ADAPTER_PORT: "<%= adapter_port %>"
+      ADAPTER_ADDRS: "<%= adapter_addrs %>"
+      BLACKLIST: "<%= blacklisted_ips %>"
+      METRIC_INGRESS_ADDR: "<%= p("scalablesyslog.scheduler.metric.addr") %>"
+      METRIC_INGRESS_CN: "<%= p("scalablesyslog.scheduler.metric.cn") %>"
+      METRIC_EMITTER_INTERVAL: "<%= p('metric_emitter.interval') %>"
+    limits:
+      open_files: 8192

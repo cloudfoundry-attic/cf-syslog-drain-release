@@ -1,0 +1,11 @@
+processes:
+  - name: fake_logs_provider
+    executable: /var/vcap/packages/fake_logs_provider/fake_logs_provider
+    args:
+    - "--addr=:<%= p('reverse_log_proxy.egress.port') %>"
+    - "--ca=/var/vcap/jobs/fake_logs_provider/certs/ca.crt"
+    - "--cert=/var/vcap/jobs/fake_logs_provider/certs/server.crt"
+    - "--key=/var/vcap/jobs/fake_logs_provider/certs/server.key"
+    - "--cn=<%= p('fake_logs_provider.tls.cn') %>"
+    limits:
+      open_files: 8192

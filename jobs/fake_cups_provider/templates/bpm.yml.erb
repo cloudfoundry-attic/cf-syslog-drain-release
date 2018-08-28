@@ -1,0 +1,11 @@
+processes:
+  - name: fake_cups_provider
+    executable: /var/vcap/packages/fake_cups_provider/fake_cups_provider.sh
+    env:
+      RESPONSE_BODY: /var/vcap/jobs/fake_cups_provider/bin/response_body
+      CA_CERT: /var/vcap/jobs/fake_cups_provider/certs/cups_ca.crt
+      CERT: /var/vcap/jobs/fake_cups_provider/certs/server.crt
+      KEY: /var/vcap/jobs/fake_cups_provider/certs/server.key
+      PORT: <%= p('fake_cups_provider.port') %>
+    limits:
+      open_files: 8192

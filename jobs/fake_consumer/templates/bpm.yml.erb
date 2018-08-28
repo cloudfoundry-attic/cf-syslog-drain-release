@@ -1,0 +1,8 @@
+processes:
+  - name: fake_consumer
+    executable: /var/vcap/packages/fake_consumer/fake_consumer
+    args:
+    - "--addr=<%= p('fake_consumer.addr') %>"
+    - "--delay=<%= p('fake_consumer.delay') %>"
+    limits:
+      open_files: 8192
