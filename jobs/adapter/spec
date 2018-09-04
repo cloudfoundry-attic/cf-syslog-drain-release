@@ -38,10 +38,10 @@ properties:
   scalablesyslog.adapter.logs.addr:
     description: |
       The address of the Reverse Log Proxy (RLP) if Bosh DNS is not enabled.
-    default: "reverse-log-proxy.service.cf.internal:8082"
+    default: ""
   scalablesyslog.adapter.bosh_dns:
     description: Enable Bosh DNS. Disabling this implies Consul DNS.
-    default: false
+    default: true
   scalablesyslog.adapter.keepalive:
     description: |
       The duration for sending keepalive packets for TCP and TLS syslog
