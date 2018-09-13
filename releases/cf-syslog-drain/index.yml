@@ -27,10 +27,12 @@ builds:
     version: "6.3"
   b3c267b5-6d48-4538-74f6-b575fd31f4cc:
     version: "4"
-  d106fe81-c420-4425-5125-84e5e61fa04a:
-    version: "6.0"
   bacaade5-0e7d-481b-431d-0106f3e4f8d2:
     version: "2.2"
+  c2d38f2d-9704-4ad6-5af2-f32fc8890d1e:
+    version: "7.1"
+  d106fe81-c420-4425-5125-84e5e61fa04a:
+    version: "6.0"
   efa5b905-0387-4c67-5205-37669393cefe:
     version: "1"
   f9659203-7336-45d1-7fab-4ba96530e5cd:
