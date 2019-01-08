@@ -6,6 +6,7 @@ templates:
   ca.crt.erb: certs/ca.crt
   adapter.crt.erb: certs/adapter.crt
   adapter.key.erb: certs/adapter.key
+  indicators.yml.erb: config/indicators.yml
   rlp_ca.crt.erb: certs/rlp_ca.crt
   adapter_rlp.crt.erb: certs/adapter_rlp.crt
   adapter_rlp.key.erb: certs/adapter_rlp.key
