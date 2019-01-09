@@ -1,0 +1,64 @@
+name: cf-syslog-drain
+version: "8.2"
+commit_hash: f00bbd2
+uncommitted_changes: false
+jobs:
+- name: adapter
+  version: b7129cf84a42ba3b7334cfd5d669612067f34890cd54bfdee616668fc68f17e5
+  fingerprint: b7129cf84a42ba3b7334cfd5d669612067f34890cd54bfdee616668fc68f17e5
+  sha1: sha256:031ece2eecd8d7e13ec16c3dc1378e093d361086cf7ba07fda0411c45e585ef8
+- name: fake_consumer
+  version: 04a1c5e55b40828d54150e3a5796341fa71d769a04e81b457ec65af42ac1ab51
+  fingerprint: 04a1c5e55b40828d54150e3a5796341fa71d769a04e81b457ec65af42ac1ab51
+  sha1: sha256:87136098b987fec5d1ec6c62e2ccc2e30e8729c579f24a70bc704bdbda52ac90
+- name: fake_cups_provider
+  version: dcede6087f4d57b2a23fa458ae3d082dfe82de7befffd28df438b2b0fa5cdd55
+  fingerprint: dcede6087f4d57b2a23fa458ae3d082dfe82de7befffd28df438b2b0fa5cdd55
+  sha1: sha256:d46de55c74513833fa1a3e0e246276de5559261aaedb98db78d693aae7b0ce25
+- name: fake_logs_provider
+  version: 4c46ea83e5d89c10c958a82b0abfe554af00d56c8c2189f9f89b810109cd1421
+  fingerprint: 4c46ea83e5d89c10c958a82b0abfe554af00d56c8c2189f9f89b810109cd1421
+  sha1: sha256:35bc2aa7a7e823b952678b77da66326d9adcc8ec149d5bc7bb505ebcd7e815ab
+- name: scheduler
+  version: 8455ed350dd92d86a0bc67dbcd2a66119475710b6c1d736959da388a37818ee4
+  fingerprint: 8455ed350dd92d86a0bc67dbcd2a66119475710b6c1d736959da388a37818ee4
+  sha1: sha256:f0f93753e87a4579a076ad39d6d45105bd102be0d19bf300d8d0b139259ffc61
+packages:
+- name: adapter
+  version: 5d8e0d5d32e3b9132b8f52b715fd7665fd2e6de5eb30be4308f4464ab80c2172
+  fingerprint: 5d8e0d5d32e3b9132b8f52b715fd7665fd2e6de5eb30be4308f4464ab80c2172
+  sha1: sha256:25bd9b0bd4c41d3797dc0b7d8412bac015c2c657c44ba7739bfee4a58613b8fb
+  dependencies:
+  - golang1.11.4
+- name: fake_consumer
+  version: a3814feefa28645824035aac2e0307cfebf782ba3c3bd2d620380802e613b61c
+  fingerprint: a3814feefa28645824035aac2e0307cfebf782ba3c3bd2d620380802e613b61c
+  sha1: sha256:9582478c6aa4ca6ff5e8156d2101cd318381439f1342cba00b9e13e7a50575e6
+  dependencies:
+  - golang1.11.4
+- name: fake_cups_provider
+  version: b72c076347c40720715ce068dc1e0d5d460d6b56dd642901fac1a16205fe8894
+  fingerprint: b72c076347c40720715ce068dc1e0d5d460d6b56dd642901fac1a16205fe8894
+  sha1: sha256:275e13c79977f22e67bdebeb53d1462a1d58905b6ac0db061ef10ae1fff05061
+  dependencies: []
+- name: fake_logs_provider
+  version: 34884c26c4393a0f6e296793aa83374667492b01ebded559a0fe3f6100e7c7d0
+  fingerprint: 34884c26c4393a0f6e296793aa83374667492b01ebded559a0fe3f6100e7c7d0
+  sha1: sha256:fb273533dceb485ae94945efebe0d2d43288755446a017793f4ade3e9cd6b717
+  dependencies:
+  - golang1.11.4
+- name: golang1.11.4
+  version: 598c8f7fe7e00aa194bd6f8570cae5027d34d80c50793efb7f3eeb6f3a565f9b
+  fingerprint: 598c8f7fe7e00aa194bd6f8570cae5027d34d80c50793efb7f3eeb6f3a565f9b
+  sha1: sha256:f9c89b6188914fb6fb189d8fca713e649d81ed2379fc7efd3462e2522e7a03f6
+  dependencies: []
+- name: scheduler
+  version: 987a0aa20e185a55538ce89847455774c7da7f125143d92e344868e1ba350eb4
+  fingerprint: 987a0aa20e185a55538ce89847455774c7da7f125143d92e344868e1ba350eb4
+  sha1: sha256:06855ed8b4c2b94c9ddb899e8dec138637c66fc34a80839db4f317199f260aa9
+  dependencies:
+  - golang1.11.4
+license:
+  version: c5f8f9b1e15db6605439d11c1a7f4f439b71cce5a8b3e82b588f83e712966d4a
+  fingerprint: c5f8f9b1e15db6605439d11c1a7f4f439b71cce5a8b3e82b588f83e712966d4a
+  sha1: sha256:27cea30b57f0b3bffdfdb2aeb5aef5d858ec8698451495d31f75878156fd9a1d
