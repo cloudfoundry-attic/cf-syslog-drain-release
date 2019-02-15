@@ -18,7 +18,7 @@ processes:
     executable: /var/vcap/packages/adapter/adapter
     env:
       ADAPTER_INSTANCE_INDEX: "<%= spec.index.to_s %>"
-      HEALTH_HOSTPORT: ":<%= p('scalablesyslog.adapter.health') %>"
+      HEALTH_HOSTPORT: "127.0.0.1:<%= p('scalablesyslog.adapter.health') %>"
       HOSTPORT: ":<%= p('scalablesyslog.adapter.port') %>"
       PPROF_HOSTPORT: "localhost:<%= p('scalablesyslog.adapter.pprof') %>"
       CA_FILE_PATH: "/var/vcap/jobs/adapter/certs/ca.crt"

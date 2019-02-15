@@ -23,8 +23,8 @@ processes:
   - name: scheduler
     executable: /var/vcap/packages/scheduler/scheduler
     env:
-      HEALTH_HOSTPORT: ":<%= p('scalablesyslog.scheduler.health') %>"
-      PPROF_HOSTPORT: "localhost:<%= p('scalablesyslog.scheduler.pprof') %>"
+      HEALTH_HOSTPORT: "127.0.0.1:<%= p('scalablesyslog.scheduler.health') %>"
+      PPROF_HOSTPORT: "127.0.0.1:<%= p('scalablesyslog.scheduler.pprof') %>"
       API_URL: "<%= api_addr %>"
       API_CA_FILE_PATH: "/var/vcap/jobs/scheduler/certs/api_ca.crt"
       API_CERT_FILE_PATH: "/var/vcap/jobs/scheduler/certs/api_client.crt"
