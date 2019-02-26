@@ -7,6 +7,9 @@
   end
 
   rlp_addr_with_az = "#{spec.az}.#{rlp_addr}"
+  if p("scalablesyslog.adapter.bosh_dns")
+    rlp_addr_with_az = link("reverse_log_proxy").address(azs: [spec.az])
+  end
 %>
 
 export ADAPTER_INSTANCE_INDEX="<%= spec.index.to_s %>"
