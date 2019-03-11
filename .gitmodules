@@ -43,3 +43,6 @@
 [submodule "src/code.cloudfoundry.org/go-orchestrator"]
 	path = src/code.cloudfoundry.org/go-orchestrator
 	url = https://github.com/cloudfoundry-incubator/go-orchestrator
+[submodule "src/github.com/vito/gosub"]
+	path = src/github.com/vito/gosub
+	url = https://github.com/vito/gosub
