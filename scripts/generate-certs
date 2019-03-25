@@ -9,24 +9,29 @@ mkdir -p "$depot_path"
 # Install certstrap
 go get -v github.com/square/certstrap
 
+# Loggregator CA
+certstrap --depot-path ${depot_path} init --passphrase '' --common-name loggregatorCA --expires "25 years"
+
+# Adapter CA
 certstrap --depot-path ${depot_path} init --passphrase '' --common-name scalableSyslogCA --expires "25 years"
- mv -f ${depot_path}/scalableSyslogCA.crt ${depot_path}/scalable-syslog-ca.crt
- mv -f ${depot_path}/scalableSyslogCA.key ${depot_path}/scalable-syslog-ca.key
- mv -f ${depot_path}/scalableSyslogCA.crl ${depot_path}/scalable-syslog-ca.crl
 
 # Scheduler certificate (to communicate with adapter)
 certstrap --depot-path "$depot_path" request-cert --passphrase '' --common-name scheduler
-certstrap --depot-path "$depot_path" sign scheduler --CA "scalable-syslog-ca" --expires "25 years"
+certstrap --depot-path "$depot_path" sign scheduler --CA "scalableSyslogCA" --expires "25 years"
 
 # Scheduler CAPI certificate (cert used to communicate with API to fetch
 # syslog drain bindings
 certstrap --depot-path "$depot_path" request-cert --passphrase '' --common-name scheduler-api
-certstrap --depot-path "$depot_path" sign scheduler-api --CA "scalable-syslog-ca" --expires "25 years"
+certstrap --depot-path "$depot_path" sign scheduler-api --CA "scalableSyslogCA" --expires "25 years"
 
 # Adapter certificate (to communicate with scheduler)
 certstrap --depot-path "$depot_path" request-cert --passphrase '' --common-name adapter
-certstrap --depot-path "$depot_path" sign adapter --CA "scalable-syslog-ca" --expires "25 years"
+certstrap --depot-path "$depot_path" sign adapter --CA "scalableSyslogCA" --expires "25 years"
 
 # Adapter RLP certificate (cert used to communicate with Reverse Logging Proxy)
 certstrap --depot-path "$depot_path" request-cert --passphrase '' --common-name adapter-rlp
-certstrap --depot-path "$depot_path" sign adapter-rlp --CA "scalable-syslog-ca" --expires "25 years"
+certstrap --depot-path "$depot_path" sign adapter-rlp --CA "loggregatorCA" --expires "25 years"
+
+# Fake Log Provider
+certstrap --depot-path "$depot_path" request-cert --passphrase '' --common-name fake-log-provider
+certstrap --depot-path "$depot_path" sign fake-log-provider --CA "loggregatorCA" --expires "25 years"
