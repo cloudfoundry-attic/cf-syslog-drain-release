@@ -3,6 +3,7 @@ set -e -x
 export GOROOT=$(readlink -nf /var/vcap/packages/golang1.12.1)
 export PATH=$GOROOT/bin:$PATH
 export GOPATH=$PWD
+export HOME=/var/vcap
 
 ln -s $GOPATH $GOPATH/src
 
