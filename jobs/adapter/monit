@@ -1,5 +1,7 @@
+<% if p('scalablesyslog.enabled') %>
 check process adapter
   with pidfile /var/vcap/sys/run/bpm/adapter/adapter.pid
   start program "/var/vcap/jobs/bpm/bin/bpm start adapter"
   stop program "/var/vcap/jobs/bpm/bin/bpm stop adapter" with timeout 60 seconds
   group vcap
+<% end %>

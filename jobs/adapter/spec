@@ -26,6 +26,9 @@ provides:
   - scalablesyslog.adapter.port
 
 properties:
+  scalablesyslog.enabled:
+    description: "Enable scalable syslog adapter"
+    default: true
   scalablesyslog.adapter.health:
     description: The port for the adapter health endpoint.
     default: 8080

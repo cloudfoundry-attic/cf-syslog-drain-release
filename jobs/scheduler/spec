@@ -21,6 +21,9 @@ consumes:
   optional: true
 
 properties:
+  scalablesyslog.enabled:
+    description: Enable scalable syslog scheduler
+    default: true
   scalablesyslog.scheduler.health:
     description: The port for the scheduler health endpoint.
     default: 8080
