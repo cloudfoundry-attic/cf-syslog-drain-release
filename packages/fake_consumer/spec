@@ -6,3 +6,5 @@ dependencies:
 
 files:
 - tools/fake_consumer/*
+- go.mod
+- go.sum

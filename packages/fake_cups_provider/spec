@@ -3,3 +3,5 @@ name: fake_cups_provider
 
 files:
 - tools/fake_cups_provider/*
+- go.mod
+- go.sum
