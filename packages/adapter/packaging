@@ -1,12 +1,7 @@
-set -e -x
+set -ex
 
 export GOROOT=$(readlink -nf /var/vcap/packages/golang1.12.4)
 export PATH=$GOROOT/bin:$PATH
-export GOPATH=$PWD
 export HOME=/var/vcap
 
-ln -s $GOPATH $GOPATH/src
-
-go install code.cloudfoundry.org/scalable-syslog/adapter
-cp -a $GOPATH/bin/adapter ${BOSH_INSTALL_TARGET}/adapter
-
+go build -mod=vendor -o ${BOSH_INSTALL_TARGET}/adapter adapter/main.go

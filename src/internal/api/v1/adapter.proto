@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package scalablesyslog;
+
+service Adapter {
+    rpc ListBindings(ListBindingsRequest) returns (ListBindingsResponse) {}
+    rpc CreateBinding(CreateBindingRequest) returns (CreateBindingResponse) {}
+    rpc DeleteBinding(DeleteBindingRequest) returns (DeleteBindingResponse) {}
+}
+
+message Binding {
+    string appId = 1;
+    string hostname = 2;
+    string drain = 3;
+}
+
+message ListBindingsRequest {}
+
+message ListBindingsResponse {
+    repeated Binding bindings = 1;
+}
+
+message CreateBindingRequest {
+    Binding binding = 1;
+}
+
+message CreateBindingResponse {}
+
+message DeleteBindingRequest {
+    Binding binding = 1;
+}
+
+message DeleteBindingResponse {}
+

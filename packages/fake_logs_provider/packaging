@@ -1,12 +1,7 @@
-set -e -x
+set -ex
 
 export GOROOT=$(readlink -nf /var/vcap/packages/golang1.12.4)
 export PATH=$GOROOT/bin:$PATH
-export GOPATH=$PWD
 export HOME=/var/vcap
 
-ln -s $GOPATH $GOPATH/src
-
-go install code.cloudfoundry.org/scalable-syslog/tools/fake_logs_provider
-cp -a $GOPATH/bin/fake_logs_provider ${BOSH_INSTALL_TARGET}/fake_logs_provider
-
+go build -mod=vendor -o ${BOSH_INSTALL_TARGET}/fake_logs_provider tools/fake_logs_provider/main.go

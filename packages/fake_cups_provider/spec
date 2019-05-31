@@ -2,4 +2,4 @@
 name: fake_cups_provider
 
 files:
-- code.cloudfoundry.org/scalable-syslog/tools/fake_cups_provider/*
+- tools/fake_cups_provider/*
