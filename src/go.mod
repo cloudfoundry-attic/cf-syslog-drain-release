@@ -7,10 +7,10 @@ require (
 	code.cloudfoundry.org/go-diodes v0.0.0-20180905200951-72629b5276e3
 	code.cloudfoundry.org/go-envstruct v1.4.0
 	code.cloudfoundry.org/go-loggregator v7.4.0+incompatible
-	code.cloudfoundry.org/go-orchestrator v0.0.0-20190313212434-dccffa7e825c
+	code.cloudfoundry.org/go-orchestrator v0.0.0-20190624211724-65321ce94b51
 	code.cloudfoundry.org/rfc5424 v0.0.0-20180905210152-236a6d29298a
 	github.com/apoydence/onpar v0.0.0-20190519213022-ee068f8ea4d1 // indirect
-	github.com/cloudfoundry-incubator/go-orchestrator v0.0.0-20190313212434-dccffa7e825c // indirect
+	github.com/cloudfoundry-incubator/go-orchestrator v0.0.0-20190624211724-65321ce94b51 // indirect
 	github.com/gogo/protobuf v1.2.1 // indirect
 	github.com/golang/mock v1.3.1 // indirect
 	github.com/golang/protobuf v1.3.1
@@ -31,7 +31,8 @@ require (
 	golang.org/x/net v0.0.0-20190620200207-3b0461eec859
 	golang.org/x/sys v0.0.0-20190624142023-c5567b49c5d0 // indirect
 	golang.org/x/time v0.0.0-20190308202827-9d24e82272b4 // indirect
-	golang.org/x/tools v0.0.0-20190624150748-8ea4f8e3e5bf // indirect
+	golang.org/x/tools v0.0.0-20190624222133-a101b041ded4 // indirect
+	google.golang.org/api v0.7.0 // indirect
 	google.golang.org/appengine v1.6.1 // indirect
 	google.golang.org/genproto v0.0.0-20190620144150-6af8c5fc6601 // indirect
 	google.golang.org/grpc v1.21.1

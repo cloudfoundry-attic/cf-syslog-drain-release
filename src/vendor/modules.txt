@@ -6,7 +6,7 @@ code.cloudfoundry.org/go-envstruct
 code.cloudfoundry.org/go-loggregator
 code.cloudfoundry.org/go-loggregator/pulseemitter
 code.cloudfoundry.org/go-loggregator/rpc/loggregator_v2
-# code.cloudfoundry.org/go-orchestrator v0.0.0-20190313212434-dccffa7e825c
+# code.cloudfoundry.org/go-orchestrator v0.0.0-20190624211724-65321ce94b51
 code.cloudfoundry.org/go-orchestrator
 # code.cloudfoundry.org/rfc5424 v0.0.0-20180905210152-236a6d29298a
 code.cloudfoundry.org/rfc5424
