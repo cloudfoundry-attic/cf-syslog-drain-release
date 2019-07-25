@@ -2,7 +2,7 @@
 name: adapter
 
 dependencies:
-- golang1.12.4
+- golang-1-linux
 
 files:
 - adapter/**/*.go

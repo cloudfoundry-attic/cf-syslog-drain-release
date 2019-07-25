@@ -2,7 +2,7 @@
 name: fake_logs_provider
 
 dependencies:
-- golang1.12.4
+- golang-1-linux
 
 files:
 - tools/fake_logs_provider/**/*.go
