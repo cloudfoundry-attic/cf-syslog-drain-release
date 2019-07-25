@@ -5,7 +5,7 @@ CF syslog drain release is a [Bosh][bosh] release that works in conjunction with
 independently scaled to support large numbers of [User Provided syslog
 drains][syslog-drain-docs].
 
-The [Loggregator Design Notes][loggregator-design-notes] present an overview
+The [Loggregator Architecture][loggregator-architecture] present an overview
 of Loggregator components and architecture.
 
 ## Supported Features and Release
@@ -123,7 +123,7 @@ Assuming you have these two CAs, run the following commands:
 [loggregator-slack]:        https://cloudfoundry.slack.com/archives/loggregator
 [bosh]:                     https://bosh.io
 [loggregator]:              https://code.cloudfoundry.org/loggregator
-[loggregator-design-notes]: https://code.cloudfoundry.org/loggregator/tree/develop/docs/loggregator-design.md
+[loggregator-architecture]: https://docs.cloudfoundry.org/loggregator/architecture.html
 [syslog-drain-docs]:        https://docs.cloudfoundry.org/devguide/services/log-management.html
 [cf-deployment]:            https://code.cloudfoundry.org/cf-deployment
 [sample-manifest]:          https://code.cloudfoundry.org/cf-syslog-drain-release/blob/master/manifests/cf-syslog-drain.yml
