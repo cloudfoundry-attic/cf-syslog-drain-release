@@ -154,6 +154,7 @@ func NewAdapter(
 	metricClient MetricClient,
 	logClient LogClient,
 	sourceIndex string,
+	LogsAPIConnTTL time.Duration,
 	opts ...AdapterOption,
 ) *Adapter {
 	ctx, cancel := context.WithCancel(context.Background())
@@ -165,7 +166,7 @@ func NewAdapter(
 		ctx:                    ctx,
 		cancel:                 cancel,
 		logsAPIConnCount:       10,
-		logsAPIConnTTL:         600 * time.Second,
+		logsAPIConnTTL:         LogsAPIConnTTL,
 		logsEgressAPITLSConfig: logsEgressAPITLSConfig,
 		adapterServerTLSConfig: adapterServerTLSConfig,
 		syslogDialTimeout:      5 * time.Second,

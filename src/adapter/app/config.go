@@ -35,6 +35,7 @@ type Config struct {
 	MetricIngressAddr     string        `env:"METRIC_INGRESS_ADDR,     required"`
 	MetricIngressCN       string        `env:"METRIC_INGRESS_CN,       required"`
 	MetricEmitterInterval time.Duration `env:"METRIC_EMITTER_INTERVAL"`
+	LogsAPIConnTTL        time.Duration `env:"LOGS_API_CONN_TTL"`
 }
 
 // LoadConfig will load and validate the config from the current environment.
@@ -51,6 +52,7 @@ func LoadConfig() *Config {
 		MetricEmitterInterval:  time.Minute,
 		MetricsToSyslogEnabled: false,
 		MaxBindings:            500,
+		LogsAPIConnTTL:         600 * time.Second,
 	}
 
 	err := envstruct.Load(&cfg)
