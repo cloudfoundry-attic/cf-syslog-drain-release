@@ -76,6 +76,7 @@ func main() {
 		metricClient,
 		logClient,
 		cfg.SourceIndex,
+		cfg.LogsAPIConnTTL,
 		app.WithHealthAddr(cfg.HealthHostport),
 		app.WithAdapterServerAddr(cfg.AdapterHostport),
 		app.WithSyslogKeepalive(cfg.SyslogKeepalive),
