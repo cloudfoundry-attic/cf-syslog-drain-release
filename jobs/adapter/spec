@@ -71,6 +71,12 @@ properties:
     description: |
         The maximum number of bindings that can be serviced by an adapter.
     default: 500
+  scalablesyslog.adapter.logs_api_conn_ttl:
+    description: |
+        The TTL of connection to Logs API(s).
+        Each logs_api_conn_ttl interval adapter reconnects to Logs API(s) in sake of rebalancing.
+        WARNING: during the reconnection log lost is possible.
+    default: 600s
 
   scalablesyslog.adapter.tls.ca:
     description: |
