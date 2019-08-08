@@ -40,5 +40,6 @@ processes:
       METRIC_INGRESS_ADDR: "<%= p('scalablesyslog.metric_ingress_addr') %>"
       METRIC_INGRESS_CN: "<%= p('scalablesyslog.metric_ingress_cn') %>"
       METRIC_EMITTER_INTERVAL: "<%= p('metric_emitter.interval') %>"
+      LOGS_API_CONN_TTL: "<%= p('scalablesyslog.adapter.logs_api_conn_ttl') %>"
     limits:
       open_files: 8192
