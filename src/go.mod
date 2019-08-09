@@ -4,7 +4,7 @@ go 1.12
 
 require (
 	code.cloudfoundry.org/go-diodes v0.0.0-20180905200951-72629b5276e3
-	code.cloudfoundry.org/go-envstruct v1.4.0
+	code.cloudfoundry.org/go-envstruct v1.5.0
 	code.cloudfoundry.org/go-loggregator v7.4.0+incompatible
 	code.cloudfoundry.org/go-orchestrator v0.0.0-20190624211724-65321ce94b51
 	code.cloudfoundry.org/rfc5424 v0.0.0-20180905210152-236a6d29298a

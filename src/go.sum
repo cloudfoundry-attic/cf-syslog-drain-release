@@ -1,8 +1,8 @@
 cloud.google.com/go v0.26.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMTw=
 code.cloudfoundry.org/go-diodes v0.0.0-20180905200951-72629b5276e3 h1:oHsfl5AaineZubAUOXg2Vxcdu/TzgN/Q+/65lN70LZk=
 code.cloudfoundry.org/go-diodes v0.0.0-20180905200951-72629b5276e3/go.mod h1:Jzi+ccHgo/V/PLQUaQ6hnZcC1c4BS790gx21LRRui4g=
-code.cloudfoundry.org/go-envstruct v1.4.0 h1:bDwwwxIZdvYdB5udkTnmaOrRjQeE61XcvDHmAUmg2hk=
-code.cloudfoundry.org/go-envstruct v1.4.0/go.mod h1:/Mr9WxQueWKylLYSZaPbiQlmzzZNbButXn08qM03Vfk=
+code.cloudfoundry.org/go-envstruct v1.5.0 h1:GmDS5Kbckkoxy39JGRwD/13jO1OROqf69B2vy4WBv/k=
+code.cloudfoundry.org/go-envstruct v1.5.0/go.mod h1:E2S/gzRZpZ51PZnIv7Bo7QvcgH18yio19upkrRk0xLU=
 code.cloudfoundry.org/go-loggregator v7.4.0+incompatible h1:KqZYloMQWM5Zg/BQKunOIA4OODh7djZbk48qqbowNFI=
 code.cloudfoundry.org/go-loggregator v7.4.0+incompatible/go.mod h1:KPBTRqj+y738Nhf1+g4JHFaBU8j7dedirR5ETNHvMXU=
 code.cloudfoundry.org/go-orchestrator v0.0.0-20190624211724-65321ce94b51 h1:S/oSBdHCFIxPaWJwCLgTqUx9+IRJYwkKq79p4t8zgqI=
