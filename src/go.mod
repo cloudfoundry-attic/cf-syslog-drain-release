@@ -3,7 +3,7 @@ module code.cloudfoundry.org/scalable-syslog
 go 1.12
 
 require (
-	code.cloudfoundry.org/go-diodes v0.0.0-20180905200951-72629b5276e3
+	code.cloudfoundry.org/go-diodes v0.0.0-20190809170250-f77fb823c7ee
 	code.cloudfoundry.org/go-envstruct v1.5.0
 	code.cloudfoundry.org/go-loggregator v7.4.0+incompatible
 	code.cloudfoundry.org/go-orchestrator v0.0.0-20190624211724-65321ce94b51
