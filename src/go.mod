@@ -14,7 +14,7 @@ require (
 	github.com/golang/protobuf v1.3.2
 	github.com/kr/pretty v0.1.0 // indirect
 	github.com/onsi/ginkgo v1.9.0
-	github.com/onsi/gomega v1.6.0
+	github.com/onsi/gomega v1.7.0
 	github.com/poy/onpar v0.0.0-20190519213022-ee068f8ea4d1 // indirect
 	golang.org/x/net v0.0.0-20190827160401-ba9fcec4b297
 	golang.org/x/sys v0.0.0-20190826190057-c7b8b68b1456 // indirect
