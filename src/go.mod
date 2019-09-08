@@ -17,7 +17,7 @@ require (
 	github.com/onsi/gomega v1.7.0
 	github.com/poy/onpar v0.0.0-20190519213022-ee068f8ea4d1 // indirect
 	golang.org/x/net v0.0.0-20190827160401-ba9fcec4b297
-	golang.org/x/sys v0.0.0-20190904154756-749cb33beabd // indirect
+	golang.org/x/sys v0.0.0-20190907184412-d223b2b6db03 // indirect
 	golang.org/x/text v0.3.2 // indirect
 	google.golang.org/appengine v1.4.0 // indirect
 	google.golang.org/genproto v0.0.0-20190905072037-92dd089d5514 // indirect
