@@ -1,75 +1,82 @@
 ---
-apiVersion: v0
-
-product:
-  name: cf-syslog-drain
-  version: latest
+apiVersion: indicatorprotocol.io/v1
+kind: IndicatorDocument
 
 metadata:
-  deployment: <%= spec.deployment %>
+  labels:
+    deployment: <%= spec.deployment %>
 
-indicators:
-- name: syslog_adapter_loss_ksi
-  promql: rate(dropped{source_id="drain_adapter"}[5m]) / rate(ingress{source_id="drain_adapter"}[5m])
-  thresholds:
-  - level: warning
-    gte: 0.01
-  - level: critical
-    gte: 0.1
-  documentation:
-    title: Syslog Adapter Loss Rate
+spec:
+  product:
+    name: cf-syslog-drain
+    version: latest
+
+  indicators:
+  - name: syslog_adapter_loss_ksi
+    promql: rate(dropped{source_id="drain_adapter"}[5m]) / rate(ingress{source_id="drain_adapter"}[5m])
+    thresholds:
+    - level: warning
+      operator: gte
+      value: 0.01
+    - level: critical
+      operator: gte
+      value: 0.1
+    documentation:
+      title: Syslog Adapter Loss Rate
+      description: |
+        Indicates that the syslog drains are not keeping up with the number of
+        logs that a syslog-drain-bound app is producing. This likely means that
+        the syslog-drain consumer is failing to keep up with the incoming log
+        volume.
+
+        The recommended scaling indicator is to look at the maximum per minute
+        loss rate over a 5-minute window and scale if the derived loss rate
+        value grows greater than `0.1`.
+    recommended_response: |
+      Performance test your syslog server, review the logs of the syslog
+      consuming system for intake and other performance issues that indicate a
+      need to scale the consuming system.
+
+  - name: syslog_adapter_drain_bindings_ksi
+    promql: avg(drain_bindings{source_id="drain_adapter"})
+    thresholds:
+    - level: warning
+      operator: gte
+      value: 450
+    - level: critical
+      operator: gte
+      value: 495
+    documentation:
+      title: CF Syslog Drain Bindings Count
+      description: |
+        Each Syslog Adapter can handle approximately 250 drain bindings. The
+        recommended initial configuration is a minimum of two Syslog Adapters
+        (to handle approximately 500 drain bindings). A new Adapter instance
+        should be added for each 250 additional drain bindings.
+
+        Therefore, the recommended initial scaling indicator is 450 (as a
+        maximum value over a 1-hr window). This indicates the need to scale up
+        to three Adapters from the initial two-Adapter configuration.
+
+        Please note that while `cf-syslog-drain.scheduler.drains` is emitted by
+        each scheduler instance, the metric emitted is the aggregated total
+        number of active drains. Therefore this metric should not be summed
+        across instances, as the total value is already emitted.
+    recommended_response: |
+      Increase the number of `adapter` instances.
+
+  layout:
+    owner: Loggregator Team
+    title: CF Syslog Drain
     description: |
-      Indicates that the syslog drains are not keeping up with the number of
-      logs that a syslog-drain-bound app is producing. This likely means that
-      the syslog-drain consumer is failing to keep up with the incoming log
-      volume.
-
-      The recommended scaling indicator is to look at the maximum per minute
-      loss rate over a 5-minute window and scale if the derived loss rate
-      value grows greater than `0.1`.
-  recommended_response: |
-    Performance test your syslog server, review the logs of the syslog
-    consuming system for intake and other performance issues that indicate a
-    need to scale the consuming system.
-
-- name: syslog_adapter_drain_bindings_ksi
-  promql: avg(drain_bindings{source_id="drain_adapter"})
-  thresholds:
-  - level: warning
-    gte: 450
-  - level: critical
-    gte: 495
-  documentation:
-    title: CF Syslog Drain Bindings Count
-    description: |
-      Each Syslog Adapter can handle approximately 250 drain bindings. The
-      recommended initial configuration is a minimum of two Syslog Adapters
-      (to handle approximately 500 drain bindings). A new Adapter instance
-      should be added for each 250 additional drain bindings.
-
-      Therefore, the recommended initial scaling indicator is 450 (as a
-      maximum value over a 1-hr window). This indicates the need to scale up
-      to three Adapters from the initial two-Adapter configuration.
-
-      Please note that while `cf-syslog-drain.scheduler.drains` is emitted by
-      each scheduler instance, the metric emitted is the aggregated total
-      number of active drains. Therefore this metric should not be summed
-      across instances, as the total value is already emitted.
-  recommended_response: |
-    Increase the number of `adapter` instances.
-
-layout:
-  owner: Loggregator Team
-  title: CF Syslog Drain
-  description: |
-     This topic explains how to monitor the health of Cloud Foundry Syslog
-     Drain the metrics and key performance indicators (KPIs) generated by the
-     service.
-  sections:
-  - title: Key Performance Indicators for CF Syslog
-    description: |
-      This section describes the KPIs that you can use to monitor the health
-      of CF Syslog.
-    indicators:
-    - syslog_adapter_loss_ksi
-    - syslog_adapter_drain_bindings_ksi
+       This topic explains how to monitor the health of Cloud Foundry Syslog
+       Drain the metrics and key performance indicators (KPIs) generated by the
+       service.
+    sections:
+    - title: Key Performance Indicators for CF Syslog
+      description: |
+        This section describes the KPIs that you can use to monitor the health
+        of CF Syslog.
+      indicators:
+      - syslog_adapter_loss_ksi
+      - syslog_adapter_drain_bindings_ksi
