@@ -16,7 +16,7 @@ require (
 	github.com/onsi/ginkgo v1.10.1
 	github.com/onsi/gomega v1.7.0
 	github.com/poy/onpar v0.0.0-20190519213022-ee068f8ea4d1 // indirect
-	golang.org/x/net v0.0.0-20190916140828-c8589233b77d
+	golang.org/x/net v0.0.0-20190918130420-a8b05e9114ab
 	golang.org/x/sys v0.0.0-20190916202348-b4ddaad3f8a3 // indirect
 	golang.org/x/text v0.3.2 // indirect
 	google.golang.org/appengine v1.4.0 // indirect

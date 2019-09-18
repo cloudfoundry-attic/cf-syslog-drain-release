@@ -57,7 +57,7 @@ github.com/onsi/gomega/matchers/support/goraph/bipartitegraph
 github.com/onsi/gomega/matchers/support/goraph/edge
 github.com/onsi/gomega/matchers/support/goraph/node
 github.com/onsi/gomega/matchers/support/goraph/util
-# golang.org/x/net v0.0.0-20190916140828-c8589233b77d
+# golang.org/x/net v0.0.0-20190918130420-a8b05e9114ab
 golang.org/x/net/context
 golang.org/x/net/idna
 golang.org/x/net/trace
