@@ -2,7 +2,7 @@
 name: adapter
 
 dependencies:
-  - golang1.12.4
+  - golang1.13.1
 
 files:
 - code.cloudfoundry.org/go-diodes/*.go # gosub
