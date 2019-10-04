@@ -33,6 +33,8 @@ builds:
     version: "7.0"
   9d26e7fe-80ba-4c17-6697-df4744570c57:
     version: "8.0"
+  a65d479a-45e5-4f32-5d0e-6d71ea1b82a0:
+    version: 10.2.1
   ada21dd6-49f8-4474-68d8-75eaef452173:
     version: "6.4"
   aef29bbe-a7b2-4fe0-42ea-19a280ed863a:
