@@ -51,6 +51,8 @@ builds:
     version: "8.2"
   efa5b905-0387-4c67-5205-37669393cefe:
     version: "1"
+  f0747531-25b3-4861-655b-a743b0b7b833:
+    version: 10.2.2
   f9659203-7336-45d1-7fab-4ba96530e5cd:
     version: "6.5"
 format-version: "2"
