@@ -17,6 +17,8 @@ builds:
     version: "3.1"
   390621e5-3318-4128-6301-c7430a5e47ce:
     version: "5.1"
+  405084ba-edd5-4fdb-6329-1a3568faa761:
+    version: 10.2.4
   5c6695cb-1fa2-4613-4897-880e03da12b9:
     version: 10.2.3
   6418481d-ba32-4928-4cc8-94a5cd959090:
