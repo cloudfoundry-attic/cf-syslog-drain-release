@@ -21,6 +21,8 @@ builds:
     version: 10.2.5
   405084ba-edd5-4fdb-6329-1a3568faa761:
     version: 10.2.4
+  567e232e-9190-4913-6b84-04e17b356f4f:
+    version: 10.2.6
   5c6695cb-1fa2-4613-4897-880e03da12b9:
     version: 10.2.3
   6418481d-ba32-4928-4cc8-94a5cd959090:
