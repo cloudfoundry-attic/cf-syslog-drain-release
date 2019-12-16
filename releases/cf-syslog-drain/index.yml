@@ -7,6 +7,8 @@ builds:
     version: "8.1"
   0de9cfca-c6e5-4d50-4dae-643e602ecfc6:
     version: "9.0"
+  13789643-1d3e-4dca-46e5-211865d30031:
+    version: 10.2.7
   18ec6788-ecf9-4c0f-42f3-c63bf307e9b5:
     version: "6.1"
   2161d173-d638-4dcf-77f3-c2adbed53bf5:
