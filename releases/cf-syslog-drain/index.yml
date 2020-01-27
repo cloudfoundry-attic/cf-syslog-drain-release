@@ -39,6 +39,8 @@ builds:
     version: "3.2"
   7471ebfd-4623-40c7-458f-b0fa3da7e88b:
     version: "6.2"
+  7583cf16-555f-41a0-58f6-3eb82d7ed527:
+    version: 10.2.11
   778aa4c4-d359-40b5-7453-0eb31394e21b:
     version: 10.2.8
   7a959494-da6d-4376-79dd-b78e0d0678e0:
