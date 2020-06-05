@@ -1,3 +1,7 @@
+# NOTE: This release has been deprecated in favor of the syslog agents in [loggregator-agent-release](https://github.com/cloudfoundry/loggregator-agent-release/).
+
+If using cf-deployment, please update to at least version 13.0.
+
 # CF Syslog Drain Release [![slack.cloudfoundry.org][slack-badge]][loggregator-slack] [![CI Badge][ci-badge]][ci-pipeline]
 
 CF syslog drain release is a [Bosh][bosh] release that works in conjunction with
